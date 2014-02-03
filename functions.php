@@ -119,7 +119,16 @@ require get_template_directory() . '/inc/jetpack.php';
 
 
 /**
- * Load CPT Áreas file.
+ * Load CPT Ações file.
  */
-require get_template_directory() . '/inc/cpt-areas.php';
+require get_template_directory() . '/inc/cpt-acoes.php';
 
+/**
+ * Load CPT Notícias file.
+ */
+require get_template_directory() . '/inc/cpt-noticias.php';
+
+/**
+ * Load CPT Publicações file.
+ */
+require get_template_directory() . '/inc/cpt-publicacoes.php';
