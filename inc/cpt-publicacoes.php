@@ -1,5 +1,4 @@
 ﻿<?php
-
 /**
  * Adicionamos uma ação no inicio do carregamento do WordPress
  * através da funçãoo add_action( 'init' )
@@ -48,7 +47,7 @@ function create_post_type_publicacoes() {
 	    'capability_type' => 'post',
 	    'has_archive' => true,
 	    'hierarchical' => true,
-	    'menu_position' => null,
+	    'menu_position' => 5,
 	    'supports' => array('title','author','editor','excerpt','thumbnail','post-formats', 'taxonomy')
 	    )
     );

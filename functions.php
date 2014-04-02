@@ -46,7 +46,7 @@ function polis_theme_setup() {
 	) );
 
 	// Enable support for Post Formats.
-	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+	add_theme_support( 'post-formats', array( 'aside', 'quote', 'status' ) );
 
 	// Setup the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'polis_theme_custom_background_args', array(
@@ -85,12 +85,19 @@ function polis_theme_scripts() {
 	wp_enqueue_script( 'polis-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'polis-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	//wp_enqueue_script( 'radio-tax', get_template_directory_uri() . '/js/radiotax.js' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'polis_theme_scripts' );
+
+function admin_polis_scripts() {
+    wp_enqueue_style('style-admin', get_template_directory_uri() . '/style-admin.css' );
+	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js' );
+}
+add_action('admin_head', 'admin_polis_scripts');
 
 /**
  * Implement the Custom Header feature.
@@ -119,16 +126,26 @@ require get_template_directory() . '/inc/jetpack.php';
 
 
 /**
- * Load CPT A��es file.
+ * Load CPT Ações file.
  */
 require get_template_directory() . '/inc/cpt-acoes.php';
 
 /**
- * Load CPT Not�cias file.
+ * Load CPT Notícias file.
  */
 require get_template_directory() . '/inc/cpt-noticias.php';
 
 /**
- * Load CPT Publica��es file.
+ * Load CPT Publicações file.
  */
 require get_template_directory() . '/inc/cpt-publicacoes.php';
+
+/**
+ * Load Tax Categorias to CPT Publicações, Notícias e Ações.
+ */
+require get_template_directory() . '/inc/tax-categorias.php';
+
+/**
+ * Load Tax Tipos to CPT Publicações e Notícias.
+ */
+require get_template_directory() . '/inc/tax-tipos.php';
