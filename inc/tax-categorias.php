@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // hook into the init action and call create_book_taxonomies when it fires
 add_action( 'init', 'create_taxonomies_categorias', 0 );
 

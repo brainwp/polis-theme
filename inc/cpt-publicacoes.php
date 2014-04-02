@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Adicionamos uma ação no inicio do carregamento do WordPress
  * através da funçãoo add_action( 'init' )
