@@ -149,3 +149,5 @@ require get_template_directory() . '/inc/tax-categorias.php';
  * Load Tax Tipos to CPT Publicações e Notícias.
  */
 require get_template_directory() . '/inc/tax-tipos.php';
+
+require_once( get_stylesheet_directory() . '/router.php' );
