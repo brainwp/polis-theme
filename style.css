@@ -36,7 +36,6 @@ fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td {
 	border: 0;
 	font-family: inherit;
-	font-size: 100%;
 	font-style: inherit;
 	font-weight: inherit;
 	margin: 0;
@@ -117,10 +116,45 @@ textarea {
 	line-height: 1.5;
 }
 
+/* =Structure
+----------------------------------------------- */
+
+body {
+	padding: 0 2em;
+}
+
+#page {
+	margin: 2em auto;
+	max-width: 1280px;
+}
+
+#branding hgroup {
+	margin: 0 7.6%;
+}
+#access div {
+	margin: 0 7.6%;
+}
+#primary {
+}
+#content {
+
+}
+#secondary {
+
+}
+
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
 	clear: both;
 }
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.2em ; }
+h4 { font-size: 1.0em; }
+h5 { font-size: 0.9em; }
+h6 { font-size: 0.8em; }
+
 hr {
 	background-color: #ccc;
 	border: 0;
@@ -617,4 +651,93 @@ object {
 /* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
 .infinity-end.neverending .site-footer {
 	display: block;
+}
+
+/* Area */
+.header-area {
+	width: 100%;
+	background: #CCC;
+}
+
+.header-area .left {
+	float: left;
+	width: 70%;
+}
+
+.header-area .right {
+	float: right;
+	width: 30%;
+	background: #F1F1F1;
+}
+
+.aba-area {
+	background: #536C32;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	color: #FFF;
+}
+
+
+.tabContaier {
+	background:#f0f0f0;
+	padding:20px 0 0 0;
+	width:100%;
+	clear: both;
+}
+.tabContaier ul{
+	overflow: hidden;
+	height:35px;
+	position:absolute;
+	z-index:100;
+	margin:0px 0px 0px 20px;
+	padding:0;
+}
+.tabContaier li{
+	float:left;
+	list-style:none;
+}
+.tabContaier li a{
+	background:#ddd;
+	color:#666;
+	cursor:pointer;
+	display:block;
+	height:35px;
+	line-height:35px;
+	padding:0 30px;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+	.tabContaier li a:hover{
+		background:#eee;
+	}
+	.tabContaier li a.active{
+		background:#536C32;
+		color:#FFF;
+	}
+	.tabDetails{
+		background:#fbfbfb;
+		margin:34px 0 0;
+	}
+	.tabContents{
+		padding:20px;
+	}
+	.tabContents h1{
+		padding:0 0 10px;
+	}
+	.tabContents p{
+		padding:0 0 10px;
+	}
+
+.cada-loop-aba {
+	width: 100%;
+	clear: both;
+	overflow: hidden;
+}
+
+.cada-noticia-area {
+	width: 23%;
+	background: #809958;
+	float: left;
+	margin: 10px;
 }

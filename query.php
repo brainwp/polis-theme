@@ -25,6 +25,9 @@ function _init_query_object() {
 		// Publicacoes
 		'publicacoes' => false,
 
+		//Acoes
+		'acoes' => false,
+
     );
 
 }
@@ -83,13 +86,23 @@ function _query_processor( &$query ) {
 
     } elseif ( 'democracia-e-participacao' == get_query_var( 'area' ) ) {
 		$area = 'democracia-e-participacao';
+		_query_acoes( $area );
 		_query_noticias( $area );
 		_query_publicacoes( $area );
 
-	/* Democracia e Participacao */
+	/* Reforma Urbana */
 
     } elseif ( 'reforma-urbana' == get_query_var( 'area' ) ) {
 		$area = 'reforma-urbana';
+		_query_acoes( $area );
+		_query_noticias( $area );
+		_query_publicacoes( $area );
+
+	/* Cidadania Cultural */
+
+    } elseif ( 'cidadania-cultural' == get_query_var( 'area' ) ) {
+		$area = 'cidadania-cultural';
+		_query_acoes( $area );
 		_query_noticias( $area );
 		_query_publicacoes( $area );
 
@@ -139,6 +152,23 @@ function _query_publicacoes( $area ) {
 		)
 	);
 	$_query->publicacoes = new WP_Query( $args ); // exclude category
+}
+
+function _query_acoes( $area ) {
+	global $_query;
+	$args = array(
+		'post_type' => 'acoes',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'categorias',
+				'field' => 'slug',
+				'terms' => $area,
+				'include_children' => true,
+				'posts_per_page' => 10,
+			)
+		)
+	);
+	$_query->acoes = new WP_Query( $args ); // exclude category
 }
 
 function _query_archive_noticias( $area ) {
