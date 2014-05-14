@@ -8,14 +8,17 @@ Mapa do Site (Estrutura de Arquivos)
   	<li>archive.php</li>
   	<li>category.php</li>
   	<li>comments.php</li>
+  	<li>header.php</li>
   	<li>page.php</li>
   	<li>footer.php</li>
-  	<li>prateleira.php</li>
+  	
   </ul>
   <li>Home</li>
   	<ul>
   		<li>front-page.php</li>
-  		<li>header-home.php</li>
+  		<li>home-menu-areas.php</li>
+  		<li>home-footer.php</li>
+
   	</ul>
   <li>Areas</li>
 	<ul>
@@ -53,6 +56,7 @@ Mapa do Site (Estrutura de Arquivos)
   </ul>
   <li>Biblioteca</li>
   <ul>
+    	<li>header-biblioteca.php</li>
   	<li>biblioteca.php</li>
   </ul>
   <li>Equipe</li>
