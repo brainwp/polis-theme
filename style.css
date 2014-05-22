@@ -689,7 +689,7 @@ object {
 .shadow{
 	box-shadow: 0px 4px 54px 0px rgb( 0, 0, 0 );
 }
-
+/* header */
 .header{
 	background:#3e748e;
 	padding-top:30px;
@@ -722,6 +722,9 @@ object {
 	color:white;
 	margin-left:10px;
 }
+/* fim do header
+
+menu de navegação */
 .nav{
 	background:#1f5c7b;
 }
@@ -759,6 +762,10 @@ object {
 	padding:0 0 0 0;
 	font-weight:normal;
 }
+/* fim do menu de navegacao
+
+conteudo - atuação /pagehome/
+*/
 .content{
 	background:white;
 	padding:0;
@@ -854,6 +861,10 @@ object {
 	border-radius:2px;
 	background:#055c91;
 }
+/* fim da atuação
+
+slider de noticias + acoes
+*/
 .news .section-title{
 	margin-top:35px;
 	font-weight: bold;
