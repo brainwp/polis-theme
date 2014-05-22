@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="55" selection-start="6084" selection-end="6084" vertical-scroll-proportion="0.9348659" vertical-offset="1688" max-vertical-offset="2465">
+            <state line="148" column="43" selection-start="6788" selection-end="6788" vertical-scroll-proportion="-18.76923" vertical-offset="2028" max-vertical-offset="2822">
               <folding>
                 <element signature="n#style#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -34,10 +34,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bootstrap.min.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="bootstrap.min.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/bootstrap.min.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="231" column="20" selection-start="104348" selection-end="104348" vertical-scroll-proportion="0.0" vertical-offset="3413" max-vertical-offset="4046">
+            <state line="269" column="23" selection-start="104945" selection-end="104945" vertical-scroll-proportion="0.9069343" vertical-offset="4076" max-vertical-offset="4726">
               <folding />
             </state>
           </provider>
@@ -53,8 +53,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/bootstrap.min.css" />
       </list>
     </option>
   </component>
@@ -246,19 +246,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="231" column="20" selection-start="104348" selection-end="104348" vertical-scroll-proportion="0.0" vertical-offset="3413" max-vertical-offset="4046">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="55" selection-start="6084" selection-end="6084" vertical-scroll-proportion="0.9348659" vertical-offset="1688" max-vertical-offset="2465">
+        <state line="148" column="43" selection-start="6788" selection-end="6788" vertical-scroll-proportion="-18.76923" vertical-offset="2028" max-vertical-offset="2822">
           <folding>
             <element signature="n#style#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="269" column="23" selection-start="104945" selection-end="104945" vertical-scroll-proportion="0.9069343" vertical-offset="4076" max-vertical-offset="4726">
+          <folding />
         </state>
       </provider>
     </entry>

@@ -221,7 +221,6 @@
 	color:white !important;
 	text-decoration: none !important;
 	text-transform: uppercase;
-	z-index:33;
 	background: #00608b;
 	display:block;
 	float:right;
@@ -230,4 +229,45 @@
 }
 #slider-news .carousel-indicators{
 	margin-top:20px;
+}
+.newsletter{
+	margin-top:20px;
+	padding:20px;
+	background:#c2c2c2;
+}
+.newsletter p{
+	font-weight: bold;
+	color:#005e8c;
+	font-size:22px;
+}
+.newsletter button{
+	font-weight: bold;
+	padding:5px;
+	color:white !important;
+	text-decoration: none !important;
+	text-transform: uppercase;
+	background: #00608b;
+	display:block;
+	float:right;
+	border-radius: 2px;
+	border:none;
+}
+.newsletter input, .newsletter select{
+	margin-bottom:10px;
+}
+.canal{
+	margin-top:20px;
+	padding:20px;
+	background:#a93736;
+	color:white;
+}
+.canal p{
+	color:white;
+	font-weight:bold;
+}
+.canal a{
+	background: #e28b2e;
+	border-radius: 2px;
+	color:white;
+	font-weight: bold;
 }
