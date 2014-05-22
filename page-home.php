@@ -81,7 +81,9 @@ get_header(); ?>
 				'order'     => 'ASC',
 				'posts_per_page' => 6
 			) );?>
+			<?php $_i = 0; ?>
 			<?php while ( $slider_query->have_posts() ) : $slider_query->the_post(); ?>
+		    <?php if($_i == 0){ ?>
 			<div class="item active">
 				<?php
 				if ( has_post_thumbnail() ) {
@@ -94,15 +96,40 @@ get_header(); ?>
 					echo '<a href="' . get_category_link($category->cat_ID) . '" class="slider-cat">'. $category->cat_name . '</a>';
 				}
 				?>
-				<div class="left type"><?php get_post_type(get_the_ID());?></div>
-				<a href="<?php the_permanalink();?>" class="title"><?php the_title();?></a>
+				<div class="left type"><?php echo get_post_type();?></div>
+				<a href="<?php the_permalink();?>" class="title"><?php the_title();?></a>
 
 				<div class="texto">
 					<?php the_excerpt();?>
 				</div>
-				<a href="<?php the_permanalink();?>" class="more">Leia Mais</a>
+				<a href="<?php the_permalink();?>" class="more">Leia Mais</a>
 			</div>
 			<?php
+			}
+			else{ ?>
+				<div class="item">
+					<?php
+					if ( has_post_thumbnail() ) {
+						the_post_thumbnail('slider-news-image');
+					}
+					else {
+						echo '<img src="http://placehold.it/615x171" />';
+					}
+					foreach((get_the_category()) as $category) {
+						echo '<a href="' . get_category_link($category->cat_ID) . '" class="slider-cat">'. $category->cat_name . '</a>';
+					}
+					?>
+					<div class="left type"><?php echo get_post_type();?></div>
+					<a href="<?php the_permalink();?>" class="title"><?php the_title();?></a>
+
+					<div class="texto">
+						<?php the_excerpt();?>
+					</div>
+					<a href="<?php the_permalink();?>" class="more">Leia Mais</a>
+				</div>
+			<?php
+			}
+			$_i++;
 			endwhile;
 			wp_reset_postdata();
 			?>
@@ -135,3 +162,4 @@ get_header(); ?>
 		</div>
 	</section>
 </section>
+<?php get_footer();?>
