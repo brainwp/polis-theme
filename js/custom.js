@@ -12,4 +12,13 @@
 			
 			return false; //prevent page scrolling on tab click
 		});
+		jQuery('.nav ul li').on('mouseover', function(){
+			jQuery('.nav ul li ul').each(function(){
+				jQuery(this).css('display','none');
+			});
+			jQuery(this).find('ul').css('display','block');
+		});
+		jQuery('.nav ul li ul').on('mouseout', function(){
+			jQuery(this).css('display','none');
+		});
 	});
