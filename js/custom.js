@@ -1,4 +1,5 @@
 	jQuery(document).ready(function(){
+		var $ = jQuery.noConflict();
 		jQuery(".tabContents").hide(); // Hide all tab content divs by default
 		jQuery(".tabContents:first").show(); // Show the first div of tab content by default
 		
@@ -20,5 +21,19 @@
 		});
 		jQuery('.nav ul li ul').on('mouseout', function(){
 			jQuery(this).css('display','none');
+		});
+		jQuery(".publicacoes-link").on('click',function(){
+			$('.publicacoes-link').each(function(){
+				$(this).removeClass('ativo');
+			})
+			var post_link = $(this).attr("data-link");
+			var cat_slug = $(this).attr('data-slug');
+			//alert(post_id);
+			//$("#single-home-container").html("<div class='box'><span class='loader5'></span></div>");
+			$.post(post_link, { slider: cat_slug })
+				.done(function( data ) {
+					$('#slider-ajax').html(data);
+				});
+			return false;
 		});
 	});

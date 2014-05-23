@@ -983,3 +983,18 @@ slider de noticias + acoes
 	color:white;
 	font-weight: bold;
 }
+.publicacoes .links a{
+	text-transform: uppercase;
+	color:#c0c0c0;
+	font-size:12px;
+}
+.publicacoes .links a.ativo{
+	background:#c0c0c0;
+	color:white;
+}
+.publicacoes .links .title{
+	font-weight: bold;
+	color:#005e8c;
+	font-size:20px;
+	text-transform:none;
+}

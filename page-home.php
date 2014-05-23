@@ -65,7 +65,7 @@ get_header(); ?>
 		</div>
 		<!-- colocar linha aqui <div class="col-md-12 dashed-line"></div> -->
 	</section>
-	<section class="col-md-12 content news" style="min-height: 800px;">
+	<section class="col-md-12 content news">
 		<div class="col-md-12">
 			<div class="section-title">
 				Noticias e ações em todas as areas
@@ -117,12 +117,12 @@ get_header(); ?>
 					endwhile;
 					wp_reset_postdata();
 					?>
-				</div>
 				<div id="slider-news-controle" class="carousel-indicators">
 					<a href="#slider-news" data-slide="prev">PROXIMO</a>
 					<a href="#slider-news" data-slide-to="0" class="active">ZERO</a>
 					<a href="#slider-news" data-slide-to="1">UM</a>
 				</div>
+			</div>
 		</section>
 		<section class="col-md-4 pull-right">
 			<form class="col-md-12 newsletter">
@@ -145,5 +145,50 @@ get_header(); ?>
 				</div>
 			</div>
 		</section>
+	</section>
+	<section class="col-md-10 col-md-offset-1 publicacoes">
+		<div class="links publicacoes-link">
+			<a class="title" href="#">Publicações</a>
+			<a class="publicacoes-link" class="ativo" data-link="<?php bloginfo( 'url' ); ?>/?ajax=todos">Ver todos</a>
+			<?php
+			$args = array(
+				'type'         => '',
+				'child_of'     => 0,
+				'parent'       => '',
+				'orderby'      => 'ID',
+				'order'        => 'ASC',
+				'hide_empty'   => 0,
+				'hierarchical' => 1,
+				'exclude'      => '1',
+				'include'      => '',
+				'number'       => '4',
+				'taxonomy'     => 'categorias',
+				'pad_counts'   => false );
+
+			$categories = get_categories( $args );
+			foreach ( $categories as $category ) :
+				$cat_ID = $category->term_id; // Get ID the category.
+				// Get the URL of this category
+				$category_link = get_category_link( $cat_ID );
+				// Get the Slug of this category
+				$category_slug = get_category_link( $category->slug );
+				echo '<a class="publicacoes-link" data-link="' . get_bloginfo( 'url' ) . '" data-slug="' . $category->slug . '">' . $category->name . '</a>';
+			endforeach;
+			?>
+		</div>
+			<div class="carousel slide col-md-12" id="slider-publicacoes" data-ride="carousel">
+				<div class="carousel-inner" id="slider-ajax">
+				<?php $arg = array(
+					'post_type'      => array( 'publicacoes' ),
+					'orderby'        => 'date',
+					'order'          => 'ASC',
+					'posts_per_page' => 16
+				 );?>
+				<?php
+				$carousel = wp_bootstrap_carousel($arg, 4, 0);
+				echo $carousel['items'];
+				?>
+			</div>
+		</div>
 	</section>
 <?php get_footer(); ?>

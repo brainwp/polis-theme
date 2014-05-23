@@ -156,6 +156,7 @@ require_once( get_stylesheet_directory() . '/router.php' );
 
 function custom_images(){
 	add_image_size( 'slider-news-image', 615, 171 );
+	add_image_size( 'slider-publicacoes-image', 151, 228 );
 }
 add_action('init', 'custom_images', 1);
 // options framework codes
@@ -163,3 +164,5 @@ add_action('init', 'custom_images', 1);
 define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/inc/options-framework/inc/' );
 require_once dirname( __FILE__ ) . '/inc/options-framework/inc/options-framework.php';
 include ( dirname( __FILE__ ) . "/options.php" );
+//ajax
+require get_template_directory() . '/publicacoes-slider-ajax.php';
