@@ -117,12 +117,12 @@ get_header(); ?>
 					endwhile;
 					wp_reset_postdata();
 					?>
-				<div id="slider-news-controle" class="carousel-indicators">
-					<a href="#slider-news" data-slide="prev">PROXIMO</a>
-					<a href="#slider-news" data-slide-to="0" class="active">ZERO</a>
-					<a href="#slider-news" data-slide-to="1">UM</a>
+					<div id="slider-news-controle" class="carousel-indicators">
+						<a href="#slider-news" data-slide="prev">PROXIMO</a>
+						<a href="#slider-news" data-slide-to="0" class="active">ZERO</a>
+						<a href="#slider-news" data-slide-to="1">UM</a>
+					</div>
 				</div>
-			</div>
 		</section>
 		<section class="col-md-4 pull-right">
 			<form class="col-md-12 newsletter">
@@ -172,22 +172,83 @@ get_header(); ?>
 				$category_link = get_category_link( $cat_ID );
 				// Get the Slug of this category
 				$category_slug = get_category_link( $category->slug );
-				echo '<a class="publicacoes-link" data-link="' . get_bloginfo( 'url' ) . '" data-slug="' . $category->slug . '">' . $category->name . '</a>';
+				echo '<a class="publicacoes-link" data-link="' . get_bloginfo( 'url' ) . '/?slider=' . $category->slug . '">' . $category->name . '</a>';
 			endforeach;
 			?>
 		</div>
-			<div class="carousel slide col-md-12" id="slider-publicacoes" data-ride="carousel">
-				<div class="carousel-inner" id="slider-ajax">
+		<div class="carousel slide col-md-12" id="slider-publicacoes" data-ride="carousel">
+			<div class="carousel-inner" id="slider-ajax">
+				<?php $arg = array(
+					'post_type'      => array( 'publicacoes' ),
+					'orderby'        => 'date',
+					'ordr'          => 'ASC',
+					'posts_per_page' => 4
+				);?>
+				<?php
+				$publicacoes = new WP_Query( $arg ); ?>
+				<div class="item active">
+					<?php while ( $publicacoes->have_posts() ) :
+						$publicacoes->the_post(); ?>
+						<a class="col-md-3" href="<?php the_permalink(); ?>">
+							<?php
+							if ( has_post_thumbnail() ) {
+								the_post_thumbnail( 'slider-publicacoes-image' );
+							} else {
+								echo '<img src="http://placehold.it/151x228" />';
+							}
+							?>
+						</a>
+					<?php endwhile; ?>
+				</div>
+				<?php wp_reset_postdata(); ?>
 				<?php $arg = array(
 					'post_type'      => array( 'publicacoes' ),
 					'orderby'        => 'date',
 					'order'          => 'ASC',
-					'posts_per_page' => 16
-				 );?>
+					'posts_per_page' => 4,
+					'offset'         => 4
+				);?>
 				<?php
-				$carousel = wp_bootstrap_carousel($arg, 4, 0);
-				echo $carousel['items'];
-				?>
+				$publicacoes = new WP_Query( $arg ); ?>
+				<div class="item">
+					<?php while ( $publicacoes->have_posts() ) :
+						$publicacoes->the_post(); ?>
+						<a class="col-md-3" href="<?php the_permalink(); ?>">
+							<?php
+							if ( has_post_thumbnail() ) {
+								the_post_thumbnail( 'slider-publicacoes-image' );
+							} else {
+								echo '<img src="http://placehold.it/151x228" />';
+							}
+							?>
+						</a>
+					<?php endwhile; ?>
+					<?php wp_reset_postdata(); ?>
+				</div>
+				<?php $arg = array(
+					'post_type'      => array( 'publicacoes' ),
+					'orderby'        => 'date',
+					'order'          => 'ASC',
+					'posts_per_page' => 4,
+					'offset'         => 8
+				);?>
+				<?php
+				$publicacoes = new WP_Query( $arg ); ?>
+				<div class="item">
+					<?php while ( $publicacoes->have_posts() ) :
+						$publicacoes->the_post(); ?>
+						<a class="col-md-3" href="<?php the_permalink(); ?>">
+							<?php
+							if ( has_post_thumbnail() ) {
+								the_post_thumbnail( 'slider-publicacoes-image' );
+							} else {
+								echo '<img src="http://placehold.it/151x228" />';
+							}
+							?>
+						</a>
+					<?php endwhile; ?>
+					<?php wp_reset_postdata(); ?>
+				</div>
 			</div>
 		</div>
 	</section>

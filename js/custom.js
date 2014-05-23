@@ -27,13 +27,9 @@
 				$(this).removeClass('ativo');
 			})
 			var post_link = $(this).attr("data-link");
-			var cat_slug = $(this).attr('data-slug');
 			//alert(post_id);
 			//$("#single-home-container").html("<div class='box'><span class='loader5'></span></div>");
-			$.post(post_link, { slider: cat_slug })
-				.done(function( data ) {
-					$('#slider-ajax').html(data);
-				});
+			$('#slider-ajax').load(post_link);
 			return false;
 		});
 	});
