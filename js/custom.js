@@ -1,5 +1,6 @@
 	jQuery(document).ready(function(){
 		var $ = jQuery.noConflict();
+		$('#slider-news').carousel()
 		jQuery(".tabContents").hide(); // Hide all tab content divs by default
 		jQuery(".tabContents:first").show(); // Show the first div of tab content by default
 		

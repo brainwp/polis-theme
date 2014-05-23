@@ -117,11 +117,11 @@ get_header(); ?>
 					endwhile;
 					wp_reset_postdata();
 					?>
-					<div id="slider-news-controle" class="carousel-indicators">
-						<a href="#slider-news" data-slide="prev">PROXIMO</a>
-						<a href="#slider-news" data-slide-to="0" class="active">ZERO</a>
-						<a href="#slider-news" data-slide-to="1">UM</a>
-					</div>
+				</div>
+				<div id="slider-news-controle" class="carousel-indicators">
+					<a href="#slider-news" data-slide="prev">PROXIMO</a>
+					<a href="#slider-news" data-slide-to="0" class="active">ZERO</a>
+					<a href="#slider-news" data-slide-to="1">UM</a>
 				</div>
 		</section>
 		<section class="col-md-4 pull-right">
