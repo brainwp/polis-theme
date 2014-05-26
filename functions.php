@@ -13,50 +13,50 @@ if ( ! isset( $content_width ) ) {
 }
 
 if ( ! function_exists( 'polis_theme_setup' ) ) :
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- */
-function polis_theme_setup() {
-
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on Polis Theme, use a find and replace
-	 * to change 'polis-theme' to the name of your theme in all the template files
-	 */
-	load_theme_textdomain( 'polis-theme', get_template_directory() . '/languages' );
-
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
-	 * Enable support for Post Thumbnails on posts and pages.
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
-	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+	 * Note that this function is hooked into the after_setup_theme hook, which
+	 * runs before the init hook. The init hook is too late for some features, such
+	 * as indicating support for post thumbnails.
 	 */
-	add_theme_support( 'post-thumbnails' );
+	function polis_theme_setup() {
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'polis-theme' ),
-	) );
+		/*
+		 * Make theme available for translation.
+		 * Translations can be filed in the /languages/ directory.
+		 * If you're building a theme based on Polis Theme, use a find and replace
+		 * to change 'polis-theme' to the name of your theme in all the template files
+		 */
+		load_theme_textdomain( 'polis-theme', get_template_directory() . '/languages' );
 
-	// Enable support for Post Formats.
-	add_theme_support( 'post-formats', array( 'aside', 'quote', 'status' ) );
+		// Add default posts and comments RSS feed links to head.
+		add_theme_support( 'automatic-feed-links' );
 
-	// Setup the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'polis_theme_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+		 */
+		add_theme_support( 'post-thumbnails' );
 
-	// Enable support for HTML5 markup.
-	add_theme_support( 'html5', array( 'comment-list', 'search-form', 'comment-form', ) );
-}
+		// This theme uses wp_nav_menu() in one location.
+		register_nav_menus( array(
+			'primary' => __( 'Primary Menu', 'polis-theme' ),
+		) );
+
+		// Enable support for Post Formats.
+		add_theme_support( 'post-formats', array( 'aside', 'quote', 'status' ) );
+
+		// Setup the WordPress core custom background feature.
+		add_theme_support( 'custom-background', apply_filters( 'polis_theme_custom_background_args', array(
+			'default-color' => 'ffffff',
+			'default-image' => '',
+		) ) );
+
+		// Enable support for HTML5 markup.
+		add_theme_support( 'html5', array( 'comment-list', 'search-form', 'comment-form', ) );
+	}
 endif; // polis_theme_setup
 add_action( 'after_setup_theme', 'polis_theme_setup' );
 
@@ -65,14 +65,16 @@ add_action( 'after_setup_theme', 'polis_theme_setup' );
  */
 function polis_theme_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'polis-theme' ),
-		'id'            => 'sidebar-1',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'name'          => __( 'Widgets-Home', 'polis-theme' ),
+		'id'            => 'widgets-home',
+		'before_widget' => '<aside id="%1$s" class="col-md-4 widget %1$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<!-- widget name: ',
+		'after_title'   => ' -->',
 	) );
+
 }
+
 add_action( 'widgets_init', 'polis_theme_widgets_init' );
 
 /**
@@ -81,10 +83,12 @@ add_action( 'widgets_init', 'polis_theme_widgets_init' );
 function polis_theme_scripts() {
 	wp_enqueue_style( 'polis-theme-style', get_stylesheet_uri() );
 	//wp_enqueue_style( 'twentyeleven-style', get_stylesheet_directory_uri() . '/style-twentyeleven.css' );
-	wp_enqueue_script('jquery');
-	wp_enqueue_script( 'polis-theme-navigation', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20120206', true );
-	wp_enqueue_script( 'polis-theme-navigation', get_template_directory_uri() . '/js/scripts.js', array(), '20120206', true );
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'polis-theme-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20120206', true );
 	wp_enqueue_script( 'polis-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+	wp_enqueue_script( 'polis-theme-caroufredsel', get_template_directory_uri() . '/js/caroufredsel/jquery.carouFredSel-6.2.1-packed.js', array(), '20120206', true );
+	wp_enqueue_script( 'polis-theme-scripts', get_template_directory_uri() . '/js/scripts.js', array(), '20120206', true );
+
 
 	wp_enqueue_script( 'polis-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'custom_js', get_template_directory_uri() . '/js/custom.js' );
@@ -93,13 +97,15 @@ function polis_theme_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
+
 add_action( 'wp_enqueue_scripts', 'polis_theme_scripts' );
 
 function admin_polis_scripts() {
-    wp_enqueue_style('style-admin', get_template_directory_uri() . '/style-admin.css' );
+	wp_enqueue_style( 'style-admin', get_template_directory_uri() . '/style-admin.css' );
 	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js' );
 }
-add_action('admin_head', 'admin_polis_scripts');
+
+add_action( 'admin_head', 'admin_polis_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -154,15 +160,24 @@ require get_template_directory() . '/inc/tax-tipos.php';
 
 require_once( get_stylesheet_directory() . '/router.php' );
 
-function custom_images(){
+function custom_images() {
 	add_image_size( 'slider-news-image', 615, 171 );
 	add_image_size( 'slider-publicacoes-image', 151, 228 );
 }
-add_action('init', 'custom_images', 1);
+
+add_action( 'init', 'custom_images', 1 );
+
+register_nav_menu( 'footer-institucional', 'Footer Institucional' );
+register_nav_menu( 'footer-atuacao', 'Footer Areas de Atuação' );
+register_nav_menu( 'footer-projetos', 'Footer Projetos' );
+register_nav_menu( 'footer-biblioteca', 'Footer Bibliotecas' );
+
 // options framework codes
 
 define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/inc/options-framework/inc/' );
 require_once dirname( __FILE__ ) . '/inc/options-framework/inc/options-framework.php';
-include ( dirname( __FILE__ ) . "/options.php" );
+include( dirname( __FILE__ ) . "/options.php" );
 //ajax
 require get_template_directory() . '/publicacoes-slider-ajax.php';
+
+//widget home

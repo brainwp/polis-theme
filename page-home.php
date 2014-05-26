@@ -73,7 +73,7 @@ get_header(); ?>
 				<span class="triangle"></span>
 			</div>
 		</div>
-		<section id="slider-news" class="carousel slide col-md-8" data-ride="carousel">
+		<article id="slider-news" class="carousel slide col-md-7" data-ride="carousel">
 			<div class="carousel-inner">
 				<?php $slider_query = new WP_Query( array(
 					'post_type'      => array( 'acoes', 'noticias' ),
@@ -123,8 +123,8 @@ get_header(); ?>
 					<a href="#slider-news" data-slide-to="0" class="active">ZERO</a>
 					<a href="#slider-news" data-slide-to="1">UM</a>
 				</div>
-		</section>
-		<section class="col-md-4 pull-right">
+		</article>
+		<section class="col-md-5 pull-right">
 			<form class="col-md-12 newsletter">
 				<p>Receba nosso boletim</p>
 				Se cadastre para receber todo o nosso conteudo em primeira mão
@@ -146,10 +146,10 @@ get_header(); ?>
 			</div>
 		</section>
 	</section>
-	<section class="col-md-10 col-md-offset-1 publicacoes">
+	<section class="col-md-12 publicacoes">
 		<div class="links publicacoes-link">
 			<a class="title" href="#">Publicações</a>
-			<a class="publicacoes-link" class="ativo" data-link="<?php bloginfo( 'url' ); ?>/?ajax=todos">Ver todos</a>
+			<a class="publicacoes-link" class="ativo" data-link="<?php bloginfo( 'url' ); ?>/?slider=todas">Ver todos</a>
 			<?php
 			$args = array(
 				'type'         => '',
@@ -176,80 +176,38 @@ get_header(); ?>
 			endforeach;
 			?>
 		</div>
-		<div class="carousel slide col-md-12" id="slider-publicacoes" data-ride="carousel">
-			<div class="carousel-inner" id="slider-ajax">
-				<?php $arg = array(
-					'post_type'      => array( 'publicacoes' ),
-					'orderby'        => 'date',
-					'ordr'          => 'ASC',
-					'posts_per_page' => 4
-				);?>
+		<div id="hide-ajax" style="display: none"></div>
+		<div id="carousel" class="col-md-12 list_carousel responsive">
+			<?php $arg = array(
+				'post_type'      => array( 'publicacoes' ),
+				'orderby'        => 'date',
+				'ordr'           => 'ASC',
+				'posts_per_page' => 15
+			);?>
+			<ul id="slider2">
 				<?php
 				$publicacoes = new WP_Query( $arg ); ?>
-				<div class="item active">
-					<?php while ( $publicacoes->have_posts() ) :
-						$publicacoes->the_post(); ?>
-						<a class="col-md-3" href="<?php the_permalink(); ?>">
+				<?php while ( $publicacoes->have_posts() ) :
+					$publicacoes->the_post(); ?>
+					<li class="item">
+						<a href="<?php the_permalink(); ?>">
 							<?php
 							if ( has_post_thumbnail() ) {
-								the_post_thumbnail( 'slider-publicacoes-image' );
+								$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-image', true );
+								echo '<img src="' . $thumb_url[0] . '"/>';
 							} else {
 								echo '<img src="http://placehold.it/151x228" />';
 							}
 							?>
 						</a>
-					<?php endwhile; ?>
-				</div>
-				<?php wp_reset_postdata(); ?>
-				<?php $arg = array(
-					'post_type'      => array( 'publicacoes' ),
-					'orderby'        => 'date',
-					'order'          => 'ASC',
-					'posts_per_page' => 4,
-					'offset'         => 4
-				);?>
-				<?php
-				$publicacoes = new WP_Query( $arg ); ?>
-				<div class="item">
-					<?php while ( $publicacoes->have_posts() ) :
-						$publicacoes->the_post(); ?>
-						<a class="col-md-3" href="<?php the_permalink(); ?>">
-							<?php
-							if ( has_post_thumbnail() ) {
-								the_post_thumbnail( 'slider-publicacoes-image' );
-							} else {
-								echo '<img src="http://placehold.it/151x228" />';
-							}
-							?>
-						</a>
-					<?php endwhile; ?>
-					<?php wp_reset_postdata(); ?>
-				</div>
-				<?php $arg = array(
-					'post_type'      => array( 'publicacoes' ),
-					'orderby'        => 'date',
-					'order'          => 'ASC',
-					'posts_per_page' => 4,
-					'offset'         => 8
-				);?>
-				<?php
-				$publicacoes = new WP_Query( $arg ); ?>
-				<div class="item">
-					<?php while ( $publicacoes->have_posts() ) :
-						$publicacoes->the_post(); ?>
-						<a class="col-md-3" href="<?php the_permalink(); ?>">
-							<?php
-							if ( has_post_thumbnail() ) {
-								the_post_thumbnail( 'slider-publicacoes-image' );
-							} else {
-								echo '<img src="http://placehold.it/151x228" />';
-							}
-							?>
-						</a>
-					<?php endwhile; ?>
-					<?php wp_reset_postdata(); ?>
-				</div>
-			</div>
+					</li>
+				<?php endwhile; ?>
+			</ul>
 		</div>
+	</section>
+	<section class="col-md-12 widgets-home">
+		<?php if ( is_active_sidebar( 'widgets-home' ) ) : ?>
+			<?php dynamic_sidebar( 'widgets-home' ); ?>
+		<?php endif; ?>
 	</section>
 <?php get_footer(); ?>

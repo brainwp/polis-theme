@@ -998,3 +998,89 @@ slider de noticias + acoes
 	font-size:20px;
 	text-transform:none;
 }
+#slider2 li{
+	font-size: 0.8em;
+	font-weight: lighter;
+	color: #005264;
+	text-align: left;
+	width: 100%;
+	max-width: 980px;
+	height: 280px;
+	padding: 0;
+	margin: 0 6px;
+	display: block;
+	overflow: hidden;
+	float: left;
+}
+.container section{
+	padding-left:44px;
+	padding-right:44px;
+}
+/* widgets-home classses */
+.widgets-home .title{
+	margin-top:20px;
+	font-weight: bold;
+	color:#005e8c;
+	font-size:18px;
+}
+.widgets-home .description{
+	color:black;
+	font-size:13px;
+	margin-top:20px;
+	padding:0 0 0 0;
+	margin-bottom: 20px;
+}
+.widgets-home a{
+	padding-left:18px;
+	padding-right:18px;
+	padding-top:10px;
+	padding-bottom: 10px;
+	font-weight: bold;
+	color:white;
+	background:#015e8a;
+	font-size:13px;
+	border-radius:3px;
+	text-decoration: none;
+}
+.widgets-home .icon.eventos{
+	background: url('img/calendario-sidebar.png') no-repeat;
+	height: 60px;
+}
+/* footer */
+#footer{
+	padding-top:20px;
+	padding-bottom:20px;
+	background:#4f829d;
+}
+#footer .menu{
+	padding-left:5px;
+	padding-right:5px;
+	padding:0 0 0 0;
+}
+#footer .menu li {
+	display:block;
+	width:100%;
+	margin-top:10px;
+}
+#footer .menu li a{
+	cursor: pointer;
+	color:white;
+	font-size:12px;
+}
+#footer .menu .title{
+	display:block;
+	text-transform: uppercase;
+	font-weight:bold;
+	color:#50c0e5;
+	font-size: 14px;
+}
+#footer .apoio img{
+	width:100%;
+}
+#footer .apoio .title{
+	display:block;
+	text-transform: uppercase;
+	font-weight:bold;
+	color:white;
+	font-size: 14px;
+}

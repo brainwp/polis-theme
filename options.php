@@ -74,6 +74,26 @@ function optionsframework_options() {
 		'id'   => 'frase-cidadania-home',
 		'std'  => '',
 		'type' => 'textarea');
+	$options[] = array(
+		'name' => 'Footer Apoio Imagem',
+		'id'   => 'footer-apoio-img',
+		'std'  => '',
+		'type' => 'upload');
+	$options[] = array(
+		'name' => 'Footer Apoio Link',
+		'id'   => 'footer-apoio-link',
+		'std'  => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => 'Footer Realização Imagem',
+		'id'   => 'footer-realizacao-img',
+		'std'  => '',
+		'type' => 'upload');
+	$options[] = array(
+		'name' => 'Footer Realização Link',
+		'id'   => 'footer-realizacao-link',
+		'std'  => '',
+		'type' => 'text');
 
 
 	return $options;
