@@ -22,8 +22,12 @@
 	display: inline-block;
 }
 
-.site-main.democracia-e-participacao .header-area h1 {
+.site-main.democracia-e-participacao h1, .site-main.democracia-e-participacao h2 {
 	color: #A22521;
+}
+
+.site-main .aba-area {
+	background-color: #EDEDED;
 }
 
 .cada-publicacao-area {
@@ -36,4 +40,46 @@
     float: left;
     margin: 10px;
     width: 23%;
+}
+
+.cada-loop-aba header {
+	width: 100%;
+	clear: both;
+	padding: 30px 0 20px;
+	overflow: hidden;
+}
+
+.cada-loop-aba header h2 {
+	display: inline-block;
+	clear: both;
+	float: left;
+}
+
+.cada-loop-aba .todos {
+	float: left;
+	margin-left: 10px;
+	background: url("img/bg-todos.jpg") no-repeat;
+	font-size: 0.7em;
+	padding: 6px 16px 5px 10px;
+	color: #FFF;
+	text-transform: uppercase;
+}
+
+.btn-todas-publicacoes {
+    background-color: #BEBEBE;
+    border-radius: 5px;
+    display: block;
+    margin: 20px auto;
+    padding: 5px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 35%;
+    font-size: 0.7em;
+    color: #FFF;
+    overflow: hidden;
+}
+
+.btn-todas-publicacoes:hover {
+	background-color: #CACACA;
+	color: #333;
 }

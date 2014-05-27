@@ -33,7 +33,10 @@
     	<div id="tab1" class="tabContents aba-area">
         	
         	<div class="cada-loop-aba">
-        		<h1>Notícias</h1>
+				<header>
+					<h2>Notícias</h2>
+					<a class="todos" href="">Ver todos</a>
+				</header>
             <?php // Loop Notícias
 			if ($_query->noticias) {
 				while($_query->noticias->have_posts()) : $_query->noticias->the_post(); ?>
@@ -43,17 +46,17 @@
 					<?php the_excerpt(); ?>
 				</div><!-- .cada-noticia-area -->
 				
-
 				<?php endwhile;
 			} ?>
 
 			</div><!-- .cada-loop-aba -->
 
 			<div class="cada-loop-aba">
-
-			<?php
-
-			// Loop Publicações
+				<header>
+					<h2>Publicações</h2>
+					<a class="todos" href="">Ver todos</a>
+				</header>
+			<?php // Loop Publicações
 			if ($_query->publicacoes) {
 				while($_query->publicacoes->have_posts()) : $_query->publicacoes->the_post(); ?>
 				<div class="cada-publicacao-area">
@@ -72,20 +75,23 @@
 
 			</div><!-- .cada-loop-aba -->
 
+			<a href="" class="btn-todas-publicacoes">Veja todas as publicações ou faça uma busca</a><!-- .btn-todas-publicacoes -->
+
 			<div class="cada-loop-aba">
-
-			<?php
-
-			// Loop Ações
-			if ($_query->acoes) {
-				while($_query->acoes->have_posts()) : $_query->acoes->the_post(); ?>
-				<div class="cada-acao-area">
-					<h1><?php the_title(); ?></h1>
-					<?php the_excerpt(); ?>
-				</div><!-- .cada-acao-area -->
-				<?php endwhile;
-			}
-			?>
+				<header>
+					<h2>Ações</h2>
+					<a class="todos" href="">Ver todos</a>
+				</header>
+				<?php // Loop Ações
+				if ($_query->acoes) {
+					while($_query->acoes->have_posts()) : $_query->acoes->the_post(); ?>
+					<div class="cada-acao-area">
+						<h1><?php the_title(); ?></h1>
+						<?php the_excerpt(); ?>
+					</div><!-- .cada-acao-area -->
+					<?php endwhile;
+				}
+				?>
 
 			</div><!-- .cada-loop-aba -->
 
