@@ -1,6 +1,30 @@
 
 jQuery(document).ready(function () {
 	var $ = jQuery.noConflict();
+	if(location.hash.lastIndexOf('page_') != -1){
+		var pageid = location.hash.slice(6);
+		var siteurl = $(document.body).attr('data-siteurl');
+		var ajax = siteurl+'?ajaxPage='+pageid.trim();
+		$.get(ajax, function (data) {
+			$('#post_ajax').html(data);
+			$('.link_institucional').removeClass('atual');
+			$('#bt-'+pageid).addClass('atual');
+		})
+	}
+	$('.link_institucional').on('click', function(){
+		var pageid = $(this).attr('data-id');
+		var siteurl = $(document.body).attr('data-siteurl');
+		var ajax = siteurl+'?ajaxPage='+pageid.trim();
+		$.get(ajax, function (data) {
+			$('#post_ajax').html(data);
+			$('.link_institucional').removeClass('atual');
+			$('#bt-'+pageid).addClass('atual');
+			location.hash = 'page_'+pageid;
+			$('html, body').animate({
+				scrollTop: $('#post_ajax').offset().top
+			}, 500);
+		})
+	});
 	$('#slider2').carouFredSel({
 		prev      : '#prev-slider',
 		next      : '#next-slider',

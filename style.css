@@ -1084,3 +1084,112 @@ slider de noticias + acoes
 	color:white;
 	font-size: 14px;
 }
+/* pagina institucional */
+.intro-institucional{
+	background:#b6b6b6;
+	padding-left:35px;
+	padding-right:35px;
+	padding-top:41px;
+	padding-bottom:41px;
+}
+.intro-institucional h1{
+	font-weight:bold;
+	color:white;
+	font-size:24px;
+}
+.intro-institucional .description{
+	margin-top:10px;
+	font-style: italic;
+	font-size:21px;
+	color:black;
+}
+.intro-institucional .bg{
+	background:url(img/institucional-bg.png) no-repeat top right;
+	height:230px;
+	position: absolute;
+	width:273px;
+	margin-top: -42px;
+}
+.institucional-nav{
+	background:#cfcfcf;
+	margin-bottom: 40px;
+}
+.acervo{
+	margin-top:23px;
+	background: #d7bb4d;
+	padding:13px;
+}
+.acervo .description{
+	font-weight:bold;
+	padding:0;
+	font-size:20px;
+	color:white;
+}
+.acervo .link{
+	margin-top: 30px;
+}
+.acervo .link a{
+	color:white;
+	background:#ad820f;
+	padding:5px;
+	font-weight:bold;
+	font-size:12px;
+	text-align: center;
+}
+.midia{
+	 margin-top:23px;
+	 background: #b9537a;
+	 padding:13px;
+ }
+.midia .link a{
+	color:white;
+	background:#9f254a;
+	padding:5px;
+	font-weight:bold;
+	font-size:12px;
+	text-align: center;
+}
+.midia .title{
+	font-weight:bold;
+	padding:0;
+	font-size:20px;
+	color:white;
+}
+.midia .description{
+	font-weight:normal;
+	font-style: normal;
+	padding:0;
+	font-size:14px;
+	color:white;
+	text-align: left;
+}
+.projetos{
+	margin-top:23px;
+	background: #0499ba;
+	padding:13px;
+}
+.projetos .link a{
+	color:white;
+	background:#00628c;
+	padding:5px;
+	font-weight:bold;
+	font-size:12px;
+	text-align: center;
+}
+.projetos .title{
+	font-weight:bold;
+	padding:0;
+	font-size:20px;
+	color:white;
+}
+.projetos .description{
+	font-weight:normal;
+	font-style: normal;
+	padding:0;
+	font-size:14px;
+	color:white;
+	text-align: left;
+}
+.projetos .description a{
+	color:#5fc6f3;
+}

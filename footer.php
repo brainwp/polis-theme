@@ -37,7 +37,7 @@
 		</a>
 	</div>
 </footer>
-</div>
+</div> <!-- container shadow -->
 <?php wp_footer(); ?>
 </body>
 </html>
