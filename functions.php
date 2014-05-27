@@ -82,6 +82,7 @@ add_action( 'widgets_init', 'polis_theme_widgets_init' );
  */
 function polis_theme_scripts() {
 	wp_enqueue_style( 'polis-theme-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'eve-style', get_template_directory_uri() . '/style-eve.css' );
 	//wp_enqueue_style( 'twentyeleven-style', get_stylesheet_directory_uri() . '/style-twentyeleven.css' );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'polis-theme-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20120206', true );
