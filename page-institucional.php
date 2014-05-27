@@ -26,11 +26,11 @@ get_header(); ?>
 		$_i = 0;
 		foreach($child as $page){
 			if($_i == 0){
-				echo '<a class="link_institucional" id="bt-'. $page->post_name .'" href="#" data-id="'. $page->post_name .'" class="atual">' . $page->post_title . '</a>';
+				echo '<a class="link_institucional" id="bt-'. $page->post_name .'" data-id="'. $page->post_name .'" class="atual">' . $page->post_title . '</a>';
 				$_first = $page;
 			}
 			else{
-				echo '<a class="link_institucional" id="bt-'. $page->post_name .'" href="#" data-id="'. $page->post_name .'">' . $page->post_title . '</a>';
+				echo '<a class="link_institucional" id="bt-'. $page->post_name .'" data-id="'. $page->post_name .'">' . $page->post_title . '</a>';
 			}
 			$_i++;
 		}
