@@ -7,20 +7,37 @@
  * @package Polis Theme
  */
 ?>
-
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<?php do_action( 'polis_theme_credits' ); ?>
-			<a href="http://wordpress.org/" rel="generator"><?php printf( __( 'Proudly powered by %s', 'polis-theme' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( __( 'Theme: %1$s by %2$s.', 'polis-theme' ), 'Polis Theme', '<a href="http://brasa.art.br" rel="designer">Brasa Design</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
-
+<footer id="footer" class="col-md-12">
+	<div class="col-md-2 menu institucional">
+		<a class="title">Institucional</a>
+		<?php wp_nav_menu( array('theme_location' => 'footer-institucional' )); ?>
+	</div>
+	<div class="col-md-2 menu institucional">
+		<a class="title">Áreas de atuação</a>
+		<?php wp_nav_menu( array('theme_location' => 'footer-atuacao' )); ?>
+	</div>
+	<div class="col-md-2 menu institucional">
+		<a class="title">Projetos</a>
+		<?php wp_nav_menu( array('theme_location' => 'footer-projetos' )); ?>
+	</div>
+	<div class="col-md-2 menu institucional">
+		<a class="title">Biblioteca</a>
+		<?php wp_nav_menu( array('theme_location' => 'footer-biblioteca' )); ?>
+	</div>
+	<div class="col-md-2 apoio">
+		<a class="title">Apoio:</a>
+		<a href="<?php echo of_get_option( 'footer-apoio-link' );?>">
+			<img src="<?php echo of_get_option( 'footer-apoio-img' );?>">
+		</a>
+	</div>
+	<div class="col-md-2 apoio">
+		<a class="title">Realização:</a>
+		<a href="<?php echo of_get_option( 'footer-realizacao-link' );?>">
+			<img src="<?php echo of_get_option( 'footer-realizacao-img' );?>">
+		</a>
+	</div>
+</footer>
+</div>
 <?php wp_footer(); ?>
-
 </body>
 </html>
