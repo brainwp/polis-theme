@@ -5,14 +5,13 @@
 		<main id="main" class="site-main" role="main">
 
 		<?php
-			$current_term = get_term_by('id', 5, 'categorias');
+			$current_term = get_term_by( 'slug', get_query_var( 'area' ), 'categorias' );
 			$name_term = $current_term->name;
 			$description_term = $current_term->description;
 			// echo get_query_var( 'area' );
 		?>
 
 		<div class="header-area">
-
 			<div class="left">
 				<h1><?php echo $name_term; ?></h1>
 				<?php echo $description_term; ?>
