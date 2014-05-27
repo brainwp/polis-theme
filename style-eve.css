@@ -1,0 +1,27 @@
+/* Áreas */
+
+/*
+	Democracia e Participação = #A22521;
+	Reforma Urbana = #516D33;
+	Cidadania Cultural = #B7913E;
+	Inclusão e Sustentabilidade = #95AD5F;
+*/
+
+.site-main .header-area {
+	padding: 20px;
+	display: inline-block;
+}
+
+.site-main .header-area .right ul {
+	list-style: none;
+	text-align: right;
+}
+
+.site-main .header-area .right ul li a, .site-main .header-area .right ul li:first-child {
+	padding: 20px;
+	display: inline-block;
+}
+
+.site-main.democracia-e-participacao .header-area h1 {
+	color: #A22521;
+}

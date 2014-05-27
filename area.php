@@ -1,16 +1,16 @@
 <?php global $_query; ?>
 <?php get_header(); ?>
 
+	<?php
+		$current_term = get_term_by( 'slug', get_query_var( 'area' ), 'categorias' );
+		$name_term = $current_term->name;
+		$description_term = $current_term->description;
+		$current_class = $current_term->slug;
+		// echo get_query_var( 'area' );
+	?>
+
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
-		<?php
-			$current_term = get_term_by( 'slug', get_query_var( 'area' ), 'categorias' );
-			$name_term = $current_term->name;
-			$description_term = $current_term->description;
-			// echo get_query_var( 'area' );
-		?>
-
+		<main id="main" class="site-main <?php echo $current_class; ?>" role="main">
 		<div class="header-area">
 			<div class="left">
 				<h1><?php echo $name_term; ?></h1>
@@ -18,7 +18,7 @@
 			</div><!-- .left -->
 
 			<div class="right">
-					
+				<?php outras_areas(); ?>					
 			</div><!-- rigtht -->
 
 		</div><!-- .header-area -->

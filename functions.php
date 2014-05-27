@@ -182,3 +182,29 @@ include( dirname( __FILE__ ) . "/options.php" );
 require get_template_directory() . '/publicacoes-slider-ajax.php';
 
 //widget home
+
+/**
+ * Imprime o menu na Home de cada Área com link para as outras 3 Áreas
+ */
+function outras_areas() {
+	
+	$array_areas = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );
+	$current_area = get_term_by( 'slug', get_query_var( 'area' ), 'categorias' );
+	
+	if ( ( $key = array_search( $current_area->slug, $array_areas ) ) !== false ) {
+	    unset( $array_areas[$key] );
+	}
+
+	echo "<ul>";
+	echo "<li class=title-outras>Outras áreas de atuação</li>";
+
+	foreach( $array_areas as $area ) {
+		$each_area = get_term_by( 'slug', $area, 'categorias' );
+			echo "<li class='btn-" . $each_area->slug . "'>";
+			echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
+			echo "</li>";
+	}
+	
+	echo "</ul>";
+
+}
