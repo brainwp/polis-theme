@@ -17,6 +17,7 @@
 
 <?php wp_head(); ?>
 </head>
+<body data-siteurl="<?php bloginfo('url');?>/">
 <div class="container shadow">
 	<header class="col-md-12 header">
 		<div class="col-md-6 left">  <!-- logo -->

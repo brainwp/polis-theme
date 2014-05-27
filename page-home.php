@@ -6,7 +6,7 @@
  * Time: 11:10
  */
 get_header(); ?>
-	<div class="col-md-12 content text-center">
+	<section class="col-md-12 content text-center">
 		<p class="description">
 			<?php echo of_get_option( 'frase-intro-home' ); ?>
 		</p>
@@ -14,7 +14,7 @@ get_header(); ?>
 		<p class="description areas">
 			Areas de atuação do Pólis
 		</p>
-	</div>
+	</section>
 	<section class="col-md-12 content atuacao">
 		<div class="col-md-4 left">
 			<div class="col-md-10 reforma">

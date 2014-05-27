@@ -76,6 +76,10 @@ function polis_theme_widgets_init() {
 		'before_title'  => '<!-- widget name: ',
 		'after_title'   => ' -->',
 	) );
+	register_sidebar( array(
+		'name'          => __( 'Widgets-institucional', 'polis-theme' ),
+		'id'            => 'widgets-institucional',
+	) );
 
 }
 
@@ -163,7 +167,7 @@ require get_template_directory() . '/inc/tax-categorias.php';
  */
 require get_template_directory() . '/inc/tax-tipos.php';
 
-require_once( get_stylesheet_directory() . '/router.php' );
+//require_once( get_stylesheet_directory() . '/router.php' );
 
 function custom_images() {
 	add_image_size( 'slider-news-image', 615, 171 );
@@ -184,6 +188,7 @@ require_once dirname( __FILE__ ) . '/inc/options-framework/inc/options-framework
 include( dirname( __FILE__ ) . "/options.php" );
 //ajax
 require get_template_directory() . '/publicacoes-slider-ajax.php';
+require get_template_directory() . '/institucional-ajax.php';
 
 //widget home
 
@@ -212,3 +217,5 @@ function outras_areas() {
 	echo "</ul>";
 
 }
+
+require get_template_directory() . '/inc/widget.php';
