@@ -60,6 +60,10 @@ if ( ! function_exists( 'polis_theme_setup' ) ) :
 endif; // polis_theme_setup
 add_action( 'after_setup_theme', 'polis_theme_setup' );
 
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'slider-publicacoes-thumb', 160, 240, true );
+}
+
 /**
  * Register widgetized area and update sidebar with default widgets.
  */

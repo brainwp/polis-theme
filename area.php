@@ -39,8 +39,8 @@
 				while($_query->noticias->have_posts()) : $_query->noticias->the_post(); ?>
 
 				<div class="cada-noticia-area">
-				<h1><?php the_title(); ?></h1>
-				<?php the_excerpt(); ?>
+					<h1><?php the_title(); ?></h1>
+					<?php the_excerpt(); ?>
 				</div><!-- .cada-noticia-area -->
 				
 
@@ -49,24 +49,46 @@
 
 			</div><!-- .cada-loop-aba -->
 
+			<div class="cada-loop-aba">
+
 			<?php
 
 			// Loop Publicações
 			if ($_query->publicacoes) {
-				while($_query->publicacoes->have_posts()) : $_query->publicacoes->the_post();
-				the_title();
-				the_content();
-				endwhile;
-			}
+				while($_query->publicacoes->have_posts()) : $_query->publicacoes->the_post(); ?>
+				<div class="cada-publicacao-area">
+					<a href="<?php the_permalink(); ?>">
+
+						<?php if ( has_post_thumbnail() ) {
+							the_post_thumbnail( 'slider-publicacoes-thumb' );
+						} else { ?>
+							<img src="<?php echo get_template_directory_uri(); ?>/img/default-publicacoes-thumb.jpg" alt="<?php the_title(); ?>" />
+						<?php } ?>
+
+					</a>
+				</div><!-- .cada-publicacao-area -->
+				<?php endwhile;
+			} ?>
+
+			</div><!-- .cada-loop-aba -->
+
+			<div class="cada-loop-aba">
+
+			<?php
 
 			// Loop Ações
 			if ($_query->acoes) {
-				while($_query->acoes->have_posts()) : $_query->acoes->the_post();
-				the_title();
-				the_content();
-				endwhile;
+				while($_query->acoes->have_posts()) : $_query->acoes->the_post(); ?>
+				<div class="cada-acao-area">
+					<h1><?php the_title(); ?></h1>
+					<?php the_excerpt(); ?>
+				</div><!-- .cada-acao-area -->
+				<?php endwhile;
 			}
 			?>
+
+			</div><!-- .cada-loop-aba -->
+
         </div><!-- //tab1 -->
     	<div id="tab2" class="tabContents">
         	<h1>Div Two</h1>

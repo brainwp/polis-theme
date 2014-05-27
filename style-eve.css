@@ -25,3 +25,15 @@
 .site-main.democracia-e-participacao .header-area h1 {
 	color: #A22521;
 }
+
+.cada-publicacao-area {
+	width: 20%;
+	float: left;
+}
+
+.cada-acao-area {
+    background: none repeat scroll 0 0 #809958;
+    float: left;
+    margin: 10px;
+    width: 23%;
+}
