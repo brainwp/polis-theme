@@ -162,7 +162,7 @@ require get_template_directory() . '/inc/tax-categorias.php';
  */
 require get_template_directory() . '/inc/tax-tipos.php';
 
-//require_once( get_stylesheet_directory() . '/router.php' );
+require_once( get_stylesheet_directory() . '/router.php' );
 
 function custom_images() {
 	add_image_size( 'slider-news-image', 615, 171 );

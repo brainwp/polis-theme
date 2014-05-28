@@ -42,9 +42,9 @@ get_header(); ?>
 			<div class="col-md-10 democracia pull-right right">
 				<p class="title">Democracia e Participação</p>
 
-				<div class="col-md-12 description">
+				<p class="description">
 					<?php echo of_get_option( 'frase-democracia-home' ); ?>
-				</div>
+				</p>
 				<a class="col-md-5 saiba left text-center" href="#">Saiba mais</a>
 			</div>
 			<div class="col-md-10 cidadania pull-right right">
@@ -52,14 +52,14 @@ get_header(); ?>
 					Cidadania Cultural
 				</p>
 
-				<div class="col-md-12 description">
+				<p class="description">
 					<?php echo of_get_option( 'frase-cidadania-home' ); ?>
-				</div>
+				</p>
 				<a class="col-md-5 saiba left text-center" href="#">Saiba mais</a>
 			</div>
 		</div>
 		<div class="col-md-10 col-md-offset-1 consultoria-alert">
-			<img src="img/consultoria-alert.png"> <!-- trocar pelo png transparente depois -->
+			<img src="<?php bloginfo('template_url');?>/img/consultoria-alert.png"> <!-- trocar pelo png transparente depois -->
 			Interessado nos serviços de consultoria da Pólis?
 			<a class="col-md-2 pull-right right" href="<?php echo of_get_option( 'link-contato-consultoria' ); ?>">Entre em contato</a>
 		</div>
@@ -146,7 +146,7 @@ get_header(); ?>
 			</div>
 		</section>
 	</section>
-	<section class="col-md-12 publicacoes">
+	<section class="col-md-12 content publicacoes">
 		<div class="links publicacoes-link">
 			<a class="title" href="#">Publicações</a>
 			<a class="publicacoes-link" class="ativo" data-link="<?php bloginfo( 'url' ); ?>/?slider=todas">Ver todos</a>
@@ -205,7 +205,7 @@ get_header(); ?>
 			</ul>
 		</div>
 	</section>
-	<section class="col-md-12 widgets-home">
+	<section class="col-md-12 content widgets-home">
 		<?php if ( is_active_sidebar( 'widgets-home' ) ) : ?>
 			<?php dynamic_sidebar( 'widgets-home' ); ?>
 		<?php endif; ?>
