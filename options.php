@@ -75,26 +75,40 @@ function optionsframework_options() {
 		'std'  => '',
 		'type' => 'textarea');
 	$options[] = array(
-		'name' => 'Footer Apoio Imagem',
+		'name' => 'Rodapé Apoio Imagem',
 		'id'   => 'footer-apoio-img',
 		'std'  => '',
 		'type' => 'upload');
 	$options[] = array(
-		'name' => 'Footer Apoio Link',
+		'name' => 'Rodapé Apoio Link',
 		'id'   => 'footer-apoio-link',
 		'std'  => '',
 		'type' => 'text');
 	$options[] = array(
-		'name' => 'Footer Realização Imagem',
+		'name' => 'Rodapé Realização Imagem',
 		'id'   => 'footer-realizacao-img',
 		'std'  => '',
 		'type' => 'upload');
 	$options[] = array(
-		'name' => 'Footer Realização Link',
+		'name' => 'Rodapé Realização Link',
 		'id'   => 'footer-realizacao-link',
 		'std'  => '',
 		'type' => 'text');
-
+	$options[] = array(
+		'name' => 'Twitter Link',
+		'id'   => 'social-twitter-link',
+		'std'  => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => 'Facebook Link',
+		'id'   => 'social-facebook-link',
+		'std'  => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => 'Vimeo Link',
+		'id'   => 'social-vimeo-link',
+		'std'  => '',
+		'type' => 'text');
 
 	return $options;
 }

@@ -8,7 +8,9 @@
  */
 function _query_rules () {
 	return array(
-		'^blog/([^/]+)/?$' => 'template=blog', // sample rule
-		'^blog/?$' => 'template=blog',
+		'^equipe/?$' => 'template=equipe',
+		'^equipe/?pagina=([^/]+)/?$' => 'template=equipe',
+		'^equipe/(.+)/?$' => 'index.php?&nome=$1',
+		'^equipe/(.+)/?$' => 'template=membros',
 	);
 }

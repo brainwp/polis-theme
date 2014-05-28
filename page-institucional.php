@@ -45,19 +45,6 @@ get_header(); ?>
 			<?php if ( is_active_sidebar( 'widgets-institucional' ) ) : ?>
 				<?php dynamic_sidebar( 'widgets-institucional' ); ?>
 			<?php endif; ?>
-			<div class="col-md-12 projetos">
-				<div class="col-md-12">
-					<div class="title">
-						<?php echo $title;?>
-					</div>
-					<div class="description">
-						<?php echo $text; ?>
-					</div>
-				</div>
-				<div class="col-md-5 link pull-right">
-					<a href="<?php echo $link; ?>">VER TODOS</a>
-				</div>
-			</div>
 		</aside>
     </section>
 <?php get_footer(); ?>

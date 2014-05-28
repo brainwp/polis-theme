@@ -36,6 +36,18 @@
 			<img src="<?php echo of_get_option( 'footer-realizacao-img' );?>">
 		</a>
 	</div>
+	<div class="col-md-12 footer">
+		<div class="col-md-6 endereco">
+			<h2>PÓLIS</h2>
+			<h3>Rua Araújo 124, Centro, São Paulo - SP CEP 01220-020 Tel. 55 11 2174 6800</h3>
+		</div>
+		<div class="col-md-4 pull-right social">
+			<span>Curta, compartilhe e siga!</span>
+			<a href="<?php echo of_get_option( 'social-twitter-link' );?>"><img src="<?php bloginfo('template_url')?>/img/footer-twitter.png"></a>
+			<a href="<?php echo of_get_option( 'social-facebook-link' );?>"><img src="<?php bloginfo('template_url')?>/img/footer-facebook.png"></a>
+			<a href="<?php echo of_get_option( 'social-vimeo-link' );?>"><img src="<?php bloginfo('template_url')?>/img/footer-vimeo.png"></a>
+		</div>
+	</div>
 </footer>
 </div> <!-- container shadow -->
 <?php wp_footer(); ?>
