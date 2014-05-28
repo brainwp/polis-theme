@@ -12,5 +12,7 @@ function _query_rules () {
 		'^equipe/?pagina=([^/]+)/?$' => 'template=equipe',
 		'^equipe/(.+)/?$' => 'index.php?&nome=$1',
 		'^equipe/(.+)/?$' => 'template=membros',
+		'^area/([^/]+)/?$' => 'template=area&area=$matches[1]',
+		'^area/([^/]+)/([^/]+)/?$' => 'template=index&area_archive=$matches[1]&area=$matches[2]',
 	);
 }
