@@ -1300,6 +1300,7 @@ slider de noticias + acoes
 	height: 204px;
 }
 .user .hover-icon{
+	transition:400ms all ease;
 	margin-top:-102px;
 	margin-left: 98px;
 	width:50px;
@@ -1314,6 +1315,7 @@ slider de noticias + acoes
 	transition:400ms all ease ;
 }
 .user:hover .hover-icon{
+	transition:400ms all ease;
 	opacity:0.99;
 }
 .user .name{
@@ -1322,18 +1324,15 @@ slider de noticias + acoes
 	font-size:20px;
 	color:white;
 }
-.user .name.reforma{
-	background:#3e8f3e;
-}
 .equipe{
 	background:white url(img/equipe-bg.jpg) center;
 	background-size: 100%;
 }
-.equipe .pagination{
+.pagination{
 	margin-top:40px;
 	margin-bottom: 40px;
 }
-.equipe .pagination a{
+.pagination a{
 	font-weight: bold;
 	background:#c2c2c2;
 	padding:10px;
@@ -1343,7 +1342,130 @@ slider de noticias + acoes
 	text-decoration: none;
 	transition:ease 300ms all;
 }
-.equipe .pagination a:hover, .equipe .pagination a.atual{
+.pagination a:hover, .pagination a.atual{
 	background:#4b809a;
 	transition:ease 300ms all;
+}
+/* membros.php */
+.perfil .content{
+	padding-top:80px;
+	padding-bottom: 20px;
+}
+.perfil.inclusao{
+	color:#91ac5f;
+}
+.perfil.reforma{
+	color:#516c37;
+}
+.perfil img{
+	width:100%;
+	height:237px;
+}
+.perfil .nome{
+	font-family: 'Bitter', serif;
+	display: inline;
+	font-size: 27px;
+	font-weight:bold;
+}
+.perfil .sep{
+	margin-left:10px;
+	font-weight: bold;
+	font-size: 19px;
+}
+.perfil .cargo{
+	margin-left: 10px;
+	font-size: 21px;
+}
+.perfil .texto{
+	margin-top:20px;
+	font-size: 16px;
+	color:#58595b;
+}
+.perfil .intro{
+	padding:10px;
+	margin-top:20px;
+	background: #ededed;
+	text-align: center;
+}
+.perfil .intro span{
+	font-size: 25px;
+	font-weight: bold;
+	font-family: 'Bitter', serif;
+}
+.atividades{
+	min-height: 400px;
+	background:#ededed;
+}
+.atividades .post_container{
+	margin:0;
+	padding:0;
+	padding-left:5px;
+}
+.atividades .post{
+	color:black;
+	margin-top:10px;
+	padding:0;
+	transition:linear 400ms all;
+}
+.atividades .post:hover{
+	transition:linear 400ms all;
+	box-shadow: 2.5px 4.33px 8px 0.5px rgba(0,0,0,0.50);
+}
+.atividades .post img{
+	width:100%;
+	height:170px;
+	transition:linear 400ms all;
+}
+.atividades .post h3{
+	font-family: 'Bitter', serif;
+	font-weight: bold;
+	color:white;
+	margin-left:38px;
+	margin-top:-130px;
+	display:block;
+	position: absolute;
+}
+.atividades .post div{
+	padding-top:15px;
+	padding-bottom:15px;
+	font-size:15px;
+	background: white;
+	height:150px;
+}
+/* classes de acordo com a area */
+.user .name.reforma{
+	background:#516c37;
+}
+.user .name.inclusao{
+	background:#94ae64;
+}
+.user .name.democracia{
+	background:#a55d5e;
+}
+.user .name.cidadania{
+	background:#b5923e;
+}
+.perfil .intro.inclusao span{
+	border-bottom:5px solid #91ac5f;
+}
+.perfil .intro.democracia span{
+	border-bottom:5px solid #983c3b;
+}
+.perfil .intro.cidadania span{
+	border-bottom:5px solid #b5923e;
+}
+.perfil .intro.reforma span{
+	border-bottom:5px solid #516c37;
+}
+.perfil.inclusao{
+	color:#91ac5f;
+}
+.perfil.reforma{
+	color:#516c37;
+}
+.perfil.democracia{
+	color:#983c3b;
+}
+.perfil.cidadania{
+	color:#b5923e;
 }

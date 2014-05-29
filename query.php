@@ -8,6 +8,7 @@
  */
 add_action( 'init', '_init_query_object' );
 function _init_query_object() {
+	add_rewrite_tag('%nome%','(.+)');
 
     global $_query;
     $_query = (object) array(
@@ -17,6 +18,19 @@ function _init_query_object() {
 
         // Blog
         'equipe' => false,
+        
+        // Vari�veis das �reas do site
+        'area' => false,
+		'area_archive' => false,
+		
+		// Noticias
+		'noticias' => false,
+
+		// Publicacoes
+		'publicacoes' => false,
+
+		//Acoes
+		'acoes' => false,
 
     );
 
@@ -68,6 +82,33 @@ function _query_processor( $query ) {
 
     } elseif ( $query->is_404() ) {
 
+	} elseif ( 'noticias' == get_query_var( 'area_archive' ) ) {
+		$area = get_query_var( 'area' );
+		_query_archive_noticias( $area );
+
+    /* Democracia e Participacao */
+
+    } elseif ( 'democracia-e-participacao' == get_query_var( 'area' ) ) {
+		$area = 'democracia-e-participacao';
+		_query_acoes( $area );
+		_query_noticias( $area );
+		_query_publicacoes( $area );
+
+	/* Reforma Urbana */
+
+    } elseif ( 'reforma-urbana' == get_query_var( 'area' ) ) {
+		$area = 'reforma-urbana';
+		_query_acoes( $area );
+		_query_noticias( $area );
+		_query_publicacoes( $area );
+
+	/* Cidadania Cultural */
+
+    } elseif ( 'cidadania-cultural' == get_query_var( 'area' ) ) {
+		$area = 'cidadania-cultural';
+		_query_acoes( $area );
+		_query_noticias( $area );
+		_query_publicacoes( $area );
 
     /* The sample query */
 
@@ -77,15 +118,15 @@ function _query_processor( $query ) {
 
     }
 
-
     /* Template redirect */
 
     $_query->template = ! $_query->template ? get_query_var( 'template' ) : false;
+	$_query->paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
 
     /* Put something here to do suff in all queries */
 
 }
-
 function _query_blog() {
 
     global $wp_query, $_query;
@@ -97,6 +138,73 @@ function _query_blog() {
         'order' => 'ASC'
     ) );
 
+}
+function _query_noticias( $area ) {
+	global $_query;
+	$args = array(
+		'post_type' => 'noticias',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'categorias',
+				'field' => 'slug',
+				'terms' => $area,
+				'include_children' => true,
+				'posts_per_page' => 8,
+			)
+		)
+	);
+	$_query->noticias = new WP_Query( $args ); // exclude category
+}
+
+function _query_publicacoes( $area ) {
+	global $_query;
+	$args = array(
+		'post_type' => 'publicacoes',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'categorias',
+				'field' => 'slug',
+				'terms' => $area,
+				'include_children' => true,
+				'posts_per_page' => 10,
+			)
+		)
+	);
+	$_query->publicacoes = new WP_Query( $args ); // exclude category
+}
+
+function _query_acoes( $area ) {
+	global $_query;
+	$args = array(
+		'post_type' => 'acoes',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'categorias',
+				'field' => 'slug',
+				'terms' => $area,
+				'include_children' => true,
+				'posts_per_page' => 10,
+			)
+		)
+	);
+	$_query->acoes = new WP_Query( $args ); // exclude category
+}
+
+function _query_archive_noticias( $area ) {
+	global $wp_query;
+	$args = array(	
+		'post_type' => 'noticias',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'categorias',
+				'field' => 'slug',
+				'terms' => $area,
+				'include_children' => true,
+				'posts_per_page' => 10,
+			)
+		)
+	);
+	$wp_query = new WP_Query( $args );
 }
 function _query_produtos() {
 	$type = $_GET['p-type'];
@@ -174,3 +282,25 @@ function _query_produtos() {
 		}
 	}
 }
+function _title($title){
+	global $wp_query, $_query;
+
+	if($_query->template == 'membros'){
+		$title = get_bloginfo('name') . ' | Equipe | ' . $wp_query->query_vars['nome'];
+		return $title;
+	}
+	elseif($_query->template == 'equipe'){
+		if(!isset($wp_query->query_vars['paged']) || $wp_query->query_vars['paged'] == 0 ){
+			$title = get_bloginfo('name') . ' | Equipe';
+			return $title;
+		}
+		else{
+			$title = get_bloginfo('name') . ' | Equipe | Pagina ' . $wp_query->query_vars['paged'];
+			return $title;
+		}
+	}
+	else{
+		return $title;
+	}
+}
+add_filter( 'wp_title', '_title');

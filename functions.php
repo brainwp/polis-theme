@@ -60,6 +60,10 @@ if ( ! function_exists( 'polis_theme_setup' ) ) :
 endif; // polis_theme_setup
 add_action( 'after_setup_theme', 'polis_theme_setup' );
 
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'slider-publicacoes-thumb', 160, 240, true );
+}
+
 /**
  * Register widgetized area and update sidebar with default widgets.
  */
@@ -86,6 +90,7 @@ add_action( 'widgets_init', 'polis_theme_widgets_init' );
  */
 function polis_theme_scripts() {
 	wp_enqueue_style( 'polis-theme-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'eve-style', get_template_directory_uri() . '/style-eve.css' );
 	//wp_enqueue_style( 'twentyeleven-style', get_stylesheet_directory_uri() . '/style-twentyeleven.css' );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'polis-theme-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20120206', true );
@@ -114,7 +119,7 @@ add_action( 'admin_head', 'admin_polis_scripts' );
 /**
  * Implement the Custom Header feature.
  */
-//require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -186,4 +191,31 @@ require get_template_directory() . '/publicacoes-slider-ajax.php';
 require get_template_directory() . '/institucional-ajax.php';
 
 //widget home
+
+/**
+ * Imprime o menu na Home de cada Área com link para as outras 3 Áreas
+ */
+function outras_areas() {
+	
+	$array_areas = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );
+	$current_area = get_term_by( 'slug', get_query_var( 'area' ), 'categorias' );
+	
+	if ( ( $key = array_search( $current_area->slug, $array_areas ) ) !== false ) {
+	    unset( $array_areas[$key] );
+	}
+
+	echo "<ul>";
+	echo "<li class=title-outras>Outras áreas de atuação</li>";
+
+	foreach( $array_areas as $area ) {
+		$each_area = get_term_by( 'slug', $area, 'categorias' );
+			echo "<li class='btn-" . $each_area->slug . "'>";
+			echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
+			echo "</li>";
+	}
+	
+	echo "</ul>";
+
+}
+
 require get_template_directory() . '/inc/widget.php';

@@ -1,25 +1,24 @@
 <?php global $_query; ?>
 <?php get_header(); ?>
 
+	<?php
+		$current_term = get_term_by( 'slug', get_query_var( 'area' ), 'categorias' );
+		$name_term = $current_term->name;
+		$description_term = $current_term->description;
+		$current_class = $current_term->slug;
+		// echo get_query_var( 'area' );
+	?>
+
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
-		<?php
-			$current_term = get_term_by('id', 5, 'categorias');
-			$name_term = $current_term->name;
-			$description_term = $current_term->description;
-			// echo get_query_var( 'area' );
-		?>
-
+		<main id="main" class="site-main <?php echo $current_class; ?>" role="main">
 		<div class="header-area">
-
 			<div class="left">
 				<h1><?php echo $name_term; ?></h1>
 				<?php echo $description_term; ?>
 			</div><!-- .left -->
 
 			<div class="right">
-					
+				<?php outras_areas(); ?>					
 			</div><!-- rigtht -->
 
 		</div><!-- .header-area -->
@@ -34,40 +33,68 @@
     	<div id="tab1" class="tabContents aba-area">
         	
         	<div class="cada-loop-aba">
-        		<h1>Notícias</h1>
+				<header>
+					<h2>Notícias</h2>
+					<a class="todos" href="">Ver todos</a>
+				</header>
             <?php // Loop Notícias
 			if ($_query->noticias) {
 				while($_query->noticias->have_posts()) : $_query->noticias->the_post(); ?>
 
 				<div class="cada-noticia-area">
-				<h1><?php the_title(); ?></h1>
-				<?php the_excerpt(); ?>
+					<h1><?php the_title(); ?></h1>
+					<?php the_excerpt(); ?>
 				</div><!-- .cada-noticia-area -->
 				
-
 				<?php endwhile;
 			} ?>
 
 			</div><!-- .cada-loop-aba -->
 
-			<?php
-
-			// Loop Publicações
+			<div class="cada-loop-aba">
+				<header>
+					<h2>Publicações</h2>
+					<a class="todos" href="">Ver todos</a>
+				</header>
+			<?php // Loop Publicações
 			if ($_query->publicacoes) {
-				while($_query->publicacoes->have_posts()) : $_query->publicacoes->the_post();
-				the_title();
-				the_content();
-				endwhile;
-			}
+				while($_query->publicacoes->have_posts()) : $_query->publicacoes->the_post(); ?>
+				<div class="cada-publicacao-area">
+					<a href="<?php the_permalink(); ?>">
 
-			// Loop Ações
-			if ($_query->acoes) {
-				while($_query->acoes->have_posts()) : $_query->acoes->the_post();
-				the_title();
-				the_content();
-				endwhile;
-			}
-			?>
+						<?php if ( has_post_thumbnail() ) {
+							the_post_thumbnail( 'slider-publicacoes-thumb' );
+						} else { ?>
+							<img src="<?php echo get_template_directory_uri(); ?>/img/default-publicacoes-thumb.jpg" alt="<?php the_title(); ?>" />
+						<?php } ?>
+
+					</a>
+				</div><!-- .cada-publicacao-area -->
+				<?php endwhile;
+			} ?>
+
+			</div><!-- .cada-loop-aba -->
+
+			<a href="" class="btn-todas-publicacoes">Veja todas as publicações ou faça uma busca</a><!-- .btn-todas-publicacoes -->
+
+			<div class="cada-loop-aba">
+				<header>
+					<h2>Ações</h2>
+					<a class="todos" href="">Ver todos</a>
+				</header>
+				<?php // Loop Ações
+				if ($_query->acoes) {
+					while($_query->acoes->have_posts()) : $_query->acoes->the_post(); ?>
+					<div class="cada-acao-area">
+						<h1><?php the_title(); ?></h1>
+						<?php the_excerpt(); ?>
+					</div><!-- .cada-acao-area -->
+					<?php endwhile;
+				}
+				?>
+
+			</div><!-- .cada-loop-aba -->
+
         </div><!-- //tab1 -->
     	<div id="tab2" class="tabContents">
         	<h1>Div Two</h1>
