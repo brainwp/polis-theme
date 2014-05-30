@@ -19,6 +19,7 @@ get_header(); ?>
 				<div class="bg"></div>
 			</div>
 		<?php endwhile; ?>
+		<div class="col-md-12 triangulo"></div>
 	</section>
 	<nav class="col-md-12 institucional-nav">
 		<?php

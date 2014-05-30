@@ -51,7 +51,7 @@ get_header(); ?>
 			$_avatar = get_avatar( $user->ID, 200 );
 			$_area   = get_field( 'area', 'user_' . $user->ID );
 			?>
-			<a href="#" class="col-md-3 user">
+			<a href="<?php echo get_bloginfo('url').'/equipe/'.$_user->user_login;?>" class="col-md-3 user">
 				<?php echo $_avatar; ?>
 				<img src="<?php bloginfo('template_url')?>/img/image-hover.png" class="hover-icon">
 				<div class="col-md-12 name reforma <?php echo $_area; ?>"><?php echo $_user->first_name .' ' . $_user->last_name;?></div>
