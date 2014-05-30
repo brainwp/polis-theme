@@ -7,7 +7,6 @@
  */
 global $wp_query;
 $_user = get_user_by( 'login', $wp_query->query_vars['nome'] );
-
 if(username_exists($wp_query->query_vars['nome'])){
 	$count_args = array(
 		'post_type' => array('noticias', 'acoes', 'post', 'publicacoes'),
@@ -17,7 +16,7 @@ if(username_exists($wp_query->query_vars['nome'])){
 	$count_query = new WP_Query( $count_args );
 	$count = $count_query->found_posts;
 // grab the current page number and set to 1 if no page number is set
-	$page = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
+	$page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 	$total_posts = $count;
 	$per_page = 4;
 
@@ -106,7 +105,7 @@ get_header();?>
 		<div class="col-md-4 col-md-offset-4">
 			<?php
 			if($page != 1){ ?>
-				<a href="<?php echo get_bloginfo( 'url' )?>/equipe/<?php echo $_user->user_login?>/?pagina=<?php echo $page-1 ?>">&lt;</a>
+				<a href="<?php echo get_bloginfo( 'url' )?>/equipe/<?php echo $_user->user_login?>/page/<?php echo $page-1 ?>">&lt;</a>
 			<?php
 			}
 			?>
@@ -116,13 +115,13 @@ get_header();?>
 					echo '<a class="atual">' . $i . '</a>';
 				}
 				else{
-					echo '<a href="' . get_bloginfo( 'url' ) . '/equipe/'. $_user->user_login . '/?pagina=' . $i . '">' . $i . '</a>';
+					echo '<a href="' . get_bloginfo( 'url' ) . '/equipe/'. $_user->user_login . '/page/' . $i . '">' . $i . '</a>';
 				}
 			}
 			?>
 			<?php
 			if($page < $total_pages){ ?>
-				<a href="<?php echo get_bloginfo( 'url' )?>/equipe/<?php echo $_user->user_login?>/?pagina=<?php echo $page+1 ?>">&gt;</a>
+				<a href="<?php echo get_bloginfo( 'url' )?>/equipe/<?php echo $_user->user_login?>/page/<?php echo $page+1 ?>">&gt;</a>
 			<?php
 			}
 			?>
