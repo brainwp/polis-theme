@@ -9,9 +9,10 @@
 function _query_rules () {
 	return array(
 		'^equipe/?$' => 'template=equipe',
-		'^equipe/?pagina=([^/]+)/?$' => 'template=equipe',
-		'^equipe/(.+)/?$' => 'index.php?&nome=$1',
-		'^equipe/(.+)/?$' => 'template=membros',
+		'^equipe/page/([^/]+)/?$' => 'template=equipe&paged=$matches[1]',
+		'^equipe/([^/]+)/?$' => 'template=membros&nome=$matches[1]',
+		'^equipe/([^/]+)/page/([^/]+)/?$' => 'template=membros&nome=$matches[1]&paged=$matches[2]',
+
 		'^area/([^/]+)/?$' => 'template=area&area=$matches[1]',
 		'^area/([^/]+)/([^/]+)/?$' => 'template=index&area_archive=$matches[1]&area=$matches[2]',
 	);

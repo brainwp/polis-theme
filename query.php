@@ -8,6 +8,7 @@
  */
 add_action( 'init', '_init_query_object' );
 function _init_query_object() {
+	add_rewrite_tag('%nome%','(.+)');
 
     global $_query;
     $_query = (object) array(
@@ -117,15 +118,15 @@ function _query_processor( $query ) {
 
     }
 
-
     /* Template redirect */
 
     $_query->template = ! $_query->template ? get_query_var( 'template' ) : false;
+	$_query->paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
 
     /* Put something here to do suff in all queries */
 
 }
-
 function _query_blog() {
 
     global $wp_query, $_query;
@@ -281,3 +282,25 @@ function _query_produtos() {
 		}
 	}
 }
+function _title($title){
+	global $wp_query, $_query;
+
+	if($_query->template == 'membros'){
+		$title = get_bloginfo('name') . ' | Equipe | ' . $wp_query->query_vars['nome'];
+		return $title;
+	}
+	elseif($_query->template == 'equipe'){
+		if(!isset($wp_query->query_vars['paged']) || $wp_query->query_vars['paged'] == 0 ){
+			$title = get_bloginfo('name') . ' | Equipe';
+			return $title;
+		}
+		else{
+			$title = get_bloginfo('name') . ' | Equipe | Pagina ' . $wp_query->query_vars['paged'];
+			return $title;
+		}
+	}
+	else{
+		return $title;
+	}
+}
+add_filter( 'wp_title', '_title');
