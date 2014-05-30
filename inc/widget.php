@@ -233,8 +233,8 @@ class widget_newsletter extends WP_Widget {
 				<option>Teste2</option>
 			</select>
 			<input type="tel" placeholder="TEL: ( )" class="col-md-12">
-			<input type="email" placeholder="Informe seu email" class="col-md-9">
-			<button class="pull-right">Enviar</button>
+			<input type="email" placeholder="Informe seu email" class="col-md-8">
+			<button class="col-md-3 pull-right">Enviar</button>
 		</form>
 	<?php
 	}

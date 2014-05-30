@@ -6,7 +6,7 @@
  * Time: 17:06
  */
 global $wp_query;
-$_user = get_user_by( 'login', $wp_query->query_vars['nome'] );
+$_user = get_user_by( 'login', get_query_var('nome') );
 if(username_exists($wp_query->query_vars['nome'])){
 	$count_args = array(
 		'post_type' => array('noticias', 'acoes', 'post', 'publicacoes'),

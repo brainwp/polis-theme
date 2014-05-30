@@ -991,7 +991,6 @@ slider de noticias + acoes
 }
 .newsletter button{
 	font-weight: bold;
-	padding:5px;
 	color:white !important;
 	text-decoration: none !important;
 	text-transform: uppercase;
@@ -1001,11 +1000,12 @@ slider de noticias + acoes
 	border-radius: 2px;
 	border:none;
 	box-shadow: none;
-	padding:12px;
+	padding:8px;
 	font-family:'Source Sans Pro', source-sans;
 	font-size:17px;
 	text-shadow: none;
-	margin-top:2px;
+	margin-top:5px;
+	text-align: left;
 }
 .newsletter input, .newsletter select{
 	font-family:'Source Sans Pro', source-sans;
@@ -1193,15 +1193,41 @@ slider de noticias + acoes
 	color:black;
 }
 .intro-institucional .bg{
-	background:url(img/institucional-bg.png) no-repeat top right;
+	background:url(img/institucional-intro-image.png) no-repeat top right;
 	height:230px;
 	position: absolute;
 	width:273px;
-	margin-top: -42px;
+	margin-top: -41px;
 }
 .institucional-nav{
 	background:#cfcfcf;
 	margin-bottom: 40px;
+	padding:15px;
+}
+.institucional-nav a{
+	padding:10px;
+	font-weight: 600;
+	margin-left: 10px;
+	border-radius: 3px;
+	color:white;
+	text-transform: uppercase;
+	text-align: center;
+	background:#015e8b;
+	text-decoration: none !important;
+	transition:300ms linear all;
+}
+.institucional-nav a:hover, .institucional-nav a.atual{
+	background:#509abd;
+	transition:300ms linear all;
+}
+.intro-institucional .triangulo{
+	position: absolute;
+	z-index: 20;
+	left:0px;
+	margin-top:-10px;
+	height:21px;
+	bottom:0px;
+	background:url('img/institucional-intro-triangulo.png') center center no-repeat;
 }
 .acervo{
 	margin-top:23px;
