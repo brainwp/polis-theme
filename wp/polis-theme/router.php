@@ -41,7 +41,7 @@ function _pre_get_posts ( $query ) {
 function _template_redirect( $template ) {
 	global $_query, $wp_query;
 	//configurando o erro 404 das paginas equipe.php e membros.php
-	if(get_query_var( 'template' ) == 'equipe' || get_query_var( 'template' ) == 'membros' ){
+	if(get_query_var( 'template' ) == 'equipe'){
 		if($_query->error == false){
 			header( "HTTP/1.1 200 ok" );
 			$wp_query->is_404 = false;

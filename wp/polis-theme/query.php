@@ -377,12 +377,12 @@ function _query_produtos() {
 function _title( $title ) {
 	global $wp_query, $_query;
 
-	if ( $_query->template == 'membros' && $_query->error == false) {
+	if ( $_query->template == 'membros' ) {
 		$title = get_bloginfo( 'name' ) . ' | Equipe | ' . $_query->nome;
 
 		return $title;
 	} elseif ( $_query->template == 'equipe' ) {
-		if ( $_query->_page != 1 ) {
+		if ( $_query->_page == 1 ) {
 			$title = get_bloginfo( 'name' ) . ' | Equipe';
 
 			return $title;
