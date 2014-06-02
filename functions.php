@@ -189,6 +189,7 @@ include( dirname( __FILE__ ) . "/options.php" );
 //ajax
 require get_template_directory() . '/publicacoes-slider-ajax.php';
 require get_template_directory() . '/institucional-ajax.php';
+require get_template_directory() . '/areas-ajax.php';
 
 //widget home
 

@@ -245,6 +245,7 @@ function _query_noticias( $area ) {
 		)
 	);
 	$_query->noticias = new WP_Query( $args ); // exclude category
+
 }
 
 function _query_publicacoes( $area ) {
