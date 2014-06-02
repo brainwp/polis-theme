@@ -1495,3 +1495,14 @@ slider de noticias + acoes
 .perfil.cidadania{
 	color:#b5923e;
 }
+/*areas */
+.slider_area{
+	min-height: 280px !important;
+}
+.slider_area li{
+	display:block;
+	height:280px !important;
+}
+.cada-loop-aba.publicacoes{
+	padding-bottom:241px;
+}

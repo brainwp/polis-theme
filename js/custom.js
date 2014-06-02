@@ -1,6 +1,24 @@
 
 jQuery(document).ready(function () {
 	var $ = jQuery.noConflict();
+	$('.slider_area').carouFredSel({
+		prev      : '#prev-slider',
+		next      : '#next-slider',
+		responsive: true,
+		width     : '100%',
+		height    : '280',
+		scroll    : {
+			items       : 1,
+			pauseOnHover: true
+		},
+		items     : {
+			width  : 250,
+			visible: {
+				min: 4,
+				max: 4
+			}
+		}
+	});
 	if(location.hash.lastIndexOf('page_') != -1){
 		var pageid = location.hash.slice(6);
 		var siteurl = $(document.body).attr('data-siteurl');
@@ -45,12 +63,35 @@ jQuery(document).ready(function () {
 	jQuery(".tabContents").hide(); // Hide all tab content divs by default
 	jQuery(".tabContents:first").show(); // Show the first div of tab content by default
 
-	jQuery(".tabContaier ul li a").click(function () { //Fire the click event
-
+	jQuery(".tabContaier ul li a").on('click',function () { //Fire the click event
+		var id = $(this).attr('data-id');
+		var post_link = $(document.body).attr('data-siteurl') + '/?areaAjax=' + $('#main').attr('data-slug') + '&areaCatAjax=' + id;
+		$.get(post_link, function (data) {
+			$('#tab'+id).html(data);
+			$('.slider_area').trigger("destroy");
+			$('.slider_area').carouFredSel({
+				prev      : '#prev-slider',
+				next      : '#next-slider',
+				responsive: true,
+				width     : '100%',
+				scroll    : {
+					items       : 1,
+					pauseOnHover: true
+				},
+				items     : {
+					width  : 250,
+					visible: {
+						min: 4,
+						max: 4
+					}
+				}
+			});
+		});
 		var activeTab = jQuery(this).attr("href"); // Catch the click link
 		jQuery(".tabContaier ul li a").removeClass("active"); // Remove pre-highlighted link
 		jQuery(this).addClass("active"); // set clicked link to highlight state
 		jQuery(".tabContents").hide(); // hide currently visible tab content div
+		$('#tab'+id).show();
 		jQuery(activeTab).fadeIn(); // show the target tab content div by matching clicked link.
 
 		return false; //prevent page scrolling on tab click
@@ -91,12 +132,6 @@ jQuery(document).ready(function () {
 					}
 				}
 			});
-			$('.ajax-item').each(function () {
-				var content = $(this).html();
-				var item = '<li class="item">' + content + '</li>';
-				$('#slider2').trigger('insertItem', [item, 1, false]);
-			});
-			$('#slider2').trigger("play", true);
 		});
 		return false;
 	});

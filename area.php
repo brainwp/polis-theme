@@ -8,7 +8,7 @@ $description_term = $current_term->description;
 $current_class = $current_term->slug;
 $id = $current_term->term_id;
 $args = array(
-	'type'         => array('acoes','post', 'noticias', 'publicacoes'),
+	'type'         => array( 'acoes', 'post', 'noticias', 'publicacoes' ),
 	'child_of'     => $id,
 	'orderby'      => 'name',
 	'order'        => 'ASC',
@@ -23,7 +23,7 @@ $categorias = get_categories( $args );
 ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main <?php echo $current_class; ?>" role="main">
+		<main id="main" class="site-main <?php echo $current_class; ?>" role="main" data-slug="<?php echo $current_class; ?>">
 			<div class="header-area">
 				<div class="left">
 					<h1><?php echo $name_term; ?></h1>
@@ -41,14 +41,27 @@ $categorias = get_categories( $args );
 
 			<div class="tabContaier">
 				<ul>
-					<li><a class="active" href="#tab1">Formação</a></li>
+					<?php $_i = 0; ?>
 					<?php foreach ( $categorias as $_categorias ): ?>
-						<li><a href="#tab<?php echo $_categorias->term_id; ?>"><?php echo $_categorias->name; ?></a></li>
+						<li>
+							<?php
+							if ( $_i == 0 ) {
+								$_first = $_categorias;
+								?>
+								<a class="active" data-id="<?php echo $_categorias->term_id; ?>" href="#tab<?php echo $_categorias->term_id; ?>"><?php echo $_categorias->name; ?></a>
+							<?php
+							} else {
+								?>
+								<a data-id="<?php echo $_categorias->term_id; ?>" href="#tab<?php echo $_categorias->term_id; ?>"><?php echo $_categorias->name; ?></a>
+							<?php } ?>
+							<?php $_i++;?>
+						</li>
 					<?php endforeach; ?>
 				</ul>
 				<!-- //Tab buttons -->
 				<div class="tabDetails">
-					<div id="tab1" class="tabContents aba-area">
+					<?php $cat = $_first->term_id;?>
+					<div id="tab<?php echo $_first->term_id;?>" class="tabContents aba-area">
 
 						<div class="cada-loop-aba">
 							<header>
@@ -56,56 +69,91 @@ $categorias = get_categories( $args );
 								<a class="todos" href="">Ver todos</a>
 							</header>
 							<?php // Loop Notícias
-							if ( $_query->noticias ) {
-								while ( $_query->noticias->have_posts() ) : $_query->noticias->the_post(); ?>
+							$args = array(
+								'post_type' => 'noticias',
+								'tax_query' => array(
+									array(
+										'taxonomy'         => 'categorias',
+										'field'            => 'id',
+										'terms'            => $cat,
+										'include_children' => true,
+										'posts_per_page'   => 8,
+									)
+								)
+							);
+							$noticias = new WP_Query( $args ); // exclude category
+							while ( $noticias->have_posts() ) : $noticias->the_post(); ?>
 
-									<div class="cada-noticia-area">
-										<h1><?php the_title(); ?></h1>
-										<?php the_excerpt(); ?>
-									</div><!-- .cada-noticia-area -->
+								<div class="cada-noticia-area">
+									<h1><?php the_title(); ?></h1>
+									<?php the_excerpt(); ?>
+								</div><!-- .cada-noticia-area -->
 
-								<?php endwhile;
-							} ?>
+							<?php endwhile; ?>
 
 						</div>
 						<!-- .cada-loop-aba -->
 
-						<div class="cada-loop-aba">
+						<div class="cada-loop-aba publicacoes">
 							<header>
 								<h2>Publicações</h2>
 								<a class="todos" href="">Ver todos</a>
 							</header>
-							<?php // Loop Publicações
-							if ( $_query->publicacoes ) {
-								while ( $_query->publicacoes->have_posts() ) : $_query->publicacoes->the_post(); ?>
-									<div class="cada-publicacao-area">
-										<a href="<?php the_permalink(); ?>">
+							<ul class="slider_area">
+								<?php // Loop Publicações
+								$args = array(
+									'post_type' => 'publicacoes',
+									'tax_query' => array(
+										array(
+											'taxonomy'         => 'categorias',
+											'field'            => 'id',
+											'terms'            => $cat,
+											'include_children' => true,
+											'posts_per_page'   => 10,
+										)
+									)
+								);
+								$publicacoes = new WP_Query( $args );
+								if ( $publicacoes ) {
+									while ( $publicacoes->have_posts() ) : $publicacoes->the_post(); ?>
+										<div class="cada-publicacao-area">
+											<a href="<?php the_permalink(); ?>">
+												<?php if ( has_post_thumbnail() ) {
+													the_post_thumbnail( 'slider-publicacoes-thumb' );
+												} else {
+													?>
+													<img src="<?php echo get_template_directory_uri(); ?>/img/default-publicacoes-thumb.jpg" alt="<?php the_title(); ?>" />
+												<?php } ?>
 
-											<?php if ( has_post_thumbnail() ) {
-												the_post_thumbnail( 'slider-publicacoes-thumb' );
-											} else {
-												?>
-												<img src="<?php echo get_template_directory_uri(); ?>/img/default-publicacoes-thumb.jpg" alt="<?php the_title(); ?>" />
-											<?php } ?>
-
-										</a>
-									</div><!-- .cada-publicacao-area -->
-								<?php endwhile;
-							} ?>
-
+											</a>
+										</div>
+									<?php endwhile; ?>
+								<?php } ?>
+							</ul>
 						</div>
-						<!-- .cada-loop-aba -->
-
 						<a href="" class="btn-todas-publicacoes">Veja todas as publicações ou faça uma busca</a><!-- .btn-todas-publicacoes -->
-
 						<div class="cada-loop-aba">
 							<header>
 								<h2>Ações</h2>
 								<a class="todos" href="">Ver todos</a>
 							</header>
-							<?php // Loop Ações
-							if ( $_query->acoes ) {
-								while ( $_query->acoes->have_posts() ) : $_query->acoes->the_post(); ?>
+							<?php
+							$args = array(
+								'post_type' => 'acoes',
+								'tax_query' => array(
+									array(
+										'taxonomy'         => 'categorias',
+										'field'            => 'id',
+										'terms'            => $cat,
+										'include_children' => true,
+										'posts_per_page'   => 10,
+									)
+								)
+							);
+							$acoes = new WP_Query($args);
+							// Loop Ações
+							if ( $acoes ) {
+								while ( $acoes->have_posts() ) : $acoes->the_post(); ?>
 									<div class="cada-acao-area">
 										<h1><?php the_title(); ?></h1>
 										<?php the_excerpt(); ?>
@@ -113,38 +161,21 @@ $categorias = get_categories( $args );
 								<?php endwhile;
 							}
 							?>
-
 						</div>
 						<!-- .cada-loop-aba -->
-
 					</div>
-					<!-- //tab1 -->
+					<?php $_i = 0; ?>
 					<?php foreach ( $categorias as $_categorias ): ?>
-						<div id="tab<?php echo $_categorias->term_id; ?>" class="tabContents" data-id="<?php echo $_categorias->term_id; ?>">
-						</div>
+						<?php if ( $_i != 0 ) { ?>
+							<div id="tab<?php echo $_categorias->term_id; ?>" class="tabContents" data-id="<?php echo $_categorias->term_id; ?>">
+							</div>
+						<?php } ?>
+						<?php $_i ++; ?>
 					<?php endforeach; ?>
-					<div id="tab2" class="tabContents">
-						<h1>Div Two</h1>
-
-						<p>Sed gravida velit ut lorem dictum vitae venenatis dolor faucibus. In vehicula malesuada mi, vel semper sem porta in. Mauris suscipit lorem eget justo congue semper.</p>
-
-						<p>Donec et purus eget elit tristique consequat. Integer ut orci eu augue tristique viverra nec vitae odio. Nulla sem nibh, posuere quis condimentum vitae, posuere sit amet lectus. Morbi euismod tincidunt mauris ut scelerisque.</p>
-					</div>
-					<!-- //tab2 -->
-					<div id="tab3" class="tabContents">
-						<h1>Div Three</h1>
-
-						<p>Sed gravida velit ut lorem dictum vitae venenatis dolor faucibus. In vehicula malesuada mi, vel semper sem porta in. Mauris suscipit lorem eget justo congue semper.</p>
-
-						<p>Donec et purus eget elit tristique consequat. Integer ut orci eu augue tristique viverra nec vitae odio. Nulla sem nibh, posuere quis condimentum vitae, posuere sit amet lectus. Morbi euismod tincidunt mauris ut scelerisque.</p>
-					</div>
-					<!-- //tab3 -->
 				</div>
 				<!-- //tab Details -->
 			</div>
 			<!-- //Tab Container -->
-
-
 		</main>
 		<!-- #main -->
 	</div><!-- #primary -->
