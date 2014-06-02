@@ -16,7 +16,8 @@ jQuery(document).ready(function () {
 			visible: {
 				min: 4,
 				max: 4
-			}
+			},
+			height: 250
 		}
 	});
 	if(location.hash.lastIndexOf('page_') != -1){
@@ -83,7 +84,8 @@ jQuery(document).ready(function () {
 					visible: {
 						min: 4,
 						max: 4
-					}
+					},
+					height: 250
 				}
 			});
 		});

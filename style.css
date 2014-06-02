@@ -1497,11 +1497,10 @@ slider de noticias + acoes
 }
 /*areas */
 .slider_area{
-	min-height: 280px !important;
+	height:280px !important;
 }
 .slider_area li{
 	display:block;
-	height:280px !important;
 }
 .cada-loop-aba.publicacoes{
 	padding-bottom:241px;
