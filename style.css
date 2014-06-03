@@ -1082,6 +1082,9 @@ slider de noticias + acoes
 	overflow: hidden;
 	float: left;
 }
+#slider2 img{
+	width:100% !important;
+}
 .container section{
 	padding-left:44px;
 	padding-right:44px;
