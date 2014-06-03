@@ -742,7 +742,7 @@ menu de navegação */
 	background:#1f5c7b;
 }
 .nav ul li{
-	display:block;
+	display: inline-block;
 }
 .nav ul li a{
 	display:block;
@@ -762,22 +762,28 @@ menu de navegação */
 .nav ul li a:hover, .nav ul li .atual{
 	background:#3a84a7;
 }
-.nav ul li ul{
+.nav ul ul{
 	position: absolute;
-	z-index: 30;
-	margin-top:40px;
-	padding:5px;
+	top: 100%;
+	margin:0;
 	background: #3a84a7;
+	z-index: 10;
+	padding: 0;
+	padding-left:10px;
+	padding-right:10px;
+	float:left;
 	display:none;
+	width:240px;
 }
-.nav ul li ul li{
-	width:100%;
-	display:block;
+.nav ul li{
+	display:inline-block
 }
 .nav ul li ul a{
+	display:inline-block;
+	margin:0;
 	font-size:12px;
 	padding:0 0 0 0;
-	font-weight:normal;
+	font-weight:bold;
 }
 /* fim do menu de navegacao
 
@@ -1081,6 +1087,9 @@ slider de noticias + acoes
 	padding-right:44px;
 }
 /* widgets-home classses */
+.widgets-home{
+	margin-bottom: 20px;
+}
 .widgets-home .title{
 	margin-top:20px;
 	font-weight: bold;

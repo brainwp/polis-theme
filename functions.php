@@ -71,10 +71,8 @@ function polis_theme_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Widgets-Home', 'polis-theme' ),
 		'id'            => 'widgets-home',
-		'before_widget' => '<aside id="%1$s" class="col-md-4 widget %1$s">',
+		'before_widget' => '<aside class="col-md-4">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<!-- widget name: ',
-		'after_title'   => ' -->',
 	) );
 	register_sidebar( array(
 		'name'          => __( 'Widgets-institucional', 'polis-theme' ),
