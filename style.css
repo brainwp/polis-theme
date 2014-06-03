@@ -770,6 +770,10 @@ menu de navegação */
 	background: #3a84a7;
 	display:none;
 }
+.nav ul li ul li{
+	width:100%;
+	display:block;
+}
 .nav ul li ul a{
 	font-size:12px;
 	padding:0 0 0 0;
@@ -1446,7 +1450,8 @@ slider de noticias + acoes
 	font-family: 'Bitter', serif;
 	font-weight: bold;
 	color:white;
-	margin-left:38px;
+	margin-left:19px;
+	padding-right:11px;
 	margin-top:-130px;
 	display:block;
 	position: absolute;
@@ -1499,9 +1504,18 @@ slider de noticias + acoes
 .slider_area{
 	height:280px !important;
 }
+.slider_area img{
+	width:100% !important;
+}
 .slider_area li{
 	display:block;
 }
 .cada-loop-aba.publicacoes{
 	padding-bottom:241px;
+}
+.atividades.biblioteca{
+	background:white;
+}
+.biblioteca{
+	margin-top:20px;
 }

@@ -20,6 +20,26 @@ jQuery(document).ready(function () {
 			height: 250
 		}
 	});
+	$('.slider_documentos').carouFredSel({
+		prev      : '#prev-slider',
+		next      : '#next-slider',
+		responsive: true,
+		width     : '100%',
+		height    : '280',
+		scroll    : {
+			items       : 1,
+			pauseOnHover: true
+		},
+		items     : {
+			width  : 250,
+			visible: {
+				min: 4,
+				max: 4
+			},
+			height: 400
+		}
+	});
+
 	if(location.hash.lastIndexOf('page_') != -1){
 		var pageid = location.hash.slice(6);
 		var siteurl = $(document.body).attr('data-siteurl');
