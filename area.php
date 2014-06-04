@@ -31,7 +31,7 @@ $categorias = get_categories( $args );
 				</div>
 				<!-- .left -->
 
-				<div class="right">
+				<div class="right areas">
 					<?php outras_areas(); ?>
 				</div>
 				<!-- rigtht -->
