@@ -1475,6 +1475,7 @@ slider de noticias + acoes
 	font-size:15px;
 	background: white;
 	height:150px;
+	font-weight:normal;
 }
 /* classes de acordo com a area */
 .user .name.reforma{
@@ -1552,5 +1553,59 @@ slider de noticias + acoes
 	background:#a8a8a8;
 }
 .post_container .links .leia{
+	background:#1e5c7a;
+}
+.livros_section .caroufredsel_wrapper{
+	height:320px !important;
+}
+.livros img{
+	height:250px;
+}
+.livros a .hover-icon{
+	transition:400ms all ease;
+	margin-top:-150px;
+	margin-left: 98px;
+	width:50px !important;
+	height:44px !important;
+	position: absolute;
+	z-index: 22;
+	opacity:0;
+}
+.livros .cada-publicacao-area:hover .hover-icon{
+	transition:400ms all ease;
+	opacity:0.99;
+}
+.livros .cada-publicacao-area{
+	padding:3px;
+	border:3px solid transparent;
+	transition:400ms all ease;
+}
+.livros .cada-publicacao-area:hover{
+	transition:400ms all ease;
+	border:3px solid #c3c3c3;
+}
+.livros .cada-publicacao-area .download{
+	margin:0 auto;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	position: absolute;
+	text-align: center;
+	margin-top:-10px;
+	opacity:0;
+	transition:400ms all ease;
+}
+.livros .cada-publicacao-area:hover .download{
+	transition:400ms all ease;
+	opacity:0.99;
+}
+.livros .cada-publicacao-area .download a{
+	padding:5px;
+	font-weight: 600;
+	color:white;
+	text-transform: uppercase;
+	border-radius:3px;
+	text-decoration: none;
 	background:#1e5c7a;
 }

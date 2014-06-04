@@ -70,6 +70,17 @@ function get_campoPersonalizado($campo)
 	$informacao_campo = get_post_custom_values($campo);
 	return $informacao_campo[0];
 }
+function resumo(){
+	global $_query;
+	$string = get_the_excerpt();
+	$max = 140;
+	if (strlen($string) > $max) {
+		while (substr($string,$max,1) <> ' ' && ($max < strlen($string))){
+			$max++;
+		};
+	};
+	echo substr($string,0,$max)." [...]";
+}
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size( 'slider-publicacoes-thumb', 160, 240, true );
 }

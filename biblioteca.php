@@ -15,7 +15,7 @@ get_header();
 					O Pólis é uma Organização-Não-Governamental (ONG) de atuação nacional, com participação em redes internacionais e locais, constituída como associação civil sem fins lucrativos, apartidária, pluralista e reconhecida como entidade de utilidade pública.
 				</div>
 			</div>
-			<section class="col-md-12 biblioteca">
+			<section class="col-md-12 biblioteca livros_section">
 				<?php if ( is_user_logged_in() ) {
 					// Verifica se user está logado e seta uma variavel pra comparar o CUSTOM POST FIELD assim não preciso fazer 2 querys pra cada
 					$compare_value = array( 'sim', 'nao' );
@@ -45,7 +45,7 @@ get_header();
 					<h2>Séries e livros</h2>
 					<a class="todos" href="">Ver todos</a>
 				</header>
-				<ul class="slider_area">
+				<ul class="slider_area livros">
 					<?php while ( $series->have_posts() ) :
 						$series->the_post(); ?>
 						<div class="cada-publicacao-area col-md-2">
@@ -56,7 +56,17 @@ get_header();
 									?>
 									<img src="<?php echo get_template_directory_uri(); ?>/img/default-publicacoes-thumb.jpg" alt="<?php the_title(); ?>" />
 								<?php } ?>
+								<img class="hover-icon" src="<?php echo get_template_directory_uri(); ?>/img/image-hover.png">
 							</a>
+							<div class="download">
+								<?php
+								if(!emptyReturn(get_campoPersonalizado('anexo'))){
+									$download_id = get_campoPersonalizado('anexo');
+
+									echo '<a href="'.wp_get_attachment_url($download_id).'" download>Download</a>';
+								}
+								?>
+							</div>
 						</div>
 					<?php endwhile; ?>
 				</ul>
@@ -102,7 +112,7 @@ get_header();
 								<h3 class="col-md-10"><?php the_title(); ?></h3>
 
 								<div class="col-md-12">
-									<?php the_excerpt(); ?>
+									<?php resumo(); ?>
 									<span class="links">
 										<?php
 										if(!emptyReturn(get_campoPersonalizado('anexo'))){
