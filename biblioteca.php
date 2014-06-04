@@ -16,7 +16,7 @@ get_header();
 				</div>
 			</div>
 			<form class="col-md-12 busca">
-				<aside class="col-md-3 left">
+				<aside class="col-md-3 left areas">
 					<?php todas_areas(); ?>
 				</aside>
 				<aside class="col-md-8">

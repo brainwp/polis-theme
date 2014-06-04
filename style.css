@@ -1618,6 +1618,7 @@ slider de noticias + acoes
 }
 .biblioteca-main .busca{
 	background: #ededed;
+	padding:0;
 	padding-bottom:20px;
 }
 .biblioteca-main .busca .intro{
@@ -1665,4 +1666,10 @@ slider de noticias + acoes
 	color:#6d6e71;
 	font-weight:normal;
 	font-family: 'Source Sans Pro', sans-serif;
+}
+.biblioteca-main .busca .areas{
+	background:#899194;
+}
+.biblioteca-main .busca ul{
+	list-style: none;
 }
