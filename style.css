@@ -1616,3 +1616,53 @@ slider de noticias + acoes
 	padding-left:50px;
 	padding-right:50px;
 }
+.biblioteca-main .busca{
+	background: #ededed;
+	padding-bottom:20px;
+}
+.biblioteca-main .busca .intro{
+	font-family:'Bitter', sans-serif;
+	color:#1e5c7a;
+    margin-top:40px;
+	font-weight: bold;
+	font-size:24px;
+	margin-bottom: 40px;
+}
+.biblioteca-main .busca label{
+	color:#1e5c7a;
+	font-size: 23px;
+	font-family:'Bitter', sans-serif;
+	font-weight:bold;
+}
+.biblioteca-main .busca .input1{
+	margin-top:7px;
+	border-radius:2px;
+	border:none;
+}
+.biblioteca-main .busca .glyphicon{
+	color:#1e5c7a;
+	margin-top:10px;
+	margin-left:10px;
+	font-size:20px;
+}
+.input_container{
+	margin-bottom:20px;
+	margin-top:20px;
+}
+.biblioteca-main .busca .select1{
+	padding:3px;
+	margin-top:7px;
+	border-radius:2px;
+	border:none;
+}
+.select1{
+	margin-left: 15px;
+}
+.select1:first-child{
+	margin-left:0;
+}
+.input_container.data label{
+	color:#6d6e71;
+	font-weight:normal;
+	font-family: 'Source Sans Pro', sans-serif;
+}

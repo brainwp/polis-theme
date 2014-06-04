@@ -237,5 +237,22 @@ function outras_areas() {
 	echo "</ul>";
 
 }
+function todas_areas() {
+
+	$array_areas = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );
+
+	echo "<ul>";
+	echo "<li class=title-outras>Outras áreas de atuação</li>";
+
+	foreach( $array_areas as $area ) {
+		$each_area = get_term_by( 'slug', $area, 'categorias' );
+		echo "<li class='btn-" . $each_area->slug . "'>";
+		echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
+		echo "</li>";
+	}
+
+	echo "</ul>";
+
+}
 
 require get_template_directory() . '/inc/widget.php';
