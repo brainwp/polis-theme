@@ -1564,7 +1564,10 @@ slider de noticias + acoes
 .livros a .hover-icon{
 	transition:400ms all ease;
 	margin-top:-150px;
-	margin-left: 98px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
 	width:50px !important;
 	height:44px !important;
 	position: absolute;
@@ -1608,4 +1611,8 @@ slider de noticias + acoes
 	border-radius:3px;
 	text-decoration: none;
 	background:#1e5c7a;
+}
+.biblioteca-main section{
+	padding-left:50px;
+	padding-right:50px;
 }
