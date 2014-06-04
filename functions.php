@@ -60,6 +60,16 @@ if ( ! function_exists( 'polis_theme_setup' ) ) :
 endif; // polis_theme_setup
 add_action( 'after_setup_theme', 'polis_theme_setup' );
 
+function emptyReturn($var){
+	$var = trim($var);
+	$var = empty($var);
+	return $var;
+}
+function get_campoPersonalizado($campo)
+{
+	$informacao_campo = get_post_custom_values($campo);
+	return $informacao_campo[0];
+}
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size( 'slider-publicacoes-thumb', 160, 240, true );
 }

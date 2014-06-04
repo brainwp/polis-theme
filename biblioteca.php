@@ -15,7 +15,7 @@ get_header();
 					O Pólis é uma Organização-Não-Governamental (ONG) de atuação nacional, com participação em redes internacionais e locais, constituída como associação civil sem fins lucrativos, apartidária, pluralista e reconhecida como entidade de utilidade pública.
 				</div>
 			</div>
-			<section class="col-md-12">
+			<section class="col-md-12 biblioteca">
 				<?php if ( is_user_logged_in() ) {
 					// Verifica se user está logado e seta uma variavel pra comparar o CUSTOM POST FIELD assim não preciso fazer 2 querys pra cada
 					$compare_value = array( 'sim', 'nao' );
@@ -91,7 +91,7 @@ get_header();
 					<?php while ( $series->have_posts() ) :
 						$series->the_post(); ?>
 						<div class="col-md-3 post_container">
-							<a href="<?php the_permalink();?>" class="col-md-12 post">
+							<div class="col-md-12 post">
 								<?php
 								if ( has_post_thumbnail() ) {
 									the_post_thumbnail( 'medium' );
@@ -103,8 +103,18 @@ get_header();
 
 								<div class="col-md-12">
 									<?php the_excerpt(); ?>
+									<span class="links">
+										<?php
+										if(!emptyReturn(get_campoPersonalizado('anexo'))){
+											$download_id = get_campoPersonalizado('anexo');
+
+											echo '<a class="download" href="'.wp_get_attachment_url($download_id).'" download>Download</a>';
+										}
+										?>
+										<a class="leia" href="<?php the_permalink();?>">Leia Mais</a>
+									</span>
 								</div>
-							</a>
+							</div>
 						</div>
 					<?php endwhile; ?>
 				</ul>
@@ -117,7 +127,7 @@ get_header();
 						array(
 							'taxonomy'         => 'tipos',
 							'field'            => 'slug',
-							'terms'            => 'documentos-e-textos',
+							'terms'            => 'institucionais',
 							'include_children' => true,
 							'posts_per_page'   => 10,
 						),
@@ -132,14 +142,14 @@ get_header();
 				);
 				$series = new WP_Query( $args ); ?>
 				<header>
-					<h2>Teses e Artigos</h2>
+					<h2>Institucionais</h2>
 					<a class="todos" href="">Ver todos</a>
 				</header>
 				<ul class="slider_documentos">
 					<?php while ( $series->have_posts() ) :
 						$series->the_post(); ?>
 						<div class="col-md-3 post_container">
-							<a href="<?php the_permalink();?>" class="col-md-12 post">
+							<div class="col-md-12 post">
 								<?php
 								if ( has_post_thumbnail() ) {
 									the_post_thumbnail( 'medium' );
@@ -151,8 +161,18 @@ get_header();
 
 								<div class="col-md-12">
 									<?php the_excerpt(); ?>
+									<span class="links">
+										<?php
+										if(!emptyReturn(get_campoPersonalizado('anexo'))){
+											$download_id = get_campoPersonalizado('anexo');
+
+											echo '<a class="download" href="'.wp_get_attachment_url($download_id).'" download>Download</a>';
+										}
+										?>
+										<a class="leia" href="<?php the_permalink();?>">Leia Mais</a>
+									</span>
 								</div>
-							</a>
+							</div>
 						</div>
 					<?php endwhile; ?>
 				</ul>
