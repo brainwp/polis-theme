@@ -1668,8 +1668,45 @@ slider de noticias + acoes
 	font-family: 'Source Sans Pro', sans-serif;
 }
 .biblioteca-main .busca .areas{
-	background:#899194;
+	margin-right: 40px;
 }
-.biblioteca-main .busca ul{
+.areas{
+	background:#899194;
+	padding:0;
+}
+.areas ul{
 	list-style: none;
+	padding:0;
+	text-align: right;
+}
+.areas ul li a{
+	font-family:'Bitter', sans-serif;
+	font-size:20px;
+	font-weight: bold;
+	text-decoration:none;
+	color:white !important;
+}
+.areas ul li{
+	width:100%;
+	display:block;
+	margin:0;
+	padding:20px;
+	background-size:cover;
+	font-family:'Bitter', sans-serif;
+	font-size:20px;
+	font-weight: bold;
+	text-decoration:none;
+	color:white !important;
+}
+.btn-inclusao-e-sustentabilidade{
+	background:url(img/areas/inclusao.jpg) left top no-repeat;
+}
+.btn-democracia-e-participacao{
+	background:url(img/areas/democracia.jpg) left top no-repeat;
+}
+.btn-cidadania-cultural{
+	background:url(img/areas/cidadania.jpg) left top no-repeat;
+}
+.btn-reforma-urbana{
+	background:url(img/areas/reforma.jpg) left top no-repeat;
 }
