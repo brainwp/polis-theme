@@ -32,7 +32,7 @@ get_header();
 							<option>Teste</option>
 						</select>
 						<select class="col-md-1 select1">
-							<option>Teste</option>
+							<option>Tipo</option>
 						</select>
 						<select class="col-md-2 select1">
 							<option>Teste</option>
@@ -135,7 +135,7 @@ get_header();
 				<ul class="slider_documentos">
 					<?php while ( $series->have_posts() ) :
 						$series->the_post(); ?>
-						<div class="col-md-3 post_container">
+						<div class="col-md-3 col-xs-6 post_container">
 							<div class="col-md-12 post">
 								<?php
 								if ( has_post_thumbnail() ) {

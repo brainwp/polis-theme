@@ -804,7 +804,7 @@ conteudo - atuação /pagehome/
 	color:#6c6c6e;
 	text-align:center;
 }
-.content .description.areas{
+.content .description.text-areas{
 	font-weight:bold;
 }
 .atuacao{
@@ -1530,6 +1530,11 @@ slider de noticias + acoes
 .atividades.biblioteca{
 	background:white;
 }
+@media only screen and (max-width: 40em) {
+	.atividades.biblioteca{
+		min-height: 1100px;
+	}
+}
 .biblioteca{
 	margin-top:20px;
 }
@@ -1613,8 +1618,13 @@ slider de noticias + acoes
 	background:#1e5c7a;
 }
 .biblioteca-main section{
-	padding-left:50px;
-	padding-right:50px;
+	padding-left:100px;
+	padding-right:100px;
+}
+@media only screen and (max-width: 40em) {
+	.biblioteca-main section{
+		padding:0;
+	}
 }
 .biblioteca-main .busca{
 	background: #ededed;

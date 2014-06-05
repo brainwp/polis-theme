@@ -31,7 +31,7 @@ $categorias = get_categories( $args );
 				</div>
 				<!-- .left -->
 
-				<div class="right areas">
+				<div class="col-md-2 pull-right areas">
 					<?php outras_areas(); ?>
 				</div>
 				<!-- rigtht -->

@@ -256,3 +256,5 @@ function todas_areas() {
 }
 
 require get_template_directory() . '/inc/widget.php';
+// conteudo para users logados
+require get_template_directory() . '/inc/error_login.php';
