@@ -59,8 +59,3 @@ function _template_redirect( $template ) {
 		exit();
 	}
 }
-function _excerpt_length($length) {
-	return 150;
-}
-add_filter( 'excerpt_length', '_excerpt_length', 999 );
-

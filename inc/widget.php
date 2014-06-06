@@ -155,19 +155,19 @@ class widget_projetos extends WP_Widget {
 		$title = apply_filters( 'widget_projetos', empty( $instance['title'] ) ? '' : $instance['title'], $instance );
 		$text = apply_filters( 'widget_projetos', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
 		$link = apply_filters( 'widget_projetos', empty( $instance['link'] ) ? '' : $instance['link'], $instance );?>
-		<div class="col-md-12 projetos">
-			<div class="col-md-12">
-				<div class="title">
-					<?php echo $title;?>
+			<div class="col-md-12 projetos">
+				<div class="col-md-12">
+					<div class="title">
+						<?php echo $title;?>
+					</div>
+					<div class="description">
+						<?php echo $text; ?>
+					</div>
 				</div>
-				<div class="description">
-					<?php echo $text; ?>
+				<div class="col-md-5 link pull-right">
+					<a href="<?php echo $link; ?>">VER TODOS</a>
 				</div>
 			</div>
-			<div class="col-md-5 link pull-right">
-				<a href="<?php echo $link; ?>">VER TODOS</a>
-			</div>
-		</div>
 	<?php
 	}
 
@@ -274,11 +274,88 @@ class widget_newsletter extends WP_Widget {
 }
 
 
+class widget_home_footer extends WP_Widget {
+
+	public function __construct() {
+		$widget_ops = array('classname' => 'widget_home_footer', 'description' => 'Home');
+		$control_ops = array('width' => 400, 'height' => 350);
+		parent::__construct('Home','Home', $widget_ops, $control_ops);
+	}
+
+	public function widget( $args, $instance ) {
+
+		/** This filter is documented in wp-includes/default-widgets.php */
+		$title = apply_filters( 'widget_home_footer', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+
+		/**
+		 * Filter the content of the Text widget.
+		 *
+		 * @since 2.3.0
+		 *
+		 * @param string    $widget_text The widget content.
+		 * @param WP_Widget $instance    WP_Widget instance.
+		 */
+		$title = apply_filters( 'widget_home_footer', empty( $instance['title'] ) ? '' : $instance['title'], $instance );
+		$link = apply_filters( 'widget_home_footer', empty( $instance['link'] ) ? '' : $instance['link'], $instance );
+		$text_link = apply_filters( 'widget_home_footer', empty( $instance['text_link'] ) ? '' : $instance['text_link'], $instance );
+		$css_class = apply_filters( 'widget_home_footer', empty( $instance['css_class'] ) ? '' : $instance['css_class'], $instance );
+		$text = apply_filters( 'widget_home_footer', empty( $instance['text'] ) ? '' : $instance['text'], $instance );?>
+		<?php echo $args['before_widget']; ?>
+		<i class="col-md-3 icon <?php echo $css_class;?>"></i>
+		<p class="col-md-9 title"><?php echo $title;?></p>
+		<div class="col-md-12 description">
+			<?php echo $text; ?>
+		</div>
+		<a href="<?php echo $link ?>"><?php echo $text_link;?></a>
+		<?php echo $args['after_widget']; ?>
+	<?php
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['link'] = strip_tags($new_instance['link']);
+		$instance['text_link'] = strip_tags($new_instance['text_link']);
+		$instance['css_class'] = strip_tags($new_instance['css_class']);
+		$instance['title'] = strip_tags($new_instance['title']);
+		if ( current_user_can('unfiltered_html') )
+			$instance['text'] =  $new_instance['text'];
+		else
+			$instance['text'] = stripslashes( wp_filter_post_kses( addslashes($new_instance['text']) ) ); // wp_filter_post_kses() expects slashed
+		return $instance;
+	}
+
+	public function form( $instance ) {
+		$instance = wp_parse_args( (array) $instance, array(  'title' => '', 'text' => '',  'link' => '',  'text_link' => '',  'css_class' => '') );
+		$title = strip_tags($instance['title']);
+		$link = strip_tags($instance['link']);
+		$css_class = strip_tags($instance['css_class']);
+		$text_link = strip_tags($instance['text_link']);
+		$text = esc_textarea($instance['text']);
+		?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php echo 'Titulo:'; ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('link'); ?>"><?php echo 'Endereço do Link'; ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('link'); ?>" name="<?php echo $this->get_field_name('link'); ?>" type="text" value="<?php echo esc_attr($link); ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('text_link'); ?>"><?php echo 'Frase do Link'; ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('text_link'); ?>" name="<?php echo $this->get_field_name('text_link'); ?>" type="text" value="<?php echo esc_attr($text_link); ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('css_class'); ?>"><?php echo 'Classe CSS do Icone:'; ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('css_class'); ?>" name="<?php echo $this->get_field_name('css_class'); ?>" type="text" value="<?php echo esc_attr($css_class); ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('text'); ?>"><?php echo 'Texto:'; ?></label>
+		<textarea class="widefat" rows="8" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea>
+	<?php
+	}
+}
+
 function theme_register_widgets() {
 	register_widget( 'widget_acervo' );
 	register_widget( 'widget_midia' );
 	register_widget( 'widget_projetos' );
 	register_widget( 'widget_newsletter' );
+	register_widget( 'widget_home_footer' );
 }
 
 add_action( 'widgets_init', 'theme_register_widgets' );

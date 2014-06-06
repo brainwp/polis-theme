@@ -60,6 +60,27 @@ if ( ! function_exists( 'polis_theme_setup' ) ) :
 endif; // polis_theme_setup
 add_action( 'after_setup_theme', 'polis_theme_setup' );
 
+function emptyReturn($var){
+	$var = trim($var);
+	$var = empty($var);
+	return $var;
+}
+function get_campoPersonalizado($campo)
+{
+	$informacao_campo = get_post_custom_values($campo);
+	return $informacao_campo[0];
+}
+function resumo(){
+	global $_query;
+	$string = get_the_excerpt();
+	$max = 140;
+	if (strlen($string) > $max) {
+		while (substr($string,$max,1) <> ' ' && ($max < strlen($string))){
+			$max++;
+		};
+	};
+	echo substr($string,0,$max)." [...]";
+}
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size( 'slider-publicacoes-thumb', 160, 240, true );
 }
@@ -71,10 +92,8 @@ function polis_theme_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Widgets-Home', 'polis-theme' ),
 		'id'            => 'widgets-home',
-		'before_widget' => '<aside id="%1$s" class="col-md-4 widget %1$s">',
+		'before_widget' => '<aside class="col-md-4">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<!-- widget name: ',
-		'after_title'   => ' -->',
 	) );
 	register_sidebar( array(
 		'name'          => __( 'Widgets-institucional', 'polis-theme' ),
@@ -218,5 +237,24 @@ function outras_areas() {
 	echo "</ul>";
 
 }
+function todas_areas() {
+
+	$array_areas = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );
+
+	echo "<ul>";
+	echo "<li class=title-outras>Outras áreas de atuação</li>";
+
+	foreach( $array_areas as $area ) {
+		$each_area = get_term_by( 'slug', $area, 'categorias' );
+		echo "<li class='btn-" . $each_area->slug . "'>";
+		echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
+		echo "</li>";
+	}
+
+	echo "</ul>";
+
+}
 
 require get_template_directory() . '/inc/widget.php';
+// conteudo para users logados
+require get_template_directory() . '/inc/error_login.php';

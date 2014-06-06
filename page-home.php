@@ -11,7 +11,7 @@ get_header(); ?>
 			<?php echo of_get_option( 'frase-intro-home' ); ?>
 		</p>
 
-		<p class="description areas">
+		<p class="description text-areas">
 			Areas de atuação do Pólis
 		</p>
 	</section>
