@@ -146,10 +146,12 @@ get_header(); ?>
 			</div>
 		</section>
 	</section>
-	<section class="col-md-12 content publicacoes">
+	<section class="col-md-12 biblioteca livros_section">
 		<div class="links publicacoes-link">
-			<a class="title" href="#">Publicações</a>
-			<a class="publicacoes-link" class="ativo" data-link="<?php bloginfo( 'url' ); ?>/?slider=todas">Ver todos</a>
+			<header>
+				<h2>Publicações</h2>
+				<a class="todos" href="">Ver todos</a>
+			</header>
 			<?php
 			$args = array(
 				'type'         => '',
@@ -184,23 +186,31 @@ get_header(); ?>
 				'ordr'           => 'ASC',
 				'posts_per_page' => 15
 			);?>
-			<ul id="slider2">
+			<ul class="slider_area livros">
 				<?php
 				$publicacoes = new WP_Query( $arg ); ?>
 				<?php while ( $publicacoes->have_posts() ) :
 					$publicacoes->the_post(); ?>
-					<li class="item">
+					<div class="cada-publicacao-area col-md-2">
 						<a href="<?php the_permalink(); ?>">
-							<?php
-							if ( has_post_thumbnail() ) {
-								$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-image', true );
-								echo '<img src="' . $thumb_url[0] . '"/>';
+							<?php if ( has_post_thumbnail() ) {
+								the_post_thumbnail( 'slider-publicacoes-thumb' );
 							} else {
-								echo '<img src="http://placehold.it/151x228" />';
+								?>
+								<img src="<?php echo get_template_directory_uri(); ?>/img/default-publicacoes-thumb.jpg" alt="<?php the_title(); ?>" />
+							<?php } ?>
+							<img class="hover-icon" src="<?php echo get_template_directory_uri(); ?>/img/image-hover.png">
+						</a>
+						<div class="download">
+							<?php
+							if(!emptyReturn(get_campoPersonalizado('anexo'))){
+								$download_id = get_campoPersonalizado('anexo');
+
+								echo '<a href="'.wp_get_attachment_url($download_id).'" download>Download</a>';
 							}
 							?>
-						</a>
-					</li>
+						</div>
+					</div>
 				<?php endwhile; ?>
 			</ul>
 		</div>

@@ -73,7 +73,7 @@ function get_campoPersonalizado($campo)
 function resumo(){
 	global $_query;
 	$string = get_the_excerpt();
-	$max = 100;
+	$max = 10e0;
 	if (strlen($string) > $max) {
 		while (substr($string,$max,1) <> ' ' && ($max < strlen($string))){
 			$max++;
