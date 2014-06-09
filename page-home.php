@@ -68,11 +68,11 @@ get_header(); ?>
 	<section class="col-md-12 content news">
 		<div class="col-md-12">
 			<div class="section-title">
-				Noticias e ações em todas as areas
-				<a href="#" class="col-md-1 pull-right shape-todos">Ver todos</a>
-				<span class="triangle"></span>
+				<h3>Notícias e ações em todas as Áreas</h3>
+				<a href="#" class="col-md-1 shape-todos">Ver todos</a>
 			</div>
 		</div>
+
 		<article id="slider-news" class="carousel slide col-md-7" data-ride="carousel">
 			<div class="carousel-inner">
 				<?php $slider_query = new WP_Query( array(
@@ -91,21 +91,25 @@ get_header(); ?>
 					else{
 					?>
 					<div class="item">
+						<?php }	?>
+
+						<div class="thumb">
+							<a href="<?php the_permalink(); ?>">
+								<?php
+								if ( has_post_thumbnail() ) {
+									the_post_thumbnail( 'slider-news-image' );
+								} else {
+									echo '<img src="'. theme('/img/default615x170.jpg') .'" />';
+								} ?>
+							</a>
+						</div><!-- thumb -->
 						<?php
-						}
-						?>
-						<?php
-						if ( has_post_thumbnail() ) {
-							the_post_thumbnail( 'slider-news-image' );
-						} else {
-							echo '<img src="http://placehold.it/615x171" />';
-						}
 						foreach ( ( get_the_category() ) as $category ) {
 							echo '<a href="' . get_category_link( $category->cat_ID ) . '" class="slider-cat">' . $category->cat_name . '</a>';
 						}
 						?>
 						<div class="left type"><?php echo get_post_type(); ?></div>
-						<a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
+						<h3><a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a></h3>
 
 						<div class="texto">
 							<?php the_excerpt(); ?>
