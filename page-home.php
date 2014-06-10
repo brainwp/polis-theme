@@ -57,7 +57,9 @@ get_header(); ?>
 			<span>Interessado nos serviços de consultoria da Pólis?</span>
 			<a class="pull-right right" href="<?php echo home_url(); ?>/contato">Entre em contato</a>
 		</div>
-		<!-- colocar linha aqui <div class="col-md-12 dashed-line"></div> -->
+
+		<div class="linha-tracejada"></div>
+
 	</section>
 	<section class="col-md-12 content news">
 		<div class="col-md-12">
@@ -144,35 +146,14 @@ get_header(); ?>
 			</div>
 		</section>
 	</section>
-	<section class="col-md-12 content publicacoes">
-		<div class="links publicacoes-link">
-			<a class="title" href="#">Publicações</a>
-			<a class="publicacoes-link" class="ativo" data-link="<?php bloginfo( 'url' ); ?>/?slider=todas">Ver todos</a>
-			<?php
-			$args = array(
-				'type'         => '',
-				'child_of'     => 0,
-				'parent'       => '',
-				'orderby'      => 'ID',
-				'order'        => 'ASC',
-				'hide_empty'   => 0,
-				'hierarchical' => 1,
-				'exclude'      => '1',
-				'include'      => '',
-				'number'       => '4',
-				'taxonomy'     => 'categorias',
-				'pad_counts'   => false );
 
-			$categories = get_categories( $args );
-			foreach ( $categories as $category ) :
-				$cat_ID = $category->term_id; // Get ID the category.
-				// Get the URL of this category
-				$category_link = get_category_link( $cat_ID );
-				// Get the Slug of this category
-				$category_slug = get_category_link( $category->slug );
-				echo '<a class="publicacoes-link" data-link="' . get_bloginfo( 'url' ) . '/?slider=' . $category->slug . '">' . $category->name . '</a>';
-			endforeach;
-			?>
+	<section class="col-md-12 content publicacoes">
+
+	<div class="linha-tracejada"></div>
+
+		<div class="section-title">
+			<h3>Publicações</h3>
+			<a href="#" class="col-md-1 shape-todos">Ver todos</a>
 		</div>
 		<div id="hide-ajax" style="display: none"></div>
 		<div id="carousel" class="col-md-12 list_carousel responsive">

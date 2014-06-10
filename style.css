@@ -275,6 +275,14 @@ img {
 	height: auto; /* Make sure images are scaled correctly. */
 	max-width: 100%; /* Adhere to container width. */
 }
+.linha-tracejada {
+	width: 100%;
+	margin: 0 auto 40px;
+	height: auto;
+	border-bottom: 2px dashed #CCC;
+	clear: both;
+	padding: 40px 0 0 0;
+}
 button,
 input,
 select,
@@ -845,7 +853,7 @@ conteudo - atuação /pagehome/
 	padding:0;
 }
 .content .description{
-	padding-top: 10px;
+	padding-top: 20px;
 	padding-left:10%;
 	padding-right:10%;
 	font-style:italic;
@@ -858,8 +866,8 @@ conteudo - atuação /pagehome/
 	font-weight:bold;
 }
 .atuacao{
-	background:url(img/home-bg.jpg) bottom no-repeat;
-	padding-top: 129px;
+	background:url("img/home-bg.jpg") bottom no-repeat;
+	padding-top: 40px;
 }
 .atuacao .description{
 	font-size:14px;
@@ -972,7 +980,6 @@ conteudo - atuação /pagehome/
 slider de noticias + acoes
 */
 .news .section-title{
-	margin-top:35px;
 	font-weight: bold;
 	color:#005e8c;
 	font-size:22px;
@@ -982,7 +989,7 @@ slider de noticias + acoes
 	display: inline-block;
 	float: left;
 }
-.news .section-title .shape-todos{
+.news .section-title .shape-todos {
 	text-align: center;
 	margin-top: 6px;
 	padding: 3px;
@@ -995,7 +1002,7 @@ slider de noticias + acoes
 	text-decoration: none;
 	text-transform: uppercase;
 }
-.news .section-title .shape-todos:hover{
+.news .section-title .shape-todos:hover {
 	background: #055C91;
 }
 .news .section-title .triangle{
@@ -1132,21 +1139,43 @@ slider de noticias + acoes
 	text-align: right;
 	background: #e28b2e url(img/circulo-aovivo.png) left no-repeat;
 }
-.publicacoes .links a{
-	text-transform: uppercase;
-	color:#c0c0c0;
-	font-size:12px;
-}
-.publicacoes .links a.ativo{
+.publicacoes .links a.ativo {
 	background:#c0c0c0;
 	color:white;
 }
-.publicacoes .links .title{
-	font-weight: bold;
-	color:#005e8c;
-	font-size:20px;
-	text-transform:none;
+.publicacoes .section-title {
+	margin: 0 auto 20px;
 }
+.publicacoes .section-title h3 {
+	float: left;
+	width: auto;
+	display: inline-block;
+	font-size: 1.5em;
+	color: #005E8C;
+	font-weight: bold;
+}
+
+.publicacoes .section-title .shape-todos {
+	text-align: center;
+	margin-top: 5px;
+	padding: 3px;
+	background: #a8a8a8;
+	color:white;
+	font-size: 12px;
+	font-weight: bold;
+	margin-left: 15px;
+	border-radius: 2px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.publicacoes .section-title .shape-todos:hover {
+	background: #055C91;
+}
+
+.publicacoes .list_carousel {
+	margin-top: 25px;
+}
+
 #slider2 li{
 	font-size: 0.8em;
 	font-weight: lighter;
