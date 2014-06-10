@@ -499,6 +499,21 @@ a:active {
 }
 
 
+/* =Cores
+----------------------------------------------- */
+.bg-democracia-e-participacao {
+	background: #c05255;
+}
+.bg-reforma-urbana {
+	background: #2f4518;
+}
+.bg-cidadania-cultural {
+	background: #b79543;
+}
+.bg-inclusao-e-sustentabilidade {
+	background: #97b068;
+}
+
 /* =Asides
 ----------------------------------------------- */
 
@@ -970,6 +985,7 @@ slider de noticias + acoes
 	margin-top: 20px;
 	width: 100% !important;
 	border-radius: 2px;
+	position: relative;
 }
 .slider-cat{
 	right: 0;
@@ -990,6 +1006,14 @@ slider de noticias + acoes
 	color: #636363;
 	font-size: 0.8em;
 }
+#slider-news .thumb .news-terms {
+	position: absolute;
+	right: 2px;
+	padding: 6px 10px;
+	bottom: 0;
+	font-size: 0.8em;
+	color: #FFF;
+}
 #slider-news .title{
 	margin-top: 5px;
 	font-weight: bold;
@@ -997,9 +1021,9 @@ slider de noticias + acoes
 	display: inline-block;
 }
 #slider-news .texto{
-	margin-top:20px;
+	margin-top: 10px;
 	font-size: 0.9em;
-	line-height: 1;
+	line-height: 1.4;
 }
 #slider-news .more{
 	font-weight: bold;

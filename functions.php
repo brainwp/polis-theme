@@ -266,3 +266,15 @@ function theme( $arg = '') {
 	}
 	return $theme;
 }
+
+function terms( $taxonomy ) {
+	$terms = get_the_terms( $post->ID, $taxonomy );
+	if ( $terms && ! is_wp_error( $terms ) ) : 
+	$links = array();
+	foreach ( $terms as $term ) {
+		$links[] = $term->name;
+	}
+	$the_terms = join( ", ", $links );			
+	return $the_terms;
+	endif;
+}

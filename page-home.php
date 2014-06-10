@@ -102,12 +102,12 @@ get_header(); ?>
 									echo '<img src="'. theme('/img/default615x170.jpg') .'" />';
 								} ?>
 							</a>
+							<?php $terms = terms( 'categorias' ); ?>
+							<?php $class_term = explode(", ", $terms); ?>
+							<div class="news-terms bg-<?php echo sanitize_title($class_term[0]); ?>">
+								<?php echo $terms; ?>
+							</div>
 						</div><!-- thumb -->
-						<?php
-						foreach ( ( get_the_category() ) as $category ) {
-							echo '<a href="' . get_category_link( $category->cat_ID ) . '" class="slider-cat">' . $category->cat_name . '</a>';
-						}
-						?>
 						<div class="left type"><?php echo get_post_type(); ?></div>
 						<h3><a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a></h3>
 
