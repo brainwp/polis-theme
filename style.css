@@ -774,11 +774,15 @@ a{
 /* fim do header
 
 menu de navegação */
-.nav{
+.nav {
 	background:#1f5c7b;
+}
+.nav ul.menu {
+	height: 46px;
 }
 .nav ul li{
 	display: inline-block;
+	float: left;
 }
 .nav ul li a{
 	display:block;
@@ -787,39 +791,49 @@ menu de navegação */
 	padding-bottom: 10px;
 	padding-left:10px;
 	padding-right: 10px;
-	font-size:22px;
-	font-weight: bold;
+	font-size:1.1em;
+	font-weight: 500;
+	letter-spacing: 1px;
 	text-transform:uppercase;
 	text-decoration: none;
-	color:white;
+	color: #FFF;
 	margin-left:10px;
 }
 
 .nav ul li a:hover, .nav ul li .atual{
 	background:#3a84a7;
 }
-.nav ul ul{
+.nav ul ul {
 	position: absolute;
 	top: 100%;
 	margin:0;
 	background: #3a84a7;
 	z-index: 10;
 	padding: 0;
-	padding-left:10px;
-	padding-right:10px;
 	float:left;
 	display:none;
-	width:240px;
+	width: auto;
 }
-.nav ul li{
-	display:inline-block
+
+.nav ul li ul li {
+	float: none;
+	display: block;
 }
-.nav ul li ul a{
-	display:inline-block;
-	margin:0;
-	font-size:12px;
-	padding:0 0 0 0;
-	font-weight:bold;
+
+.nav ul li ul a {
+	display: inline-block;
+	margin: 0;
+	font-size: 1em;
+	
+}
+
+.nav ul li ul li a {
+	padding: 7px 12px;
+	width: 100%;
+}
+
+.nav ul li ul li a:hover {
+	background: #1f5c7b;
 }
 /* fim do menu de navegacao
 
