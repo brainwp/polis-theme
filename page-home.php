@@ -12,30 +12,26 @@ get_header(); ?>
 		</p>
 
 		<p class="description text-areas">
-			Areas de atuação do Pólis
+			Áreas de atuação do Pólis
 		</p>
 	</section>
 	<section class="col-md-12 content atuacao">
 		<div class="col-md-4 left">
 			<div class="col-md-10 reforma">
-				<p class="title">
-					Reforma Urbana
-				</p>
+				<p class="title">Reforma Urbana</p>
 
 				<div class="col-md-12 description">
 					<?php echo of_get_option( 'frase-reformaurbana-home' ); ?>
 				</div>
-				<a class="col-md-5 saiba left text-center" href="#">Saiba mais</a>
+				<a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/reforma-urbana">Saiba mais</a>
 			</div>
 			<div class="col-md-10 inclusao">
-				<p class="title">
-					Inclusão e Sustentabilidade
-				</p>
+				<p class="title">Inclusão e Sustentabilidade</p>
 
 				<div class="col-md-12 description">
 					<?php echo of_get_option( 'frase-inclusao-home' ); ?>
 				</div>
-				<a class="col-md-5 saiba left text-center" href="#">Saiba mais</a>
+				<a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/inclusao-e-sustentabilidade">Saiba mais</a>
 			</div>
 		</div>
 		<div class="col-md-4 pull-right right">
@@ -45,23 +41,21 @@ get_header(); ?>
 				<p class="description">
 					<?php echo of_get_option( 'frase-democracia-home' ); ?>
 				</p>
-				<a class="col-md-5 saiba left text-center" href="#">Saiba mais</a>
+				<a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/democracia-e-participacao">Saiba mais</a>
 			</div>
 			<div class="col-md-10 cidadania pull-right right">
-				<p class="title">
-					Cidadania Cultural
-				</p>
+				<p class="title">Cidadania Cultural</p>
 
 				<p class="description">
 					<?php echo of_get_option( 'frase-cidadania-home' ); ?>
 				</p>
-				<a class="col-md-5 saiba left text-center" href="#">Saiba mais</a>
+				<a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/cidadania-cultural">Saiba mais</a>
 			</div>
 		</div>
 		<div class="col-md-10 col-md-offset-1 consultoria-alert">
 			<img src="<?php bloginfo('template_url');?>/img/consultoria-alert.png"> <!-- trocar pelo png transparente depois -->
-			Interessado nos serviços de consultoria da Pólis?
-			<a class="col-md-2 pull-right right" href="<?php echo of_get_option( 'link-contato-consultoria' ); ?>">Entre em contato</a>
+			<span>Interessado nos serviços de consultoria da Pólis?</span>
+			<a class="pull-right right" href="<?php echo home_url(); ?>/contato">Entre em contato</a>
 		</div>
 		<!-- colocar linha aqui <div class="col-md-12 dashed-line"></div> -->
 	</section>

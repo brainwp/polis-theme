@@ -760,11 +760,12 @@ a{
 	box-shadow:0;
 }
 .header .description input{
-	border-radius:2px;
-	border:0;
+	border-radius: 2px;
+	border: 0;
 	background:white;
-	padding:3px;
-	width:43%;
+	padding: 4px;
+	width: 40%;
+	font-size: 0.9em;
 }
 .header .description span{
 	font-size:18px;
@@ -844,7 +845,7 @@ conteudo - atuação /pagehome/
 	padding:0;
 }
 .content .description{
-	padding-top:20px;
+	padding-top: 10px;
 	padding-left:10%;
 	padding-right:10%;
 	font-style:italic;
@@ -872,18 +873,20 @@ conteudo - atuação /pagehome/
 	margin-bottom: 0;
 }
 .atuacao .saiba{
-	padding:3px;
-	font-weight: bold;
-	color:white;
-	border-radius: 2px;
+	padding: 3px;
+	color: #FFF;
+	border-radius: 3px;
 	text-decoration: none;
-	margin-top:10px;
+	margin-top: 10px;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 .atuacao .title{
+	font-family: 'Bitter', serif;
 	font-weight: bold;
-	font-size:20px;
-	width:50%;
-	color:white;
+	font-size:1.5em;
+	color: #FFF;
+	margin-bottom: 10px;
 }
 .atuacao .left .reforma .title{
 	color:#506d2a;
@@ -931,31 +934,39 @@ conteudo - atuação /pagehome/
 	margin-bottom: 80px;
 	border-bottom:1px dashed #bfbfbf;
 }
-.consultoria-alert{
+.consultoria-alert {
 	background: #e4e4e4;
 	margin-top: 40px;
 	padding-top:10px;
 	padding-bottom:10px;
-	border-radius:2px;
+	border-radius: 3px;
 	text-align: center;
-	font-style: italic;
-	font-size: 20px;
 }
-.consultoria-alert img{
+.consultoria-alert span {
+	font-size: 1.3em;
+	font-style: italic;
+}
+.consultoria-alert img {
 	float: left;
 }
-.consultoria-alert a{
-	font-size: 13px;
+.consultoria-alert a {
 	font-style: normal;
-	font-weight: bold;
 	text-transform: uppercase;
 	display:block;
-	padding:5px;
+	padding: 5px 10px;
 	color:white;
 	text-decoration: none;
-	border-radius:2px;
+	border-radius: 3px;
 	background:#055c91;
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bold;
 }
+
+.consultoria-alert a:hover {
+	background: #004767;
+}
+
 /* fim da atuação
 
 slider de noticias + acoes
