@@ -7,6 +7,7 @@
  */
 get_header();
 $args = array (
+	'post_type' => array('post','acoes','noticias','publicacoes'),
 	'posts_per_page' => 80
 );
 
@@ -15,30 +16,30 @@ $type_list = array();
 $type_add = array();
 
 if ( $query->have_posts() ) {
-	echo $query->found_posts;
 	while ( $query->have_posts() ) {
 		$query->the_post();
-		$type_term = return_term_biblioteca('tipos');
-		$type_term_name = return_term_biblioteca_name('tipos');
-		if(!in_array(return_term_biblioteca('tipos'),$type_add)){ //verifique se vetor já existe no array
+		echo $query->found_posts;
+		$type_term = return_term_biblioteca('categorias');
+		if(!in_array(return_term_biblioteca('categorias'),$type_add)){ //verifique se vetor já existe no array
 			$type_add[] = $type_term;
-			$type_list[] = 0;
+			$type_list[] = $type_term;
+			$type_list[$type_term][] = 0;
 			//$type_list[$type_term]['name'] = return_term_biblioteca_name('categorias');
 		}
-		$_i = count($type_add);
+		$_i = count($type_list[$type_term]);
 
-		$type_list[$_i]['term_name'] = $type_term_name;
-		$type_list[$_i]['title'] = get_the_title();
-		$type_list[$_i]['resumo'] = get_resumo();
-		$type_list[$_i]['thumb'] = get_post_thumbnail_id();
-		//$type_list[$_i]++;
+		$type_list[$type_term][$_i]['term_name'] = return_term_biblioteca_name('categorias');
+		$type_list[$type_term][$_i]['title'] = get_the_title();
+		$type_list[$type_term][$_i]['resumo'] = get_resumo();
+		$type_list[$type_term][$_i]['thumb'] = get_post_thumbnail_id();
+		$type_list[$type_term][$_i]++;
 	}
 	foreach($type_list as $slug){
-		for ( $i = 0; $i < count($type_add); $i++ ) {
-			if($i == 0){
-				echo '<h1>'.$slug['term_name'].'</h1>';
+		for ( $i = 1; $i < count($slug); $i++ ) {
+			if($i == 1){
+				echo '<h1>'.$slug[$i]['term_name'].'</h1>';
 			}
-			echo $slug['title'];
+			echo $slug[$i]['title'];
 		}
 	}
 } else {
