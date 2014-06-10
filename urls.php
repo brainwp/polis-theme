@@ -10,6 +10,8 @@ function _query_rules () {
 	return array(
 		'^equipe/?$' => 'template=equipe',
 		'^biblioteca/?$' => 'template=biblioteca',
+		'^biblioteca/busca/?$' => 'template=biblioteca-search',
+		'^biblioteca/busca/page/([^/]+)/?$' => 'template=biblioteca-search&paged=$matches[1]',
 		'^equipe/page/([^/]+)/?$' => 'template=equipe&paged=$matches[1]',
 		'^equipe/([^/]+)/?$' => 'template=membros&nome=$matches[1]',
 		'^equipe/([^/]+)/page/([^/]+)/?$' => 'template=membros&nome=$matches[1]&paged=$matches[2]',

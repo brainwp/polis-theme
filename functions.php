@@ -60,28 +60,41 @@ if ( ! function_exists( 'polis_theme_setup' ) ) :
 endif; // polis_theme_setup
 add_action( 'after_setup_theme', 'polis_theme_setup' );
 
-function emptyReturn($var){
-	$var = trim($var);
-	$var = empty($var);
+function emptyReturn( $var ) {
+	$var = trim( $var );
+	$var = empty( $var );
+
 	return $var;
 }
-function get_campoPersonalizado($campo)
-{
-	$informacao_campo = get_post_custom_values($campo);
+
+function get_campoPersonalizado( $campo ) {
+	$informacao_campo = get_post_custom_values( $campo );
+
 	return $informacao_campo[0];
 }
-function resumo(){
-	global $_query;
+
+function resumo() {
 	$string = get_the_excerpt();
-	$max = 10e0;
-	if (strlen($string) > $max) {
-		while (substr($string,$max,1) <> ' ' && ($max < strlen($string))){
-			$max++;
+	$max    = 100;
+	if ( strlen( $string ) > $max ) {
+		while ( substr( $string, $max, 1 ) <> ' ' && ( $max < strlen( $string ) ) ) {
+			$max ++;
 		};
 	};
-	echo substr($string,0,$max)." [...]";
+	echo substr( $string, 0, $max ) . " [...]";
 }
-if ( function_exists( 'add_image_size' ) ) { 
+function get_resumo() {
+	$string = get_the_excerpt();
+	$max    = 100;
+	if ( strlen( $string ) > $max ) {
+		while ( substr( $string, $max, 1 ) <> ' ' && ( $max < strlen( $string ) ) ) {
+			$max ++;
+		};
+	};
+	return substr( $string, 0, $max ) . " [...]";
+}
+
+if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'slider-publicacoes-thumb', 160, 240, true );
 }
 
@@ -96,8 +109,8 @@ function polis_theme_widgets_init() {
 		'after_widget'  => '</aside>',
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Widgets-institucional', 'polis-theme' ),
-		'id'            => 'widgets-institucional',
+		'name' => __( 'Widgets-institucional', 'polis-theme' ),
+		'id'   => 'widgets-institucional',
 	) );
 
 }
@@ -216,35 +229,18 @@ require get_template_directory() . '/areas-ajax.php';
  * Imprime o menu na Home de cada Área com link para as outras 3 Áreas
  */
 function outras_areas() {
-	
-	$array_areas = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );
+
+	$array_areas  = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );
 	$current_area = get_term_by( 'slug', get_query_var( 'area' ), 'categorias' );
-	
+
 	if ( ( $key = array_search( $current_area->slug, $array_areas ) ) !== false ) {
-	    unset( $array_areas[$key] );
+		unset( $array_areas[$key] );
 	}
 
 	echo "<ul>";
 	echo "<li class=title-outras>Outras áreas de atuação</li>";
 
-	foreach( $array_areas as $area ) {
-		$each_area = get_term_by( 'slug', $area, 'categorias' );
-			echo "<li class='btn-" . $each_area->slug . "'>";
-			echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
-			echo "</li>";
-	}
-	
-	echo "</ul>";
-
-}
-function todas_areas() {
-
-	$array_areas = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );
-
-	echo "<ul>";
-	echo "<li class=title-outras>Outras áreas de atuação</li>";
-
-	foreach( $array_areas as $area ) {
+	foreach ( $array_areas as $area ) {
 		$each_area = get_term_by( 'slug', $area, 'categorias' );
 		echo "<li class='btn-" . $each_area->slug . "'>";
 		echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
@@ -254,6 +250,54 @@ function todas_areas() {
 	echo "</ul>";
 
 }
+
+function todas_areas() {
+
+	$array_areas = array( "cidadania-cultural", "democracia-e-participacao", "inclusao-e-sustentabilidade", "reforma-urbana" );
+
+	echo "<ul>";
+	echo "<li class=title-outras>Outras áreas de atuação</li>";
+
+	foreach ( $array_areas as $area ) {
+		$each_area = get_term_by( 'slug', $area, 'categorias' );
+		echo "<li class='btn-" . $each_area->slug . "'>";
+		echo "<a href='" . home_url() . "/area/" . $each_area->slug . "'>" . $each_area->name . "</a>";
+		echo "</li>";
+	}
+
+	echo "</ul>";
+
+}
+
+function return_term_biblioteca($slug) {
+	global $post;
+	$terms = get_the_terms( $post->ID, $slug );
+
+	if ( $terms && ! is_wp_error( $terms ) ) :
+
+		$draught_links = array();
+
+		foreach ( $terms as $term ) {
+			return $term->slug;
+			break;
+		}
+	endif;
+}
+function return_term_biblioteca_name($slug) {
+	global $post;
+	$terms = get_the_terms( $post->ID, $slug );
+
+	if ( $terms && ! is_wp_error( $terms ) ) :
+
+		$draught_links = array();
+
+		foreach ( $terms as $term ) {
+			return $term->name;
+			break;
+		}
+	endif;
+}
+
 
 require get_template_directory() . '/inc/widget.php';
 // conteudo para users logados
