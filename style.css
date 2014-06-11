@@ -1235,34 +1235,32 @@ slider de noticias + acoes
 }
 /* footer */
 #footer{
-	padding-top:20px;
-	padding-bottom:20px;
+	padding: 20px 40px;
 	background:rgba(79,130,157,1);
 }
 #footer .menu{
 	padding-left:5px;
 	padding-right:5px;
-	padding:0 0 0 0;
+	padding:0;
 }
 #footer .menu li {
-	display:block;
-	width:100%;
-	margin-top:10px;
+	display: block;
+	width: 100%;
 }
 #footer .menu li a{
 	cursor: pointer;
-	color:white;
-	font-size:12px;
+	color: #FFF;
+	font-size: 0.9em;
 }
 #footer .menu .title{
-	display:block;
+	display: block;
 	text-transform: uppercase;
-	font-weight:bold;
-	color:#50c0e5;
-	font-size: 14px;
+	font-weight: bold;
+	color: #50c0e5;
+	font-size: 1em;
 }
 #footer .apoio img{
-	width:100%;
+	width: 100%;
 }
 #footer .apoio .title{
 	display:block;
@@ -1296,11 +1294,16 @@ slider de noticias + acoes
 	color: #FFF;
 	font-weight: bold;
 }
-
 #footer .footer p{
 	font-size: 0.9em;
 	color: #FFF;
 	margin: 5px 0 0 0;
+}
+#footer .footer, #footer .endereco {
+	margin-left: 0;
+	padding-left: 0;
+	margin-right: 0;
+	padding-right: 0;
 }
 /* pagina institucional */
 .intro-institucional{
