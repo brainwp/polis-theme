@@ -44,11 +44,21 @@ function optionsframework_options() {
 	}
 
 	// Options Cabecalho
+	
+	$options[] = array(
+		'name' => 'Cabeçalho',
+		'type' => 'heading');
+
 	$options[] = array(
 		'name' => 'Frase no cabeçalho',
 		'id'   => 'frase-head',
 		'std'  => '',
 		'type' => 'textarea');
+	
+	$options[] = array(
+		'name' => 'Home',
+		'type' => 'heading');
+
 	$options[] = array(
 		'name' => 'Frase de introdução no home',
 		'id'   => 'frase-intro-home',
@@ -74,6 +84,11 @@ function optionsframework_options() {
 		'id'   => 'frase-cidadania-home',
 		'std'  => '',
 		'type' => 'textarea');
+
+	$options[] = array(
+		'name' => 'Rodapé',
+		'type' => 'heading');
+
 	$options[] = array(
 		'name' => 'Rodapé Apoio Imagem',
 		'id'   => 'footer-apoio-img',
@@ -107,6 +122,16 @@ function optionsframework_options() {
 	$options[] = array(
 		'name' => 'Vimeo Link',
 		'id'   => 'social-vimeo-link',
+		'std'  => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => 'Endereço',
+		'id'   => 'footer-endereco',
+		'std'  => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => 'Telefone',
+		'id'   => 'telefone',
 		'std'  => '',
 		'type' => 'text');
 

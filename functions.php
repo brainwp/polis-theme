@@ -275,11 +275,24 @@ function return_term_biblioteca($slug) {
 
 	if ( $terms && ! is_wp_error( $terms ) ) :
 
-		$draught_links = array();
-
 		foreach ( $terms as $term ) {
 			return $term->slug;
 			break;
+		}
+	endif;
+}
+
+function return_term_biblioteca_area() {
+	global $post;
+	$slug = 'categorias';
+	$terms = get_the_terms( $post->ID, $slug );
+
+	if ( $terms && ! is_wp_error( $terms ) ) :
+		foreach ( $terms as $term ) {
+			if($term->slug == 'cidadania-cultural' || $term->slug == 'democracia-e-participacao' || $term->slug == 'inclusao-e-sustentabilidade' || $term->slug == 'reforma-urbana'){
+				return $term->slug;
+				break;
+			}
 		}
 	endif;
 }
@@ -289,7 +302,6 @@ function return_term_biblioteca_name($slug) {
 
 	if ( $terms && ! is_wp_error( $terms ) ) :
 
-		$draught_links = array();
 
 		foreach ( $terms as $term ) {
 			return $term->name;
@@ -297,7 +309,6 @@ function return_term_biblioteca_name($slug) {
 		}
 	endif;
 }
-
 
 require get_template_directory() . '/inc/widget.php';
 // conteudo para users logados

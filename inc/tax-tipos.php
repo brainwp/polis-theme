@@ -28,5 +28,5 @@ function create_taxonomies_tipos() {
 		'rewrite'           => array( 'slug' => 'tipo' ),
 	);
 
-	register_taxonomy( 'tipos', array( 'noticias','publicacoes' ), $args );
+	register_taxonomy( 'tipos', array( 'publicacoes' ), $args );
 }

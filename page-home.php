@@ -12,30 +12,26 @@ get_header(); ?>
 		</p>
 
 		<p class="description text-areas">
-			Areas de atuação do Pólis
+			Áreas de atuação do Pólis
 		</p>
 	</section>
 	<section class="col-md-12 content atuacao">
 		<div class="col-md-4 left">
 			<div class="col-md-10 reforma">
-				<p class="title">
-					Reforma Urbana
-				</p>
+				<p class="title">Reforma Urbana</p>
 
 				<div class="col-md-12 description">
 					<?php echo of_get_option( 'frase-reformaurbana-home' ); ?>
 				</div>
-				<a class="col-md-5 saiba left text-center" href="#">Saiba mais</a>
+				<a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/reforma-urbana">Saiba mais</a>
 			</div>
 			<div class="col-md-10 inclusao">
-				<p class="title">
-					Inclusão e Sustentabilidade
-				</p>
+				<p class="title">Inclusão e Sustentabilidade</p>
 
 				<div class="col-md-12 description">
 					<?php echo of_get_option( 'frase-inclusao-home' ); ?>
 				</div>
-				<a class="col-md-5 saiba left text-center" href="#">Saiba mais</a>
+				<a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/inclusao-e-sustentabilidade">Saiba mais</a>
 			</div>
 		</div>
 		<div class="col-md-4 pull-right right">
@@ -45,34 +41,34 @@ get_header(); ?>
 				<p class="description">
 					<?php echo of_get_option( 'frase-democracia-home' ); ?>
 				</p>
-				<a class="col-md-5 saiba left text-center" href="#">Saiba mais</a>
+				<a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/democracia-e-participacao">Saiba mais</a>
 			</div>
 			<div class="col-md-10 cidadania pull-right right">
-				<p class="title">
-					Cidadania Cultural
-				</p>
+				<p class="title">Cidadania Cultural</p>
 
 				<p class="description">
 					<?php echo of_get_option( 'frase-cidadania-home' ); ?>
 				</p>
-				<a class="col-md-5 saiba left text-center" href="#">Saiba mais</a>
+				<a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/cidadania-cultural">Saiba mais</a>
 			</div>
 		</div>
 		<div class="col-md-10 col-md-offset-1 consultoria-alert">
 			<img src="<?php bloginfo('template_url');?>/img/consultoria-alert.png"> <!-- trocar pelo png transparente depois -->
-			Interessado nos serviços de consultoria da Pólis?
-			<a class="col-md-2 pull-right right" href="<?php echo of_get_option( 'link-contato-consultoria' ); ?>">Entre em contato</a>
+			<span>Interessado nos serviços de consultoria da Pólis?</span>
+			<a class="pull-right right" href="<?php echo home_url(); ?>/contato">Entre em contato</a>
 		</div>
-		<!-- colocar linha aqui <div class="col-md-12 dashed-line"></div> -->
+
+		<div class="linha-tracejada"></div>
+
 	</section>
 	<section class="col-md-12 content news">
 		<div class="col-md-12">
 			<div class="section-title">
-				Noticias e ações em todas as areas
-				<a href="#" class="col-md-1 pull-right shape-todos">Ver todos</a>
-				<span class="triangle"></span>
+				<h3>Notícias e ações em todas as Áreas</h3>
+				<a href="#" class="col-md-1 shape-todos">Ver todos</a>
 			</div>
 		</div>
+
 		<article id="slider-news" class="carousel slide col-md-7" data-ride="carousel">
 			<div class="carousel-inner">
 				<?php $slider_query = new WP_Query( array(
@@ -91,21 +87,25 @@ get_header(); ?>
 					else{
 					?>
 					<div class="item">
-						<?php
-						}
-						?>
-						<?php
-						if ( has_post_thumbnail() ) {
-							the_post_thumbnail( 'slider-news-image' );
-						} else {
-							echo '<img src="http://placehold.it/615x171" />';
-						}
-						foreach ( ( get_the_category() ) as $category ) {
-							echo '<a href="' . get_category_link( $category->cat_ID ) . '" class="slider-cat">' . $category->cat_name . '</a>';
-						}
-						?>
+						<?php }	?>
+
+						<div class="thumb">
+							<a href="<?php the_permalink(); ?>">
+								<?php
+								if ( has_post_thumbnail() ) {
+									the_post_thumbnail( 'slider-news-image' );
+								} else {
+									echo '<img src="'. theme('/img/default615x170.jpg') .'" />';
+								} ?>
+							</a>
+							<?php $terms = terms( 'categorias' ); ?>
+							<?php $class_term = explode(", ", $terms); ?>
+							<div class="news-terms bg-<?php echo sanitize_title($class_term[0]); ?>">
+								<?php echo $terms; ?>
+							</div>
+						</div><!-- thumb -->
 						<div class="left type"><?php echo get_post_type(); ?></div>
-						<a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
+						<h3><a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a></h3>
 
 						<div class="texto">
 							<?php the_excerpt(); ?>
@@ -141,42 +141,20 @@ get_header(); ?>
 				<div class="col-md-6">
 					<p>Canal Pólis</p>
 					Conheça nosso novo canal!
-					<a href="#" class="col-md-8">Ao vivo</a>
+					<a href="#" class="col-md-8 btn-ao-vivo">Ao vivo</a>
 				</div>
+				<a href="#" class="full-link"></a>
 			</div>
 		</section>
 	</section>
-	<section class="col-md-12 biblioteca livros_section">
-		<div class="links publicacoes-link">
-			<header>
-				<h2>Publicações</h2>
-				<a class="todos" href="">Ver todos</a>
-			</header>
-			<?php
-			$args = array(
-				'type'         => '',
-				'child_of'     => 0,
-				'parent'       => '',
-				'orderby'      => 'ID',
-				'order'        => 'ASC',
-				'hide_empty'   => 0,
-				'hierarchical' => 1,
-				'exclude'      => '1',
-				'include'      => '',
-				'number'       => '4',
-				'taxonomy'     => 'categorias',
-				'pad_counts'   => false );
 
-			$categories = get_categories( $args );
-			foreach ( $categories as $category ) :
-				$cat_ID = $category->term_id; // Get ID the category.
-				// Get the URL of this category
-				$category_link = get_category_link( $cat_ID );
-				// Get the Slug of this category
-				$category_slug = get_category_link( $category->slug );
-				echo '<a class="publicacoes-link" data-link="' . get_bloginfo( 'url' ) . '/?slider=' . $category->slug . '">' . $category->name . '</a>';
-			endforeach;
-			?>
+	<section class="col-md-12 content publicacoes">
+
+	<div class="linha-tracejada"></div>
+
+		<div class="section-title">
+			<h3>Publicações</h3>
+			<a href="#" class="col-md-1 shape-todos">Ver todos</a>
 		</div>
 		<div id="hide-ajax" style="display: none"></div>
 		<div id="carousel" class="col-md-12 list_carousel responsive">
@@ -186,34 +164,34 @@ get_header(); ?>
 				'ordr'           => 'ASC',
 				'posts_per_page' => 15
 			);?>
-			<ul class="slider_area livros">
+			<ul id="slider2">
 				<?php
 				$publicacoes = new WP_Query( $arg ); ?>
 				<?php while ( $publicacoes->have_posts() ) :
 					$publicacoes->the_post(); ?>
-					<div class="cada-publicacao-area col-md-2">
+					<li class="item">
 						<a href="<?php the_permalink(); ?>">
-							<?php if ( has_post_thumbnail() ) {
-								the_post_thumbnail( 'slider-publicacoes-thumb' );
-							} else {
-								?>
-								<img src="<?php echo get_template_directory_uri(); ?>/img/default-publicacoes-thumb.jpg" alt="<?php the_title(); ?>" />
-							<?php } ?>
-							<img class="hover-icon" src="<?php echo get_template_directory_uri(); ?>/img/image-hover.png">
-						</a>
-						<div class="download">
-							<?php
-							if(!emptyReturn(get_campoPersonalizado('anexo'))){
-								$download_id = get_campoPersonalizado('anexo');
 
-								echo '<a href="'.wp_get_attachment_url($download_id).'" download>Download</a>';
+							<div class="hover"></div>
+
+							<?php
+							if ( has_post_thumbnail() ) {
+								$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-image', true );
+								echo '<img src="' . $thumb_url[0] . '"/>';
+							} else {
+								echo '<img src="'. theme('/img/default-publicacoes-thumb.jpg') .'" />';
 							}
 							?>
-						</div>
-					</div>
+						</a>
+					</li>
 				<?php endwhile; ?>
 			</ul>
 		</div>
+
+		<div class="clear"></div>
+
+		<div class="todos-full"><a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma busca</a></div>
+
 	</section>
 	<section class="col-md-12 content widgets-home">
 		<?php if ( is_active_sidebar( 'widgets-home' ) ) : ?>
