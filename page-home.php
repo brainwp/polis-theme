@@ -194,6 +194,9 @@ get_header(); ?>
 
 	</section>
 	<section class="col-md-12 content widgets-home">
+
+	<div class="linha-tracejada"></div>
+
 		<?php if ( is_active_sidebar( 'widgets-home' ) ) : ?>
 			<?php dynamic_sidebar( 'widgets-home' ); ?>
 		<?php endif; ?>

@@ -1187,7 +1187,7 @@ slider de noticias + acoes
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 5px 10px;
-	margin: 20px auto;
+	margin: 20px auto 0;
 	text-decoration: none;
 	border-radius: 3px;
 	background: #C2C2C2;
@@ -1305,7 +1305,7 @@ slider de noticias + acoes
 	font-size: 1em;
 }
 #footer .apoio img{
-	width: 100%;
+	width: auto;
 }
 #footer .apoio .title{
 	display:block;
@@ -1313,6 +1313,7 @@ slider de noticias + acoes
 	font-weight:bold;
 	color:white;
 	font-size: 14px;
+	padding-bottom: 10px;
 }
 #footer .footer{
 	margin-top:40px;
