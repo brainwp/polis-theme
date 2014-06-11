@@ -78,7 +78,7 @@ jQuery(document).ready(function () {
 			width  : 250,
 			visible: {
 				min: 1,
-				max: 4
+				max: 5
 			}
 		}
 	});

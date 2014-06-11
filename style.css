@@ -148,6 +148,7 @@ textarea {
 ----------------------------------------------- */
 body {
 	padding: 0 2em;
+	background:url("img/bg.jpg") center fixed;
 }
 
 #page {
@@ -723,9 +724,6 @@ object {
 }
 *{
 	font-family: 'Source Sans Pro', sans-serif;
-}
-body{
-	background:url(img/bg.jpg) center;
 }
 a{
 	cursor: pointer;

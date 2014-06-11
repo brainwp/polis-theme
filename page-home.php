@@ -176,7 +176,7 @@ get_header(); ?>
 								$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-image', true );
 								echo '<img src="' . $thumb_url[0] . '"/>';
 							} else {
-								echo '<img src="http://placehold.it/151x228" />';
+								echo '<img src="'. theme('/img/default-publicacoes-thumb.jpg') .'" />';
 							}
 							?>
 						</a>
