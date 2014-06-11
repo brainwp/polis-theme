@@ -176,7 +176,7 @@ get_header(); ?>
 
 							<?php
 							if ( has_post_thumbnail() ) {
-								$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-image', true );
+								$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-thumb', true );
 								echo '<img src="' . $thumb_url[0] . '"/>';
 							} else {
 								echo '<img src="'. theme('/img/default-publicacoes-thumb.jpg') .'" />';
