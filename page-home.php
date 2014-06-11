@@ -184,6 +184,11 @@ get_header(); ?>
 				<?php endwhile; ?>
 			</ul>
 		</div>
+
+		<div class="clear"></div>
+
+		<div class="todos-full"><a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma busca</a></div>
+
 	</section>
 	<section class="col-md-12 content widgets-home">
 		<?php if ( is_active_sidebar( 'widgets-home' ) ) : ?>

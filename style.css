@@ -143,6 +143,11 @@ textarea {
 	font-size: 1.6rem;
 	line-height: 1.5;
 }
+.clear {
+	width: 100%;
+	height: 1px;
+	clear: both;
+}
 
 /* =Structure
 ----------------------------------------------- */
@@ -1170,7 +1175,26 @@ slider de noticias + acoes
 }
 .publicacoes .list_carousel {
 	margin-top: 25px;
+	clear: both;
 }
+.publicacoes .todos-full {
+	width: 100%;
+	overflow: hidden;
+	text-align: center;
+}
+.publicacoes .btn-todos-full {
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 20px auto;
+	text-decoration: none;
+	border-radius: 3px;
+	background: #C2C2C2;
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bold;
+}
+
 .carousel-indicators {
 	display: none;
 }
