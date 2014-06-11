@@ -171,6 +171,9 @@ get_header(); ?>
 					$publicacoes->the_post(); ?>
 					<li class="item">
 						<a href="<?php the_permalink(); ?>">
+
+							<div class="hover"></div>
+
 							<?php
 							if ( has_post_thumbnail() ) {
 								$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-image', true );
