@@ -141,8 +141,9 @@ get_header(); ?>
 				<div class="col-md-6">
 					<p>Canal Pólis</p>
 					Conheça nosso novo canal!
-					<a href="#" class="col-md-8">Ao vivo</a>
+					<a href="#" class="col-md-8 btn-ao-vivo">Ao vivo</a>
 				</div>
+				<a href="#" class="full-link"></a>
 			</div>
 		</section>
 	</section>
