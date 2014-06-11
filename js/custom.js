@@ -66,8 +66,8 @@ jQuery(document).ready(function () {
 		})
 	});
 	$('#slider2').carouFredSel({
-		prev      : '#prev-slider',
-		next      : '#next-slider',
+		prev      : '#prev-publicacao',
+		next      : '#next-publicacao',
 		responsive: true,
 		width     : '100%',
 		scroll    : {

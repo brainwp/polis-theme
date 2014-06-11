@@ -186,7 +186,10 @@ get_header(); ?>
 					</li>
 				<?php endwhile; ?>
 			</ul>
-		</div>
+		</div><!-- carousel -->
+
+		<div id="prev-publicacao" class="prev"></div>
+		<div id="next-publicacao" class="next"></div>
 
 		<div class="clear"></div>
 
