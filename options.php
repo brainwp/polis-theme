@@ -109,6 +109,16 @@ function optionsframework_options() {
 		'id'   => 'social-vimeo-link',
 		'std'  => '',
 		'type' => 'text');
+	$options[] = array(
+		'name' => 'Endereço',
+		'id'   => 'footer-endereco',
+		'std'  => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => 'Telefone',
+		'id'   => 'telefone',
+		'std'  => '',
+		'type' => 'text');
 
 	return $options;
 }
