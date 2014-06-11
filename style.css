@@ -1293,9 +1293,14 @@ slider de noticias + acoes
 	color:white;
 }
 #footer .footer h3{
-	font-size:16px;
-	color:white;
-	font-weight:normal;
+	color: #FFF;
+	font-weight: bold;
+}
+
+#footer .footer p{
+	font-size: 0.9em;
+	color: #FFF;
+	margin: 5px 0 0 0;
 }
 /* pagina institucional */
 .intro-institucional{

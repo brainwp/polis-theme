@@ -38,8 +38,8 @@
 	</div>
 	<div class="col-md-12 footer">
 		<div class="col-md-6 endereco">
-			<h2>PÓLIS</h2>
-			<h3>Rua Araújo 124, Centro, São Paulo - SP CEP 01220-020 Tel. 55 11 2174 6800</h3>
+			<h3><?php bloginfo( 'name' ); ?></h3>
+			<p>Rua Araújo 124, Centro, São Paulo - SP CEP 01220-020 Tel. 55 11 2174 6800</p>
 		</div>
 		<div class="col-md-4 pull-right social">
 			<span>Curta, compartilhe e siga!</span>
