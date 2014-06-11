@@ -278,3 +278,30 @@ function terms( $taxonomy ) {
 	return $the_terms;
 	endif;
 }
+
+/**
+* Custom logo login.
+*/
+add_action('login_head', 'custom_logo_login');
+function custom_logo_login() {
+	echo '
+	<style type="text/css">
+		body.login div#login {
+			padding: 5% 0 0;
+		}
+		body.login div#login h1 {
+			text-align: center;
+			margin: 0 auto;
+		}
+		body.login div#login h1, body.login div#login h1 a {
+			width: 230px;
+			height: 230px;
+		}
+		body.login div#login h1 a {
+			background-image: url( ' . get_bloginfo('template_directory') . '/img/logo-polis-login.png) !important;
+			padding: 0;
+			background-size: 230px 230px;
+		}
+	</style>
+	';
+}
