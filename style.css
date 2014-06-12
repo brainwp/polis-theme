@@ -1482,14 +1482,6 @@ slider de noticias + acoes
 .midia .col-md-12 {
 	padding: 0;
 }
-.midia .link a{
-	color:white;
-	background:#9f254a;
-	padding:5px;
-	font-weight:bold;
-	font-size:12px;
-	text-align: center;
-}
 .midia .title{
 	font-weight: normal;
 	padding: 0;
@@ -1528,35 +1520,56 @@ slider de noticias + acoes
 
 .projetos{
 	margin-top:23px;
-	background: #0499ba;
-	padding:13px;
+	background: url("img/bg-widget-projetos.jpg") #0499ba;
+	padding: 15px 0 15px 15px;
+	border-radius: 3px;
+	border: 1px solid #0499ba;
 }
-.projetos .link a{
-	color:white;
-	background:#00628c;
-	padding:5px;
-	font-weight:bold;
-	font-size:12px;
+.projetos:hover {
+	border-color: #07668F;
+}
+.projetos .col-md-12 {
+	padding: 0;
+}
+.projetos .btn-todos {
 	text-align: center;
+	padding: 3px 5px;
+	background: #025A88;
+	color:white;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 5px 15px 0 0;
+	border-radius: 2px;
+	text-decoration: none;
+	text-transform: uppercase;
+	float: right;
+}
+.projetos .btn-todos:hover {
+	background: #004968;
 }
 .projetos .title{
-	font-weight:bold;
-	padding:0;
-	font-size:20px;
-	color:white;
+	font-weight: normal;
+	padding: 0;
+	font-size: 1.4em;
+	color: white;
+	text-align: left;
+	font-family: 'Bitter',serif;
+	font-style: normal;
+	line-height: 1.2;
+	padding: 0 0 0 10px;
 }
 .projetos .description{
-	font-weight:normal;
+	font-weight: normal;
 	font-style: normal;
-	padding:0;
-	font-size:14px;
-	color:white;
+	padding: 8px 20px 5px 10px;
+	font-size: 14px;
+	color: white;
 	text-align: left;
 }
-.projetos .description a{
-	color:#5fc6f3;
+.projetos .description a {
+	color: #5fc6f3;
 }
-#post_ajax h1{
+#post_ajax h1 {
 	color: #00588d;
 	margin-bottom :15px;
 }

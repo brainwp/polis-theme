@@ -160,9 +160,7 @@ class widget_projetos extends WP_Widget {
 						<?php echo $text; ?>
 					</div>
 				</div>
-				<div class="col-md-5 link pull-right">
-					<a href="<?php echo $link; ?>">VER TODOS</a>
-				</div>
+				<a class="btn-todos" href="<?php echo $link; ?>">VER TODOS</a>
 			</div>
 	<?php
 	}
