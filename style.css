@@ -1470,10 +1470,18 @@ slider de noticias + acoes
 	background: #886103;
 }
 .midia {
-	 margin-top:23px;
-	 background: #b9537a;
-	 padding:13px;
+	margin-top: 23px;
+	background: #b9537a;
+	padding: 15px 0 15px 15px;
+	border-radius: 3px;
+	border: 1px solid #b9537a;
  }
+.midia:hover {
+	border-color: #A12B4F;
+}
+.midia .col-md-12 {
+	padding: 0;
+}
 .midia .link a{
 	color:white;
 	background:#9f254a;
@@ -1483,19 +1491,41 @@ slider de noticias + acoes
 	text-align: center;
 }
 .midia .title{
-	font-weight:bold;
-	padding:0;
-	font-size:20px;
-	color:white;
+	font-weight: normal;
+	padding: 0;
+	font-size: 1.4em;
+	color: white;
+	text-align: left;
+	font-family: 'Bitter',serif;
+	font-style: normal;
+	line-height: 1.2;
+	padding: 0 0 0 10px;
 }
 .midia .description{
-	font-weight:normal;
+	font-weight: normal;
 	font-style: normal;
-	padding:0;
-	font-size:14px;
-	color:white;
+	padding: 8px 20px 5px 10px;
+	font-size: 14px;
+	color: white;
 	text-align: left;
 }
+.midia .btn-todos {
+	text-align: center;
+	padding: 3px 5px;
+	background: #A12B4F;
+	color:white;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 5px 15px 0 0;
+	border-radius: 2px;
+	text-decoration: none;
+	text-transform: uppercase;
+	float: right;
+}
+.midia .btn-todos:hover {
+	background: #7A0E2F;
+}
+
 .projetos{
 	margin-top:23px;
 	background: #0499ba;
