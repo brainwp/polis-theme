@@ -70,10 +70,16 @@ function get_campoPersonalizado($campo)
 	$informacao_campo = get_post_custom_values($campo);
 	return $informacao_campo[0];
 }
-function resumo(){
+function resumo( $custom_max = '' ){
 	global $_query;
 	$string = get_the_excerpt();
-	$max = 100;
+
+	if ( empty( $custom_max ) ) {
+		$max = 100;		
+	} else {
+		$max = $custom_max;
+	}
+
 	if (strlen($string) > $max) {
 		while (substr($string,$max,1) <> ' ' && ($max < strlen($string))){
 			$max++;
@@ -259,7 +265,7 @@ require get_template_directory() . '/inc/widget.php';
 // conteudo para users logados
 require get_template_directory() . '/inc/error_login.php';
 
-function theme( $arg = '') {
+function theme( $arg = '' ) {
 	$theme = get_template_directory_uri();
 	if ( !empty( $arg ) ) {
 		$theme .= $arg;
