@@ -189,6 +189,8 @@ h4 { font-size: 1.0em; }
 h5 { font-size: 0.9em; }
 h6 { font-size: 0.8em; }
 
+h1 { font-weight: bold; }
+
 hr {
 	background-color: #ccc;
 	border: 0;
@@ -405,17 +407,17 @@ a:active {
 .alignleft {
 	display: inline;
 	float: left;
-	margin-right: 1.5em;
+	margin: 0.3em 1.5em 0.3em 0.3em
 }
 .alignright {
 	display: inline;
 	float: right;
-	margin-left: 1.5em;
+	margin: 0.3em 0.3em 0.3em 1.5em;
 }
 .aligncenter {
 	clear: both;
 	display: block;
-	margin: 0 auto;
+	margin: 0.3em auto;
 }
 
 /* Text meant only for screen readers */
@@ -1212,12 +1214,11 @@ slider de noticias + acoes
 	left: 20px;
 	background: url("img/setas-slider-publicacoes.png") left center no-repeat #046588;
 }
-
 .publicacoes .next {
 	right: 20px;
 	background: url("img/setas-slider-publicacoes.png") right center no-repeat #046588;
  }
- .publicacoes .prev:hover, .publicacoes .next:hover {
+.publicacoes .prev:hover, .publicacoes .next:hover {
  	background-color: #004767;
  }
 #slider2 li{
@@ -1402,16 +1403,17 @@ slider de noticias + acoes
 	padding:15px;
 }
 .institucional-nav a{
-	padding:10px;
+	padding: 10px;
 	font-weight: 600;
 	margin-left: 10px;
 	border-radius: 3px;
-	color:white;
+	color: white;
 	text-transform: uppercase;
 	text-align: center;
-	background:#015e8b;
+	background: #015e8b;
 	text-decoration: none !important;
-	transition:300ms linear all;
+	transition: 300ms linear all;
+	font-size: 0.9em;
 }
 .institucional-nav a:hover, .institucional-nav a.atual{
 	background:#509abd;
@@ -1426,29 +1428,48 @@ slider de noticias + acoes
 	bottom:0px;
 	background:url('img/institucional-intro-triangulo.png') center center no-repeat;
 }
-.acervo{
-	margin-top:23px;
+.content-institucional {
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.acervo {
+	margin-top: 23px;
 	background: #d7bb4d;
-	padding:13px;
+	padding: 15px 0 15px 15px;
+	border-radius: 3px;
+	border: 1px solid #d7bb4d;
 }
-.acervo .description{
-	font-weight:bold;
-	padding:0;
-	font-size:20px;
-	color:white;
+.acervo:hover {
+	border-color: #886103;
 }
-.acervo .link{
-	margin-top: 30px;
+.acervo .description {
+	font-weight: normal;
+	padding: 0;
+	font-size: 1.4em;
+	color: white;
+	text-align: left;
+	font-family: 'Bitter',serif;
+	font-style: normal;
+	line-height: 1.2;
+	padding: 0 0 0 10px;
 }
-.acervo .link a{
-	color:white;
-	background:#ad820f;
-	padding:5px;
-	font-weight:bold;
-	font-size:12px;
+.acervo .btn-todos {
 	text-align: center;
+	padding: 3px 5px;
+	background: #ad820f;
+	color:white;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 30px 15px 0 0;
+	border-radius: 2px;
+	text-decoration: none;
+	text-transform: uppercase;
+	float: right;
 }
-.midia{
+.acervo .btn-todos:hover {
+	background: #886103;
+}
+.midia {
 	 margin-top:23px;
 	 background: #b9537a;
 	 padding:13px;
@@ -1506,9 +1527,8 @@ slider de noticias + acoes
 	color:#5fc6f3;
 }
 #post_ajax h1{
-	font-weight: bold;
-	color:#00588d;
-	margin-bottom:10px;
+	color: #00588d;
+	margin-bottom :15px;
 }
 /*page equipe.php */
 .user{

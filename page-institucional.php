@@ -38,7 +38,7 @@ get_header(); ?>
 		?>
 	</nav>
     <section class="col-md-12 content">
-		<article class="col-md-8 pull-left" id="post_ajax">
+		<article class="col-md-8 pull-left content-institucional" id="post_ajax">
 			<h1><?php echo $_first->post_title; ?></h1>
 			<?php echo $_first->post_content; ?>
 		</article>
