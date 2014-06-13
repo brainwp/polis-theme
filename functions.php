@@ -332,25 +332,20 @@ function terms( $taxonomy ) {
 		$the_terms = join( ", ", $links );
 		return $the_terms;
 	endif;
-	$terms = get_the_terms( $post->ID, $taxonomy );
-	if ( $terms && ! is_wp_error( $terms ) ) : 
-	$links = array();
-	foreach ( $terms as $term ) {
-		$links[] = $term->name;
-	}
-	$the_terms = join( ", ", $links );			
-	return $the_terms;
-	endif;
 }
 
-function top_term( $taxonomy ) {
+function top_term( $taxonomy, $echo = '' ) {
 	global $post;
 	$terms = get_the_terms( $post->ID, $taxonomy );
 	 
-	foreach ($terms as $term) { 	 
+	foreach ( $terms as $term ) { 	 
 	$parent = $term->parent;
 		if ( $parent=='0' ) {
-		    echo '<a class="" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';   
+			if ( empty( $echo ) ) {
+				echo $term->name;
+			} elseif ( $echo == 'a' ) {
+				echo '<a class="top_term_link" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';
+			}
 		}
 	}
 }

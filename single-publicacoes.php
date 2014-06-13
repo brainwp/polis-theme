@@ -46,7 +46,7 @@ get_header(); ?>
 							$file = substr( $download['url'], strrpos( $download['url'], '/' ) +1 );
 							$size = number_format( filesize( get_attached_file( $download['id'] ) ) / 1048576, 2 ) . "mb";
 						?>
-						<a href="<?php echo $download['url']; ?>" download="<?php echo $file; ?>">Download <?php echo $size; ?></a>
+						<a class="btn" href="<?php echo $download['url']; ?>" download="<?php echo $file; ?>">Download <?php echo $size; ?></a>
 					<?php endif; ?>
 				</div><!-- meta -->
 			</div><!-- content -->
