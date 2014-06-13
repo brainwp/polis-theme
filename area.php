@@ -105,43 +105,19 @@ $categorias = get_categories( $args );
 									<small class="caption"><?php echo $terms[0];?></small>
 								</div>
 								<h2 class="title"><?php the_title();?></h2>
-								<div class="col-md-12 resumo"><?php resumo();?></div>
+								<div class="col-md-12 resumo"><?php echo resumo();?></div>
 							</a>
 						</li>
 
 					<?php endwhile; ?>
 				</ul>
 			</div>
-			<div class="prev-slider" id="prev-slider"></div>
-			<div class="next-slider" id="next-slider"></div>
+			<div class="prev-slider" id="noticias-prev-slider-<?php echo $cat;?>"></div>
+			<div class="next-slider" id="noticias-next-slider-<?php echo $cat;?>"></div>
 			<div class="clear"></div>
 			<div class="todos-full">
 				<a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma busca</a>
 			</div>
-			<?php // teste// ?>
-			<?php // Loop Notícias
-			$args = array(
-				'post_type' => 'noticias',
-				'tax_query' => array(
-					array(
-						'taxonomy'         => 'categorias',
-						'field'            => 'id',
-						'terms'            => $cat,
-						'include_children' => true,
-						'posts_per_page'   => 8,
-					)
-				)
-			);
-			$noticias = new WP_Query( $args ); // exclude category
-			while ( $noticias->have_posts() ) : $noticias->the_post(); ?>
-				<div class="item"></div>
-				<div class="cada-noticia-area">
-					<h1><?php the_title(); ?></h1>
-					<?php the_excerpt(); ?>
-				</div><!-- .cada-noticia-area -->
-
-			<?php endwhile; ?>
-
 		</div>
 		<!-- .cada-loop-aba -->
 
@@ -157,7 +133,7 @@ $categorias = get_categories( $args );
 					'ordr'           => 'ASC',
 					'posts_per_page' => 15
 				);?>
-				<ul id="slider2">
+				<ul id="publicacoes-slider-<?php echo $cat;?>">
 					<?php
 					$publicacoes = new WP_Query( $arg ); ?>
 					<?php while ( $publicacoes->have_posts() ) :
@@ -180,15 +156,14 @@ $categorias = get_categories( $args );
 					<?php endwhile; ?>
 				</ul>
 			</div>
-			<div class="prev-slider" id="prev-slider"></div>
-			<div class="next-slider" id="next-slider"></div>
+			<div class="prev-slider" id="publicacoes-prev-slider-<?php echo $cat;?>"></div>
+			<div class="next-slider" id="next-slider-<?php echo $cat;?>"></div>
 			<div class="clear"></div>
 			<div class="todos-full">
 				<a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma busca</a>
 			</div>
 			<?php // teste// ?>
 		</div>
-		-
 		<div class="cada-loop-aba">
 			<header>
 				<h2>Ações</h2>
@@ -279,9 +254,7 @@ $categorias = get_categories( $args );
 					<div class="todos-full">
 						<a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma busca</a>
 					</div>
-					<?php // teste// ?>
 				</div>
-				-
 				<div class="cada-loop-aba">
 					<header>
 						<h2>Ações</h2>

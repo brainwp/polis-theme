@@ -761,24 +761,46 @@ object {
 	color:#B7913E;
 	border-bottom:5px solid #B7913E;
 }
-.democracia-e-participacao .tabDetails .section-title h3{
-	color:#A22521;
+.democracia-e-participacao .tabDetails .section-title h3, .democracia-e-participacao .tabDetails .item .title{
+	color:#A22521 !important;
 }
-.democracia-e-participacao .shape-todos:hover{
+.cidadania-cultural .tabDetails .section-title h3, .cidadania-cultural .tabDetails .item .title{
+	color:#B7913E !important;
+}
+.reforma-urbana .tabDetails .section-title h3, .reforma-urbana .tabDetails .item .title{
+	color:#516D33 !important;
+}
+.inclusao-e-sustentabilidade .tabDetails .section-title h3, .inclusao-e-sustentabilidade .tabDetails .item .title{
+	color:#95AD5F !important;
+}
+
+.democracia-e-participacao .shape-todos:hover, .democracia-e-participacao .tabDetails .item .caption{
 	background:#A22521 !important;
 }
+.cidadania-cultural .shape-todos:hover, .cidadania-cultural .tabDetails .item .caption{
+	background:#B7913E !important;
+}
+.reforma-urbana .shape-todos:hover, .reforma-urbana .tabDetails .item .caption{
+	background:#516D33 !important;
+}
+.inclusao-e-sustentabilidade .shape-todos:hover, .inclusao-e-sustentabilidade .tabDetails .item .caption{
+	background:#95AD5F !important;
+}
+
 
 .tabDetails .prev-slider{
 	position: absolute;
-	left:20px;
+	left:-11px;
 	width:40px;
 	height:40px;
 	margin-top:156px;
 	cursor:pointer;
+	z-index:99;
 }
 .tabDetails .next-slider{
 	position: absolute;
-	right:10px;
+	right:-11px;
+	z-index:99;
 	width:40px;
 	height:40px;
 	margin-top:156px;

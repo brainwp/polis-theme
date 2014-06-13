@@ -120,8 +120,8 @@ jQuery(document).ready(function () {
 	var _first = $('#first').attr('data-first');
 	console.log(_first)
 	$('#noticias-slider-'+_first).carouFredSel({
-		prev      : '#prev-slider',
-		next      : '#next-slider',
+		prev      : '#noticias-prev-slider-'+_first,
+		next      : '#noticias-next-slider-'+_first,
 		responsive: true,
 		width     : '100%',
 		scroll    : {
@@ -133,6 +133,23 @@ jQuery(document).ready(function () {
 			visible: {
 				min: 1,
 				max: 5
+			}
+		}
+	});
+	$('#publicacoes-slider-'+_first).carouFredSel({
+		prev      : '#publicacoes-prev-slider-'+_first,
+		next      : '#publicacoes-next-slider-'+_first,
+		responsive: true,
+		width     : '100%',
+		scroll    : {
+			items       : 1,
+			pauseOnHover: true
+		},
+		items     : {
+			width  : 250,
+			visible: {
+				min: 4,
+				max: 4
 			}
 		}
 	});
