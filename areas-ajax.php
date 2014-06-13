@@ -1,8 +1,11 @@
 <?php
 function areaAjax() {
-	if ( isset( $_GET['areaAjax'] ) && isset( $_GET['areaCatAjax'] ) ) {
+	if ( isset( $_GET['areaAjax'] ) && isset( $_GET['areaCatAjax'] ) && isset( $_GET['areaSlider'] )) {
 		$area = $_GET['areaAjax'];
-		$cat  = $_GET['areaCatAjax']; ?>
+		$slider = $_GET['areaSlider'];
+		$cat  = $_GET['areaCatAjax'];
+		if($slider == 'noticias'):
+		?>
 		<div class="cada-loop-aba">
 			<header>
 				<h2>Notícias</h2>
@@ -32,6 +35,12 @@ function areaAjax() {
 			<?php endwhile; ?>
 
 		</div>
+		<?php
+		endif; // slider noticias
+		?>
+		<?php
+		if($slider == 'publicacoes'):
+		?>
 		<!-- .cada-loop-aba -->
 
 		<div class="cada-loop-aba publicacoes">
@@ -68,8 +77,12 @@ function areaAjax() {
 							</a>
 						</div>
 					<?php endwhile; ?>
-				<?php } ?>
+				<?php }
+			endif;
+			?>
 			</ul>
+			<div class="prev-slider" id="<?php echo $cat;?>-prev-slider"></div>
+			<div class="next-slider" id="<?php echo $cat;?>-next-slider"></div>
 		</div>
 		<a href="" class="btn-todas-publicacoes">Veja todas as publicações ou faça uma busca</a><!-- .btn-todas-publicacoes -->
 		<div class="cada-loop-aba">

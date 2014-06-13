@@ -15,41 +15,7 @@ get_header();
 					O Pólis é uma Organização-Não-Governamental (ONG) de atuação nacional, com participação em redes internacionais e locais, constituída como associação civil sem fins lucrativos, apartidária, pluralista e reconhecida como entidade de utilidade pública.
 				</div>
 			</div>
-			<form class="col-md-12 busca">
-				<aside class="col-md-2 left areas">
-					<?php todas_areas(); ?>
-				</aside>
-				<aside class="col-md-8">
-					<div class="input_container">
-						<h2 class="intro">Introdução à busca avançada com Lorem ipsum Dolor sit amet e  alguma frase de efeito ou resumo.</h2>
-						<label class="col-md-2">Buscar:</label>
-						<input class="col-md-6 input1" name="key" placeholder="Busque por título, autor ou assunto">
-						<span class="right glyphicon glyphicon-search"></span> <!-- icone de search !-->
-					</div>
-					<div class="input_container">
-						<label class="col-md-2">Filtros:</label>
-						<select class="col-md-2 select1" style="margin-left: 0">
-							<option>Teste</option>
-						</select>
-						<select class="col-md-1 select1">
-							<option>Tipo</option>
-						</select>
-						<select class="col-md-2 select1">
-							<option>Teste</option>
-						</select>
-					</div>
-					<div class="col-md-12 input_container data">
-						<label>De</label>
-						<select class="select1">
-							<option>Ano</option>
-						</select>
-						<label style="margin-left: 10px">á</label>
-						<select class="select1">
-							<option>Ano</option>
-						</select>
-					</div>
-				</aside>
-			</form>
+			<?php get_template_part('inc/biblioteca', 'search');?>
 			<section class="col-md-12 biblioteca livros_section">
 				<?php if ( is_user_logged_in() ) {
 					// Verifica se user está logado e seta uma variavel pra comparar o CUSTOM POST FIELD assim não preciso fazer 2 querys pra cada
