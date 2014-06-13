@@ -153,18 +153,36 @@ jQuery(document).ready(function () {
 			}
 		}
 	});
+	$('#acoes-slider-'+_first).carouFredSel({
+		prev      : '#acoes-prev-slider-'+_first,
+		next      : '#acoes-next-slider-'+_first,
+		responsive: true,
+		width     : '100%',
+		scroll    : {
+			items       : 1,
+			pauseOnHover: true
+		},
+		items     : {
+			width  : 250,
+			visible: {
+				min: 4,
+				max: 4
+			}
+		}
+	});
 	jQuery(".tabContents").hide(); // Hide all tab content divs by default
 	jQuery(".tabContents:first").show(); // Show the first div of tab content by default
 
 	jQuery(".tabContaier ul li a").on('click',function () { //Fire the click event
 		var id = $(this).attr('data-id');
-		var post_link = $(document.body).attr('data-siteurl') + '/?areaAjax=' + $('#main').attr('data-slug') + '&areaCatAjax=' + id;
+		var post_link = $(document.body).attr('data-siteurl') + '/?areaAjax=' + $('#main').attr('data-slug') + '&areaCatAjax=' + id + '&areaSlider=noticias';
 		$.get(post_link, function (data) {
-			$('#tab'+id).html(data);
-			$('.slider_area').trigger("destroy");
-			$('.slider_area').carouFredSel({
-				prev      : '#'+id+'-prev-slider',
-				next      : '#'+id+'-next-slider',
+			$('#noticias-slider-'+id).trigger('destroy');
+			$('#ajax-noticias').html(data);
+			$('#noticias-slider-'+id).html('');
+			$('#noticias-slider-'+id).carouFredSel({
+				prev      : '#noticias-prev-slider-'+id,
+				next      : '#noticias-next-slider-'+id,
 				responsive: true,
 				width     : '100%',
 				scroll    : {
@@ -175,10 +193,70 @@ jQuery(document).ready(function () {
 					width  : 250,
 					visible: {
 						min: 4,
-						max: 6
-					},
-					height: 250
+						max: 4
+					}
 				}
+			});
+			$('.ajax-item-noticias').each(function(){
+			var content = $(this).html();
+			var item = '<li class="item">'+content+'</li>'
+			$('#noticias-slider-'+id).trigger( 'insertItem', [item, 1, false] );
+			});
+		});
+		var post_link = $(document.body).attr('data-siteurl') + '/?areaAjax=' + $('#main').attr('data-slug') + '&areaCatAjax=' + id + '&areaSlider=publicacoes';
+		$.get(post_link, function (data) {
+			$('#ajax-publicacoes').html(data);
+			$('#publicacoes-slider-'+id).trigger('destroy');
+			$('#publicacoes-slider-'+id).html('');
+			$('#publicacoes-slider-'+id).carouFredSel({
+				prev      : '#publicacoes-prev-slider-'+id,
+				next      : '#publicacoes-next-slider-'+id,
+				responsive: true,
+				width     : '100%',
+				scroll    : {
+					items       : 1,
+					pauseOnHover: true
+				},
+				items     : {
+					width  : 250,
+					visible: {
+						min: 1,
+						max: 5
+					}
+				}
+			});
+			$('.ajax-item-publicacoes').each(function(){
+				var content = $(this).html();
+				var item = '<li class="item">'+content+'</li>';
+				$('#publicacoes-slider-'+id).trigger( 'insertItem', [item, 1, false] );
+			});
+		});
+		var post_link = $(document.body).attr('data-siteurl') + '/?areaAjax=' + $('#main').attr('data-slug') + '&areaCatAjax=' + id + '&areaSlider=acoes';
+		$.get(post_link, function (data) {
+			$('#acoes-slider-'+id).trigger('destroy');
+			$('#acoes-slider-'+id).html('');
+			$('#ajax-acoes').html(data);
+			$('#acoes-slider-'+id).carouFredSel({
+				prev      : '#acoes-prev-slider-'+id,
+				next      : '#acoes-next-slider-'+id,
+				responsive: true,
+				width     : '100%',
+				scroll    : {
+					items       : 1,
+					pauseOnHover: true
+				},
+				items     : {
+					width  : 250,
+					visible: {
+						min: 1,
+						max: 4
+					}
+				}
+			});
+			$('.ajax-item-acoes').each(function(){
+				var content = $(this).html();
+				var item = '<li class="item">'+content+'</li>';
+				$('#acoes-slider-'+id).trigger( 'insertItem', [item, 1, false] );
 			});
 		});
 		var activeTab = jQuery(this).attr("href"); // Catch the click link
@@ -187,7 +265,9 @@ jQuery(document).ready(function () {
 		jQuery(".tabContents").hide(); // hide currently visible tab content div
 		$('#tab'+id).show();
 		jQuery(activeTab).fadeIn(); // show the target tab content div by matching clicked link.
-
+		$('#ajax-acoes').html("");
+		$('#ajax-publicacoes').html("");
+		$('#ajax-noticias').html("");
 		return false; //prevent page scrolling on tab click
 	});
 	jQuery('.nav ul li').on('mouseover', function () {

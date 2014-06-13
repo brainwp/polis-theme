@@ -53,7 +53,6 @@ get_header();?>
 					</div>
 
 
-
 				</div><!-- post_container -->
 			</a>
 		<?php endwhile;
