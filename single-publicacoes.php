@@ -25,6 +25,28 @@ get_header(); ?>
 			</div><!-- thumb -->
 			<h2><?php the_title(); ?></h2>
 			<?php the_content(); ?>
+
+			<?php if( get_field('publicacoes_autor') ): ?>
+				<span>Autor: <?php echo get_field( 'publicacoes_autor' ); ?></span>
+			<?php endif; ?>
+
+			<?php if( get_field('publicacoes_ano') ): ?>
+				<span>Ano: <?php echo get_field( 'publicacoes_ano' ); ?></span>
+			<?php endif; ?>
+
+			<?php if( get_field('publicacoes_paginas') ): ?>
+				<span>Páginas: <?php echo get_field( 'publicacoes_paginas' ); ?></span>
+			<?php endif; ?>
+
+			<?php if( get_field('publicacoes_download') ): ?>
+				<?php
+					$download = get_field('publicacoes_download');
+					$file = substr( $download['url'], strrpos( $download['url'], '/' ) +1 );
+					$size = number_format( filesize( get_attached_file( $download['id'] ) ) / 1048576, 2 ) . "mb";
+				?>
+				<a href="<?php echo $download['url']; ?>" download="<?php echo $file; ?>">Download <?php echo $size; ?></a>
+			<?php endif; ?>
+
 		</article>
 
 		<?php endwhile; // end of the loop. ?>
