@@ -285,6 +285,33 @@ function terms( $taxonomy ) {
 	endif;
 }
 
+function top_term( $taxonomy ) {
+	$terms = get_the_terms( $post->ID, $taxonomy );
+	 
+	foreach ($terms as $term) { 	 
+	$parent = $term->parent;
+		if ( $parent=='0' ) {
+		    echo '<a class="" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';   
+		}
+	}
+}
+
+function child_term( $taxonomy ) {
+	$terms = get_the_terms( $post->ID, $taxonomy );
+	 
+	foreach ($terms as $term) { 	 
+	$parent = $term->parent;
+		if ( ! $parent == '0' ) {
+		    echo '<a class="" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';   
+		}
+	}
+}
+
+function cpt_name() {
+	$obj = get_post_type_object( get_post_type( $post ) );
+	echo $obj->labels->name;
+}
+
 /**
 * Custom logo login.
 */

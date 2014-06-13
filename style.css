@@ -1383,6 +1383,27 @@ slider de noticias + acoes
 	padding-bottom: 30px;
 }
 
+/* single areas */
+.content-single-areas {
+	padding-top: 40px;
+}
+
+.content-single-areas header {
+	clear: both;
+	width: 100%;
+	overflow: hidden;
+}
+
+.content-single-areas header h1, .content-single-areas header span {
+	width: auto;
+	display: inline-block;
+	float: left;
+}
+
+.content-single-areas article .thumb {
+	float: left;
+}
+
 /* pagina institucional */
 .intro-institucional{
 	background:#b6b6b6;
