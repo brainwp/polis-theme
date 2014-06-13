@@ -108,6 +108,7 @@ $categorias = get_categories( $args );
 								<div class="col-md-12 resumo"><?php resumo();?></div>
 							</a>
 						</li>
+
 					<?php endwhile; ?>
 				</ul>
 			</div>
