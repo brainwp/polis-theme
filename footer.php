@@ -25,13 +25,13 @@
 		<?php wp_nav_menu( array('theme_location' => 'footer-biblioteca' )); ?>
 	</div>
 	<div class="col-md-2 apoio">
-		<a class="title">Apoio:</a>
+		<a class="title">Apoio</a>
 		<a href="<?php echo of_get_option( 'footer-apoio-link' );?>">
 			<img src="<?php echo of_get_option( 'footer-apoio-img' );?>">
 		</a>
 	</div>
 	<div class="col-md-2 apoio">
-		<a class="title">Realização:</a>
+		<a class="title">Realização</a>
 		<a href="<?php echo of_get_option( 'footer-realizacao-link' );?>">
 			<img src="<?php echo of_get_option( 'footer-realizacao-img' );?>">
 		</a>

@@ -101,8 +101,8 @@ jQuery(document).ready(function () {
 		})
 	});
 	$('#slider2').carouFredSel({
-		prev      : '#prev-slider',
-		next      : '#next-slider',
+		prev      : '#prev-publicacao',
+		next      : '#next-publicacao',
 		responsive: true,
 		width     : '100%',
 		scroll    : {
@@ -131,8 +131,8 @@ jQuery(document).ready(function () {
 		items     : {
 			width  : 250,
 			visible: {
-				min: 4,
-				max: 4
+				min: 1,
+				max: 5
 			}
 		}
 	});

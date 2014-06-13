@@ -176,7 +176,7 @@ get_header(); ?>
 
 							<?php
 							if ( has_post_thumbnail() ) {
-								$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-image', true );
+								$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-thumb', true );
 								echo '<img src="' . $thumb_url[0] . '"/>';
 							} else {
 								echo '<img src="'. theme('/img/default-publicacoes-thumb.jpg') .'" />';
@@ -186,13 +186,20 @@ get_header(); ?>
 					</li>
 				<?php endwhile; ?>
 			</ul>
-		</div>
+		</div><!-- carousel -->
+
+		<div id="prev-publicacao" class="prev"></div>
+		<div id="next-publicacao" class="next"></div>
+
 		<div class="clear"></div>
 
 		<div class="todos-full"><a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma busca</a></div>
 
 	</section>
 	<section class="col-md-12 content widgets-home">
+
+	<div class="linha-tracejada"></div>
+
 		<?php if ( is_active_sidebar( 'widgets-home' ) ) : ?>
 			<?php dynamic_sidebar( 'widgets-home' ); ?>
 		<?php endif; ?>

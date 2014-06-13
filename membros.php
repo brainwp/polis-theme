@@ -34,23 +34,28 @@ get_header();?>
 	</section>
 	<section class="col-md-12 atividades <?php echo $_query->area_slug; ?>">
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-			<div class="col-md-3 post_container">
-				<a href="#" class="col-md-12 post">
-					<?php
-					if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
-						the_post_thumbnail( 'medium' );
-					} else {
-						echo '<img src="' . get_bloginfo( 'template_url' ) . '/img/thumb-equipe.png">';
-					}
-					?>
 
-					<h3 class="col-md-10"><?php the_title(); ?></h3>
+			<a href="<?php the_permalink(); ?>" class="col-md-3 post">
+				<div class="post_container">
+					<div class="thumb">
+						<?php
+						if ( has_post_thumbnail() ) {
+							the_post_thumbnail( 'medium' );
+						} else {
+							echo '<img src="' . theme() . '/img/thumb-equipe.png">';
+						} ?>
+						<h3><?php the_title(); ?></h3>
+					</div><!-- thumb -->
 
-					<div class="col-md-12">
-						<?php the_excerpt(); ?>
+					<div class="col-md-12 description">
+						<?php resumo( 150 ); ?>
+						<span class="leia" href="<?php the_permalink(); ?>">Leia mais</span>
 					</div>
-				</a>
-			</div>
+
+
+
+				</div><!-- post_container -->
+			</a>
 		<?php endwhile;
 		else: ?>
 		<?php endif; ?>

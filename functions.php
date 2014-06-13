@@ -72,23 +72,19 @@ function get_campoPersonalizado( $campo ) {
 
 	return $informacao_campo[0];
 }
+function resumo( $custom_max = '' ){
+	global $_query;
+	$string = get_the_excerpt();
 
-function resumo() {
-	$string = get_the_excerpt();
-	$max    = 100;
-	if ( strlen( $string ) > $max ) {
-		while ( substr( $string, $max, 1 ) <> ' ' && ( $max < strlen( $string ) ) ) {
-			$max ++;
-		};
-	};
-	echo substr( $string, 0, $max ) . " [...]";
-}
-function get_resumo() {
-	$string = get_the_excerpt();
-	$max    = 100;
-	if ( strlen( $string ) > $max ) {
-		while ( substr( $string, $max, 1 ) <> ' ' && ( $max < strlen( $string ) ) ) {
-			$max ++;
+	if ( empty( $custom_max ) ) {
+		$max = 100;		
+	} else {
+		$max = $custom_max;
+	}
+
+	if (strlen($string) > $max) {
+		while (substr($string,$max,1) <> ' ' && ($max < strlen($string))){
+			$max++;
 		};
 	};
 	return substr( $string, 0, $max ) . " [...]";
@@ -313,7 +309,7 @@ function return_term_biblioteca_name($slug) {
 require get_template_directory() . '/inc/widget.php';
 // conteudo para users logados
 require get_template_directory() . '/inc/error_login.php';
-function theme( $arg = '') {
+function theme( $arg = '' ) {
 	$theme = get_template_directory_uri();
 	if ( !empty( $arg ) ) {
 		$theme .= $arg;
@@ -332,4 +328,68 @@ function terms( $taxonomy ) {
 		$the_terms = join( ", ", $links );
 		return $the_terms;
 	endif;
+	$terms = get_the_terms( $post->ID, $taxonomy );
+	if ( $terms && ! is_wp_error( $terms ) ) : 
+	$links = array();
+	foreach ( $terms as $term ) {
+		$links[] = $term->name;
+	}
+	$the_terms = join( ", ", $links );			
+	return $the_terms;
+	endif;
+}
+
+function top_term( $taxonomy ) {
+	global $post;
+	$terms = get_the_terms( $post->ID, $taxonomy );
+	 
+	foreach ($terms as $term) { 	 
+	$parent = $term->parent;
+		if ( $parent=='0' ) {
+		    echo '<a class="" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';   
+		}
+	}
+}
+
+function child_term( $taxonomy ) {
+	$terms = get_the_terms( $post->ID, $taxonomy );
+	 
+	foreach ($terms as $term) { 	 
+	$parent = $term->parent;
+		if ( ! $parent == '0' ) {
+		    echo '<a class="" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';   
+		}
+	}
+}
+
+function cpt_name() {
+	$obj = get_post_type_object( get_post_type( $post ) );
+	echo $obj->labels->name;
+}
+
+/**
+* Custom logo login.
+*/
+add_action('login_head', 'custom_logo_login');
+function custom_logo_login() {
+	echo '
+	<style type="text/css">
+		body.login div#login {
+			padding: 5% 0 0;
+		}
+		body.login div#login h1 {
+			text-align: center;
+			margin: 0 auto;
+		}
+		body.login div#login h1, body.login div#login h1 a {
+			width: 230px;
+			height: 230px;
+		}
+		body.login div#login h1 a {
+			background-image: url( ' . get_bloginfo('template_directory') . '/img/logo-polis-login.png) !important;
+			padding: 0;
+			background-size: 230px 230px;
+		}
+	</style>
+	';
 }

@@ -29,12 +29,10 @@ class widget_acervo extends WP_Widget {
 		$text = apply_filters( 'widget_acervo', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
 		$link = apply_filters( 'widget_acervo', empty( $instance['link'] ) ? '' : $instance['link'], $instance );?>
 		<div class="col-md-12 acervo">
-			<div class="col-md-5 description">
+			<div class="col-md-6 description">
 				<?php echo $text; ?>
 			</div>
-			<div class="col-md-5 link pull-right">
-				<a href="<?php echo $link; ?>">VER TODOS</a>
-			</div>
+			<a class="btn-todos" href="<?php echo $link; ?>">VER TODOS</a>
 		</div>
 		<?php
 	}
@@ -95,9 +93,7 @@ class widget_midia extends WP_Widget {
 					<?php echo $text; ?>
 				</div>
 			</div>
-			<div class="col-md-5 link pull-right">
-				<a href="<?php echo $link; ?>">VER TODOS</a>
-			</div>
+			<a class="btn-todos" href="<?php echo $link; ?>">VER TODOS</a>
 		</div>
 	<?php
 	}
@@ -164,9 +160,7 @@ class widget_projetos extends WP_Widget {
 						<?php echo $text; ?>
 					</div>
 				</div>
-				<div class="col-md-5 link pull-right">
-					<a href="<?php echo $link; ?>">VER TODOS</a>
-				</div>
+				<a class="btn-todos" href="<?php echo $link; ?>">VER TODOS</a>
 			</div>
 	<?php
 	}
