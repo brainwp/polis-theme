@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-	<section class="col-md-12 content-single-areas">
+	<section class="col-md-12 content-single-areas <?php top_term( 'categorias' ); ?>">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 

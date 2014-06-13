@@ -1611,7 +1611,9 @@ slider de noticias + acoes
 .content-single-areas .col-md-12 {
 	padding: 0;
 }
-
+.content-single-areas.democracia-e-participacao {
+	background: url("img/areas/bg-democracia-e-participacao-inv.png") right no-repeat;
+}
 .content-single-areas header {
 	clear: both;
 	width: 100%;
