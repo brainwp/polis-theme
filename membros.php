@@ -48,10 +48,9 @@ get_header();?>
 					</div><!-- thumb -->
 
 					<div class="col-md-12 description">
-						<?php resumo( 150 ); ?>
+						<?php echo resumo( 150 ); ?>
 						<span class="leia" href="<?php the_permalink(); ?>">Leia mais</span>
 					</div>
-
 
 
 				</div><!-- post_container -->
