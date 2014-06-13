@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-	<section class="col-md-12 content-single-areas <?php top_term( 'categorias' ); ?>">
+	<section class="col-md-12 content-single-areas <?php top_term( 'categorias', 'slug' ); ?>">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
@@ -46,7 +46,7 @@ get_header(); ?>
 							$file = substr( $download['url'], strrpos( $download['url'], '/' ) +1 );
 							$size = number_format( filesize( get_attached_file( $download['id'] ) ) / 1048576, 2 ) . "mb";
 						?>
-						<a class="btn" href="<?php echo $download['url']; ?>" download="<?php echo $file; ?>">Download <?php echo $size; ?></a>
+						<a class="btn bg-<?php top_term( 'categorias', 'slug' ); ?>" href="<?php echo $download['url']; ?>" download="<?php echo $file; ?>">Download <?php echo $size; ?></a>
 					<?php endif; ?>
 				</div><!-- meta -->
 			</div><!-- content -->
@@ -56,5 +56,54 @@ get_header(); ?>
 		<?php endwhile; // end of the loop. ?>
 
     </section>
+
+    <section class="col-md-12 slider-single-areas <?php top_term( 'categorias', 'slug' ); ?>">
+
+    	<h2>Outros <?php echo terms( 'tipos' ); ?></h2>
+
+    	<div id="carousel" class="col-md-12 list_carousel responsive">
+			<?php
+			$terms_c = array();
+			$terms_c = escape_terms( 'tipos' );
+			$arg = array(
+				'post_type'			=> array( 'publicacoes' ),
+				'tipos'				=> $terms_c,
+				'orderby'			=> 'date',
+				'order'				=> 'ASC',
+				'posts_per_page'	=> 15
+			);?>
+			<ul id="slider2">
+				<?php
+				$publicacoes = new WP_Query( $arg ); ?>
+				<?php while ( $publicacoes->have_posts() ) :
+					$publicacoes->the_post(); ?>
+					<li class="item">
+						<a href="<?php the_permalink(); ?>">
+
+							<div class="hover"></div>
+
+							<?php
+							if ( has_post_thumbnail() ) {
+								$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-thumb', true );
+								echo '<img src="' . $thumb_url[0] . '"/>';
+							} else {
+								echo '<img src="'. theme('/img/default-publicacoes-thumb.jpg') .'" />';
+							}
+							?>
+						</a>
+					</li>
+				<?php endwhile; ?>
+			</ul>
+		</div><!-- carousel -->
+
+		<div id="prev-publicacao" class="prev"></div>
+		<div id="next-publicacao" class="next"></div>
+
+		<div class="clear"></div>
+
+		<div class="todos-full"><a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma busca</a></div>
+
+    </section>
+
 
 <?php get_footer(); ?>
