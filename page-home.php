@@ -187,7 +187,6 @@ get_header(); ?>
 				<?php endwhile; ?>
 			</ul>
 		</div>
-
 		<div class="clear"></div>
 
 		<div class="todos-full"><a class="btn-todos-full" href="<?php echo home_url(); ?>/biblioteca">Veja todas as publicações ou faça uma busca</a></div>

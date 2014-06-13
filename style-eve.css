@@ -26,6 +26,12 @@
 .site-main.democracia-e-participacao h1, .site-main.democracia-e-participacao h2 {
 	color: #A22521;
 }
+.site-main.reforma-urbana h1, .site-main.reforma-urbana h2 {
+	color: #526c32;
+}
+.site-main.cidadania-cultural h1, .site-main.cidadania-cultural h2 {
+	color: #b7923d;
+}
 
 .site-main .aba-area {
 	background-color: #EDEDED;

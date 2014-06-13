@@ -313,3 +313,23 @@ function return_term_biblioteca_name($slug) {
 require get_template_directory() . '/inc/widget.php';
 // conteudo para users logados
 require get_template_directory() . '/inc/error_login.php';
+function theme( $arg = '') {
+	$theme = get_template_directory_uri();
+	if ( !empty( $arg ) ) {
+		$theme .= $arg;
+	}
+	return $theme;
+}
+
+function terms( $taxonomy ) {
+	global $post;
+	$terms = get_the_terms( $post->ID, $taxonomy );
+	if ( $terms && ! is_wp_error( $terms ) ) :
+		$links = array();
+		foreach ( $terms as $term ) {
+			$links[] = $term->name;
+		}
+		$the_terms = join( ", ", $links );
+		return $the_terms;
+	endif;
+}

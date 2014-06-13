@@ -35,9 +35,6 @@ get_header(); ?>
 			</a>
 		<?php
 		}
-		if(is_404()){
-			echo '<h1 style="text-align: center;"">Página não encontrada</h1>';
-		}
 		?>
 		<div class="container pagination">
 			<div class="col-md-4 col-md-offset-4">
