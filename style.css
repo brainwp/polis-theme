@@ -1607,7 +1607,6 @@ slider de noticias + acoes
 .content-single-areas {
 	padding-top: 40px;
 }
-
 .content-single-areas .col-md-12 {
 	padding: 0;
 }
@@ -1619,48 +1618,57 @@ slider de noticias + acoes
 	width: 100%;
 	overflow: hidden;
 }
-
 .content-single-areas header h1, .content-single-areas header span {
 	width: auto;
 	display: inline-block;
 	float: left;
 }
-
-.content-single-areas header h1 {
-}
-
 .content-single-areas header span {
 	font-size: 0.9em;
     margin-top: 9px;
     text-transform: uppercase;
     color: #666;
 }
-
 .content-single-areas header span.marcador {
 	margin: 9px 8px 0;
 }
-
 .content-single-areas article {
-	margin-top: 30px;
+	margin: 30px 0;
 	display: block;
 }
-
 .content-single-areas article .thumb {
 	max-width: 180px;
-	margin-right: 20px;
+	margin-right: 30px;
 	float: left;
 }
-
 .content-single-areas article .content {
 	float: left;
 	max-width: 900px;
+	width: 60%;
 }
-
 .content-single-areas article .content h2 {
 	margin-bottom: 15px;
 }
-
-.content-single-areas article .content .meta span {
+.content-single-areas article .content .meta {
+	position: relative;
+}
+.content-single-areas article .content .meta .btn {
+	text-align: center;
+	padding: 3px 5px;
+	background: #ad820f;
+	color:white;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0;
+	border-radius: 2px;
+	text-decoration: none;
+	text-transform: uppercase;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.content-single-areas article .content .meta .btn {
+	background: #886103;
 }
 
 /* pagina institucional */
