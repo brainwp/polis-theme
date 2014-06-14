@@ -143,7 +143,7 @@ get_header(); ?>
 					Conheça nosso novo canal!
 					<a href="#" class="col-md-8 btn-ao-vivo">Ao vivo</a>
 				</div>
-				<a href="#" class="full-link"></a>
+				<a href="<?php echo home_url(); ?>/canal" class="full-link"></a>
 			</div>
 		</section>
 	</section>
