@@ -32,6 +32,9 @@ function _init_query_object() {
 		//Acoes
 		'acoes'        => false,
 
+		//Canal Pólis
+		'canal'        => false,
+
 	);
 
 }
@@ -121,6 +124,8 @@ function _query_processor( $query ) {
 		_query_equipe();
 	} elseif ( get_query_var( 'template' ) == 'membros' ) {
 		_query_membros();
+	} elseif ( get_query_var( 'template' ) == 'canal' ) {
+		_query_canal();
 	}
 	/* Template redirect */
 
@@ -297,6 +302,9 @@ function _query_archive_noticias( $area ) {
 		)
 	);
 	$wp_query = new WP_Query( $args );
+}
+
+function _query_canal() {
 }
 
 function _query_produtos() {

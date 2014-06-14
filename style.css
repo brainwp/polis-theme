@@ -1730,6 +1730,28 @@ slider de noticias + acoes
  	background-color: #333;
 }
 
+/* page.php */
+.content-canal {
+	padding-top: 40px;
+	background: url("img/bg-canal.jpg") top center no-repeat;
+	min-height: 400px;
+}
+
+.content-canal h1 {
+	color: #FFF;
+	margin: 0 0 0 93px;
+}
+
+.content-canal .tubepress {
+	margin: 183px 0 10px;
+    padding: 30px 0;
+    width: 100%;
+}
+
+.content-canal .tubepress .tubepress_thumb {
+	margin: 10px 0 15px;
+}
+
 /* pagina institucional */
 .intro-institucional{
 	background:#b6b6b6;
