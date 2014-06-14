@@ -350,16 +350,17 @@ function escape_terms( $taxonomy ) {
 function top_term( $taxonomy, $echo = '' ) {
 	global $post;
 	$terms = get_the_terms( $post->ID, $taxonomy );
-	 
-	foreach ( $terms as $term ) { 	 
-	$parent = $term->parent;
-		if ( $parent=='0' ) {
-			if ( empty( $echo ) ) {
-				echo $term->name;
-			} elseif ( $echo == 'a' ) {
-				echo '<a class="top_term_link" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';
-			} elseif ( $echo == 'slug' ) {
-				echo $term->slug;
+	if ( $terms && ! is_wp_error( $terms ) ) {
+		foreach ( $terms as $term ) { 	 
+		$parent = $term->parent;
+			if ( $parent=='0' ) {
+				if ( empty( $echo ) ) {
+					echo $term->name;
+				} elseif ( $echo == 'a' ) {
+					echo '<a class="top_term_link" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';
+				} elseif ( $echo == 'slug' ) {
+					echo $term->slug;
+				}
 			}
 		}
 	}
