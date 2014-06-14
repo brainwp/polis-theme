@@ -36,25 +36,16 @@ get_header(); ?>
 				<h2><?php the_title(); ?></h2>
 				<?php the_content(); ?>
 				<div class="meta">
-					<?php if( get_field('publicacoes_autor') ): ?>
-						<span>Autor: <?php echo get_field( 'publicacoes_autor' ); ?></span><br>
+					<?php if( get_field('mgr_fonte') ): ?>
+						<span>Fonte: <?php echo get_field( 'mgr_fonte' ); ?></span><br>
 					<?php endif; ?>
 
-					<?php if( get_field('publicacoes_ano') ): ?>
-						<span>Ano: <?php echo get_field( 'publicacoes_ano' ); ?></span><br>
+					<?php if( get_field('mgr_link_externo') ): ?>
+						<span>Link Externo: <?php echo get_field( 'mgr_link_externo' ); ?></span><br>
 					<?php endif; ?>
 
-					<?php if( get_field('publicacoes_paginas') ): ?>
-						<span>Páginas: <?php echo get_field( 'publicacoes_paginas' ); ?></span><br>
-					<?php endif; ?>
-
-					<?php if( get_field('publicacoes_download') ): ?>
-						<?php
-							$download = get_field('publicacoes_download');
-							$file = substr( $download['url'], strrpos( $download['url'], '/' ) +1 );
-							$size = number_format( filesize( get_attached_file( $download['id'] ) ) / 1048576, 2 ) . "mb";
-						?>
-						<a class="btn bg-<?php top_term( 'categorias', 'slug' ); ?>" href="<?php echo $download['url']; ?>" download="<?php echo $file; ?>">Download <?php echo $size; ?></a>
+					<?php if( get_field('mgr_autor') ): ?>
+						<span>Autor: <?php echo get_field( 'mgr_autor' ); ?></span><br>
 					<?php endif; ?>
 				</div><!-- meta -->
 			</div><!-- content -->
