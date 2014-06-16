@@ -360,6 +360,8 @@ function top_term( $taxonomy, $echo = '' ) {
 					echo '<a class="top_term_link" href="' . get_term_link( $term, $taxonomy ) . '">' . $term->name . '</a>';
 				} elseif ( $echo == 'slug' ) {
 					echo $term->slug;
+				} elseif ( $echo == 'return' ) {
+					return $term->name;
 				}
 			}
 		}

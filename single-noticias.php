@@ -11,14 +11,14 @@ get_header(); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php $categoria = top_term( 'categorias' ); ?>
+		<?php $categoria = top_term( 'categorias', 'return' ); ?>
 
 		<header>
 
 			<?php if ( empty( $categoria ) ) { ?>
 				<h1><?php cpt_name(); ?></h1></span>
 			<?php } else { ?>
-				<h1><?php echo $categoria; ?></h1><span class="marcador">•</span><span><?php cpt_name(); ?>
+				<h1><?php echo $categoria; ?></h1><span class="marcador">•</span><span><?php cpt_name(); ?></span>
 			<?php } ?>
 
 		</header><!-- header -->
@@ -58,14 +58,18 @@ get_header(); ?>
 
     <section class="col-md-12 slider-single-areas <?php top_term( 'categorias', 'slug' ); ?>">
 
-    	<h2>Outras Notícias</h2>
+    	<?php
+			$terms_c = array();
+			$terms_c = escape_terms( 'tipos' );
+    	?>
+
+    	<h2>Outras Notícias em <?php echo $terms_c; ?></h2>
 
     	<div id="carousel" class="col-md-12 list_carousel responsive">
 			<?php
-			$terms_c = array();
-			$terms_c = escape_terms( 'tipos' );
 			$arg = array(
 				'post_type'			=> array( 'noticias' ),
+				'tipos'				=> $terms_c,
 				'orderby'			=> 'date',
 				'order'				=> 'ASC',
 				'posts_per_page'	=> 15
