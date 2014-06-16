@@ -60,7 +60,8 @@ get_header(); ?>
 
     	<?php
 			$terms_c = array();
-			$terms_c = escape_terms( 'tipos' );
+			$terms_c = terms( 'categorias' );
+			$terms_e = escape_terms( 'categorias' )
     	?>
 
     	<h2>Outras Notícias em <?php echo $terms_c; ?></h2>
@@ -69,7 +70,7 @@ get_header(); ?>
 			<?php
 			$arg = array(
 				'post_type'			=> array( 'noticias' ),
-				'tipos'				=> $terms_c,
+				'tipos'				=> $terms_e,
 				'orderby'			=> 'date',
 				'order'				=> 'ASC',
 				'posts_per_page'	=> 15
