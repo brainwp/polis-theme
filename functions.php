@@ -5,6 +5,10 @@
  * @package Polis Theme
  */
 
+define( 'ACF_LITE' , true );
+
+require get_template_directory() . '/inc/acf.php';
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
