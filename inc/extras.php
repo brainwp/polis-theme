@@ -122,3 +122,12 @@ function polis_widget_now() {
 		}
 	}
 }
+
+function polis_contactmethods( $contactmethods ) {
+	unset($contactmethods['yim']);
+	unset($contactmethods['jabber']);
+	unset($contactmethods['twitter']);
+	unset($contactmethods['facebook']);
+	return $contactmethods;
+ }
+ add_filter('user_contactmethods','polis_contactmethods',10,1);
