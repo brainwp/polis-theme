@@ -5,6 +5,10 @@
  * @package Polis Theme
  */
 
+define( 'ACF_LITE' , true );
+
+require get_template_directory() . '/inc/acf.php';
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
@@ -197,9 +201,6 @@ require get_template_directory() . '/inc/tax-tipos.php';
 
 require_once( get_stylesheet_directory() . '/router.php' );
 
-define( 'ACF_LITE', true );
-include_once( get_stylesheet_directory() . '/inc/advanced-custom-fields/acf.php');
-require_once( get_stylesheet_directory() . '/fields.php' );
 
 function custom_images() {
 	add_image_size( 'slider-news-image', 615, 171 );
