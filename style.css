@@ -3425,41 +3425,43 @@ slider de noticias + acoes
 }
 
 .slider-single-areas .prev, .slider-single-areas .next {
-
 	width: 40px;
-
 	height: 40px;
-
 	position: absolute;
-
 	top: 210px;
-
 	cursor: pointer;
-
 }
 
 .slider-single-areas .prev {
-
 	left: 20px;
-
 	background: url("img/setas-slider-publicacoes.png") left center no-repeat #666;
-
 }
 
 .slider-single-areas .next {
-
 	right: 20px;
-
 	background: url("img/setas-slider-publicacoes.png") right center no-repeat #666;
-
 }
 
 .slider-single-areas .prev:hover, .slider-single-areas .next:hover {
-
  	background-color: #333;
-
 }
 
+.content-single article {
+	padding-top: 40px;
+	padding-bottom: 30px;
+}
+
+.content-single h1 {
+	color: #00588d;
+	margin-bottom :15px;
+}
+
+.content-single .thumb {
+	width: 100%;
+	height: 200px;
+	margin: 25px auto 30px;
+	border-radius: 3px;
+}
 
 
 /* pagina institucional */
