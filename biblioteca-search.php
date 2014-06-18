@@ -116,7 +116,7 @@ $total_pages = ceil( $total_posts / $per_page );
 						$type_list[$type_term][$_i]['term_name'] = return_term_biblioteca_name( 'tipos' );
 						$type_list[$type_term][$_i]['term_slug'] = return_term_biblioteca( 'tipos' );
 						$type_list[$type_term][$_i]['title']     = get_the_title();
-						$type_list[$type_term][$_i]['resumo']    = get_resumo();
+						$type_list[$type_term][$_i]['resumo']    = resumo();
 						$type_list[$type_term][$_i]['thumb']     = get_post_thumbnail_id();
 						$type_list[$type_term][$_i] ++;
 					}
@@ -165,23 +165,23 @@ $total_pages = ceil( $total_posts / $per_page );
 					$search_vars = '/?key='.$key.'&tipo='.$tipo.'&formato='.$formato_str.'&categoria='.$categoria.'&anomin='.$anomin.'&anomax='.$anomax.'';
 					if ( $page != 1 ) {
 						?>
-						<a href="<?php echo get_bloginfo( 'url' ) ?>/equipe/page/<?php echo $page - 1 . $search_vars ?>/">&lt;</a>
+						<a href="<?php echo get_bloginfo( 'url' ) ?>/biblioteca/busca/page/<?php echo $page - 1 . $search_vars ?>/">&lt;</a>
 					<?php
 					}
 					?>
 					<?php
 					for ( $i = 1; $i < $total_pages + 1; $i ++ ) {
 						if ( $i == $page ) {
-							echo '<a class="atual" href="' . get_bloginfo( 'url' ) . '/equipe/page/' . $i . $search_vars.'">' . $i . '</a>';
+							echo '<a class="atual" href="' . get_bloginfo( 'url' ) . '/biblioteca/busca/page/' . $i . $search_vars.'">' . $i . '</a>';
 						} else {
-							echo '<a href="' . get_bloginfo( 'url' ) . '/equipe/page/' . $i . $search_vars.'">' . $i . '</a>';
+							echo '<a href="' . get_bloginfo( 'url' ) . '/biblioteca/busca/page/' . $i . $search_vars.'">' . $i . '</a>';
 						}
 					}
 					?>
 					<?php
 					if ( $page < $total_pages ) {
 						?>
-						<a href="<?php echo get_bloginfo( 'url' ) ?>/equipe/page/<?php echo $page + 1 . $search_vars ?>">&gt;</a>
+						<a href="<?php echo get_bloginfo( 'url' ) ?>/biblioteca/busca/page/<?php echo $page + 1 . $search_vars ?>">&gt;</a>
 					<?php
 					}
 					?>
