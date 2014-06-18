@@ -20,6 +20,11 @@ get_header(); ?>
 				} else { ?>
 					<img src="<?php echo get_template_directory_uri(); ?>/img/default700x200.jpg" alt="<?php the_title(); ?>" />
 				<?php } ?>
+				<?php $terms = terms( 'categorias' ); ?>
+				<?php $class_term = explode(", ", $terms); ?>
+				<div class="news-terms bg-<?php echo sanitize_title($class_term[0]); ?>">
+					<?php echo $terms; ?>
+				</div>
 			</div><!-- thumb -->
 
 			<?php the_content(); ?>
@@ -34,19 +39,17 @@ get_header(); ?>
 
     </section>
 
+	<?php
+		$terms_c = array();
+		$terms_c = terms( 'categorias' );
+		$terms_e = escape_terms( 'categorias' )
+	?>
+
+<?php if ( ! empty( $terms_c ) ): ?>
+
 	<section class="col-md-12 slider-single-areas <?php top_term( 'categorias', 'slug' ); ?>">
 
-    	<?php
-			$terms_c = array();
-			$terms_c = terms( 'categorias' );
-			$terms_e = escape_terms( 'categorias' )
-    	?>
-
-    	<h2>Outras Notícias
-    		<?php if ( ! empty($terms_c)): ?>
-				em <?php echo $terms_c; ?>
-    		<?php endif ?>
-    	</h2>
+    	<h2>Outras Notícias<?php if ( ! empty( $terms_c ) ): ?> em <?php echo $terms_c; ?><?php endif; ?></h2>
 
     	<div id="carousel" class="col-md-12 list_carousel responsive">
 			<?php
@@ -88,5 +91,6 @@ get_header(); ?>
 
     </section>
 
+<?php endif; ?>
 
 <?php get_footer(); ?>
