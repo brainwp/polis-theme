@@ -7,64 +7,49 @@
 
 get_header(); ?>
 
-	<section class="col-md-12 content-single-areas <?php top_term( 'categorias', 'slug' ); ?>">
+	<section class="col-md-12 content-single <?php top_term( 'categorias', 'slug' ); ?>">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php $categoria = top_term( 'categorias', 'return' ); ?>
-
-		<header>
-
-			<?php if ( empty( $categoria ) ) { ?>
-				<h1><?php cpt_name(); ?></h1></span>
-			<?php } else { ?>
-				<h1><?php echo $categoria; ?></h1><span class="marcador">•</span><span><?php cpt_name(); ?></span>
-			<?php } ?>
-
-		</header><!-- header -->
-
-		<article class="col-md-12 pull-left">
+		<article class="col-md-8 pull-left">
+			<h1><?php the_title(); ?></h1>
+			
 			<div class="thumb">
 				<?php if ( has_post_thumbnail() ) {
-					the_post_thumbnail( 'slider-publicacoes-thumb' );
+					the_post_thumbnail( 'single-noticias-thumb' );
 				} else { ?>
-					<img src="<?php echo get_template_directory_uri(); ?>/img/default-publicacoes-thumb.jpg" alt="<?php the_title(); ?>" />
+					<img src="<?php echo get_template_directory_uri(); ?>/img/default700x200.jpg" alt="<?php the_title(); ?>" />
 				<?php } ?>
+				<?php $terms = terms( 'categorias' ); ?>
+				<?php $class_term = explode(", ", $terms); ?>
+				<div class="news-terms bg-<?php echo sanitize_title($class_term[0]); ?>">
+					<?php echo $terms; ?>
+				</div>
 			</div><!-- thumb -->
 
-			<div class="content">
-				<h2><?php the_title(); ?></h2>
-				<?php the_content(); ?>
-				<div class="meta">
-					<?php if( get_field('mgr_fonte') ): ?>
-						<span>Fonte: <?php echo get_field( 'mgr_fonte' ); ?></span><br>
-					<?php endif; ?>
-
-					<?php if( get_field('mgr_link_externo') ): ?>
-						<span>Link Externo: <?php echo get_field( 'mgr_link_externo' ); ?></span><br>
-					<?php endif; ?>
-
-					<?php if( get_field('mgr_autor') ): ?>
-						<span>Autor: <?php echo get_field( 'mgr_autor' ); ?></span><br>
-					<?php endif; ?>
-				</div><!-- meta -->
-			</div><!-- content -->
-
+			<?php the_content(); ?>
 		</article>
+		<aside class="col-md-4 pull-right sidebar-page">
+			<?php if ( is_active_sidebar( 'widgets-institucional' ) ) : ?>
+				<?php dynamic_sidebar( 'widgets-institucional' ); ?>
+			<?php endif; ?>
+		</aside>
 
 		<?php endwhile; // end of the loop. ?>
 
     </section>
 
-    <section class="col-md-12 slider-single-areas <?php top_term( 'categorias', 'slug' ); ?>">
+	<?php
+		$terms_c = array();
+		$terms_c = terms( 'categorias' );
+		$terms_e = escape_terms( 'categorias' )
+	?>
 
-    	<?php
-			$terms_c = array();
-			$terms_c = terms( 'categorias' );
-			$terms_e = escape_terms( 'categorias' )
-    	?>
+<?php if ( ! empty( $terms_c ) ): ?>
 
-    	<h2>Outras Notícias em <?php echo $terms_c; ?></h2>
+	<section class="col-md-12 slider-single-areas <?php top_term( 'categorias', 'slug' ); ?>">
+
+    	<h2>Outras Notícias<?php if ( ! empty( $terms_c ) ): ?> em <?php echo $terms_c; ?><?php endif; ?></h2>
 
     	<div id="carousel" class="col-md-12 list_carousel responsive">
 			<?php
@@ -105,5 +90,7 @@ get_header(); ?>
 		<div class="clear"></div>
 
     </section>
+
+<?php endif; ?>
 
 <?php get_footer(); ?>

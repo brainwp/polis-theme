@@ -2409,19 +2409,12 @@ slider de noticias + acoes
 }
 
 #slider-news .thumb .news-terms {
-
 	position: absolute;
-
 	right: 2px;
-
 	padding: 6px 10px;
-
 	bottom: 0;
-
 	font-size: 0.8em;
-
 	color: #FFF;
-
 }
 
 #slider-news .title{
@@ -3209,257 +3202,185 @@ slider de noticias + acoes
 
 
 /* single areas */
-
 .content-single-areas {
-
 	padding-top: 40px;
-
 }
 
 .content-single-areas .col-md-12 {
-
 	padding: 0;
-
 }
 
 .content-single-areas.democracia-e-participacao {
-
 	background: url("img/areas/bg-democracia-e-participacao-inv.png") right no-repeat;
-
 }
 
 .content-single-areas.democracia-e-participacao header h1, .slider-single-areas.democracia-e-participacao h2 {
-
 	color: #c05255;
-
 }
 
 .content-single-areas header {
-
 	clear: both;
-
 	width: 100%;
-
 	overflow: hidden;
-
 }
 
 .content-single-areas header h1, .content-single-areas header span {
-
 	width: auto;
-
 	display: inline-block;
-
 	float: left;
-
 }
 
 .content-single-areas header span {
-
 	font-size: 0.9em;
-
     margin-top: 9px;
-
     text-transform: uppercase;
-
     color: #666;
-
 }
 
 .content-single-areas header span.marcador {
-
 	margin: 9px 8px 0;
-
 }
 
 .content-single-areas article {
-
 	margin: 30px 0;
-
 	display: block;
-
 }
 
 .content-single-areas article .thumb {
-
 	max-width: 180px;
-
 	margin-right: 30px;
-
 	float: left;
-
 }
 
 .content-single-areas article .content {
-
 	float: left;
-
 	max-width: 900px;
-
 	width: 60%;
-
 }
 
 .content-single-areas article .content h2 {
-
 	margin-bottom: 15px;
-
 }
 
 .content-single-areas article .content .meta {
-
 	position: relative;
-
 }
 
 .content-single-areas article .content .meta .btn {
-
 	text-align: center;
-
 	padding: 3px 5px;
-
 	background: #ad820f;
-
 	color:white;
-
 	font-size: 12px;
-
 	font-weight: bold;
-
 	margin: 0;
-
 	border-radius: 2px;
-
 	text-decoration: none;
-
 	text-transform: uppercase;
-
 	position: absolute;
-
 	top: 0;
-
 	right: 0;
-
 }
 
 .content-single-areas article .content .meta .btn {
-
 	background: #886103;
-
 }
 
 .content-single-areas article .content {
-
 	float: left;
-
 	max-width: 900px;
-
 	width: 60%;
-
 	background-color: transparent;
-
 }
 
 .content-single-areas article .content h2 {
-
 	margin-bottom: 15px;
-
 }
 
 .content-single-areas article .content .meta {
-
 	position: relative;
-
 }
 
 .content-single-areas article .content .meta .btn {
-
 	text-align: center;
-
 	padding: 3px 5px;
-
 	color:white;
-
 	font-size: 12px;
-
 	font-weight: bold;
-
 	margin: 0;
-
 	border-radius: 2px;
-
 	text-decoration: none;
-
 	text-transform: uppercase;
-
 	position: absolute;
-
 	top: 0;
-
 	right: 0;
-
 }
 
 .content-single-areas article .content .meta .btn:hover {
-
 }
 
 .content-single-areas.democracia-e-participacao {
-
 }
 
 .slider-single-areas {
-
 	background: #EDEDED;
-
 	padding: 30px 0;
-
 }
 
 .slider-single-areas h2 {
-
 	display: block;
-
 	margin-bottom: 25px;
-
 }
 
 .slider-single-areas .prev, .slider-single-areas .next {
-
 	width: 40px;
-
 	height: 40px;
-
 	position: absolute;
-
 	top: 210px;
-
 	cursor: pointer;
-
 }
 
 .slider-single-areas .prev {
-
 	left: 20px;
-
 	background: url("img/setas-slider-publicacoes.png") left center no-repeat #666;
-
 }
 
 .slider-single-areas .next {
-
 	right: 20px;
-
 	background: url("img/setas-slider-publicacoes.png") right center no-repeat #666;
-
 }
 
 .slider-single-areas .prev:hover, .slider-single-areas .next:hover {
-
  	background-color: #333;
-
 }
 
+.content-single article {
+	padding-top: 40px;
+	padding-bottom: 30px;
+	padding-right: 25px;
+}
+
+.content-single h1 {
+	color: #00588d;
+	margin-bottom :15px;
+}
+
+.content-single .thumb {
+	width: 100%;
+	height: 200px;
+	margin: 25px auto 30px;
+	border-radius: 3px;
+	position: relative;
+}
+
+.content-single .thumb .news-terms {
+	position: absolute;
+	right: 1px;
+	padding: 6px 10px;
+	bottom: 0;
+	font-size: 0.8em;
+	color: #FFF;
+}
 
 
 /* pagina institucional */
