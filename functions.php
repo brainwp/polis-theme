@@ -10,6 +10,17 @@ define( 'ACF_LITE' , true );
 require get_template_directory() . '/inc/acf.php';
 
 /**
+ * Desabilita o script HeartBeat no Admin, exceto em post.php e post-new.php.
+ */
+add_action( 'init', 'polis_deregister_heartbeat', 1 );
+function polis_deregister_heartbeat() {
+	global $pagenow;
+
+	if ( 'post.php' != $pagenow && 'post-new.php' != $pagenow )
+		wp_deregister_script('heartbeat');
+}
+
+/**
  * Set the content width based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) ) {
