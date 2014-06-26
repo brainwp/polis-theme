@@ -24,7 +24,7 @@ function create_tag_taxonomies()
     'menu_name' => __( 'Tags' ),
   ); 
 
-  register_taxonomy('tag','noticias',array(
+  register_taxonomy('tag',array('noticias', 'publicacoes'),array(
     'hierarchical' => false,
     'labels' => $labels,
     'show_ui' => true,

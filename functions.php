@@ -5,7 +5,7 @@
  * @package Polis Theme
  */
 
-define( 'ACF_LITE' , true );
+define( 'ACF_LITE' , false );
 
 require get_template_directory() . '/inc/acf.php';
 
@@ -200,11 +200,12 @@ require get_template_directory() . '/inc/tax-tags.php';
  * Load CPT Publicações file.
  */
 require get_template_directory() . '/inc/cpt-publicacoes.php';
+require get_template_directory() . '/inc/tax-autor.php';
 
 /**
  * Load Tax Categorias to CPT Publicações, Notícias e Ações.
  */
-require get_template_directory() . '/inc/tax-categorias.php';
+require get_template_directory() . '/inc/tax-areas.php';
 
 /**
  * Load Tax Tipos to CPT Publicações e Notícias.
