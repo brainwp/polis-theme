@@ -59,13 +59,6 @@ jQuery(document).ready(function () {
 		$('<div class="col-md-12 content">'+content+'</div>').appendTo('#tab-'+area+' > .search-container.container-'+slug+'');
 		console.log('#tab-'+area+' .container-'+slug+'');
 	});
-	$('.search-container').each(function(){
-		if( $(this).html() == '' ){
-			var head = $(this).attr('data-header');
-			$('#'+head).remove();
-			$(this).remove();
-		}
-	});
 	$('.nav-tabs li').each(function(){
 		var tab = $(this).attr('data-tab-element');
 		if( $(tab).length == 0 ){
@@ -312,14 +305,31 @@ jQuery(document).ready(function () {
 		$('#busca-biblioteca').submit();
 	});
 	$('#busca-biblioteca').on('submit', function(e){
-		if( $('#select_cat').val().trim() == '' ){
+		if( $('#area-input').val().trim() == '' ){
 			e.preventDefault();
 			var siteurl = $(document.body).attr('data-siteurl');
-			var ajax_req = siteurl + '?isBibliotecaCountAjax=true&key='+$('#key').val()+'&tipo='+$('#select_tipo').val()+'&categoria='+$('#select_cat').val();
+			var ajax_req = siteurl + '?isBibliotecaCountAjax=true&key='+$('#key').val()+'&tipo='+$('#select_tipo').val()+'&categoria='+$('#select_cat').val()+'&anomin='+$('#select_anomin').val()+'&anomax='+$('#select_anomax').val();
 			$('#ajax-counter').load(ajax_req);
+            $('html, body').animate({
+                scrollTop: $('#biblioteca-require-position').offset().top
+            }, 300);
+            $('#biblioteca-require').fadeIn('slow');
 		}
 	});
+    $(document).on("click", ".envia-area", function(){
+        var area = $(this).attr('data-area');
+        $('#area-input').val(area);
+        $('#busca-biblioteca').submit();
+    });
+    $(document).on("click", ".bt-categorias", function(){
+        var cat = $(this).attr('data-categoria');
+        $('#categoria-hidden').val(cat);
+        $('#busca-biblioteca-mini').submit();
+    });
+
     $('#busca-biblioteca-mini-bt').on('click', function(){
         $('#busca-biblioteca-mini').submit();
     });
+    var _ajax = '?isAjaxSubCount=true&key='+$('#key').val()+'&categoria='+$('#categoria-hidden').val()+'&area='+$('#area-hidden').val();
+    $('#ajax-biblioteca-sub-count').load($(document.body).attr('data-siteurl') + '/' + _ajax);
 });
