@@ -98,7 +98,7 @@ get_header(); ?>
 									echo '<img src="'. theme('/img/default615x170.jpg') .'" />';
 								} ?>
 							</a>
-							<?php $terms = terms( 'categorias' ); ?>
+							<?php $terms = terms( 'areas' ); ?>
 							<?php $class_term = explode(", ", $terms); ?>
 							<div class="news-terms bg-<?php echo sanitize_title($class_term[0]); ?>">
 								<?php echo $terms; ?>
@@ -143,7 +143,7 @@ get_header(); ?>
 					Conheça nosso novo canal!
 					<a href="#" class="col-md-8 btn-ao-vivo">Ao vivo</a>
 				</div>
-				<a href="#" class="full-link"></a>
+				<a href="<?php echo home_url(); ?>/canal" class="full-link"></a>
 			</div>
 		</section>
 	</section>

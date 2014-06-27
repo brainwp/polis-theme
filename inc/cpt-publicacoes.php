@@ -48,10 +48,9 @@ function create_post_type_publicacoes() {
 	    'has_archive' => true,
 	    'hierarchical' => true,
 	    'menu_position' => 5,
-	    'supports' => array('title','author','editor','excerpt','thumbnail','post-formats', 'taxonomy')
+	    'supports' => array('title','editor','thumbnail','post-formats','taxonomy')
 	    )
     );
-
 	flush_rewrite_rules();
 
 }

@@ -6,10 +6,21 @@
  */
 
 define( 'ACF_LITE', true );
-
 require get_template_directory() . '/inc/acf.php';
 
 /**
+ * Desabilita o script HeartBeat no Admin, exceto em post.php e post-new.php.
+ */
+add_action( 'init', 'polis_deregister_heartbeat', 1 );
+function polis_deregister_heartbeat() {
+	global $pagenow;
+
+	if ( 'post.php' != $pagenow && 'post-new.php' != $pagenow )
+		wp_deregister_script('heartbeat');
+}
+
+/**
+ *
  * Set the content width based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) ) {
@@ -103,8 +114,8 @@ function resumo( $custom_max = '', $sep = '') {
 }
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'busca-thumb', 87, 130, true );
-	add_image_size( 'slider-publicacoes-thumb', 160, 240, true );
+    add_image_size( 'busca-thumb', 87, 130, true );
+    add_image_size( 'slider-publicacoes-thumb', 160, 240, true );
 }
 
 /**
@@ -192,16 +203,18 @@ require get_template_directory() . '/inc/cpt-acoes.php';
  * Load CPT Notícias file.
  */
 require get_template_directory() . '/inc/cpt-noticias.php';
+require get_template_directory() . '/inc/tax-tags.php';
 
 /**
  * Load CPT Publicações file.
  */
 require get_template_directory() . '/inc/cpt-publicacoes.php';
+require get_template_directory() . '/inc/tax-autor.php';
 
 /**
  * Load Tax Categorias to CPT Publicações, Notícias e Ações.
  */
-require get_template_directory() . '/inc/tax-categorias.php';
+require get_template_directory() . '/inc/tax-areas.php';
 
 /**
  * Load Tax Tipos to CPT Publicações e Notícias.
@@ -280,7 +293,7 @@ function todas_areas() {
 
 }
 
-function return_term_biblioteca( $slug ) {
+function return_term_biblioteca($slug) {
 	global $post;
 	$terms = get_the_terms( $post->ID, $slug );
 
@@ -295,20 +308,19 @@ function return_term_biblioteca( $slug ) {
 
 function return_term_biblioteca_area() {
 	global $post;
-	$slug  = 'categorias';
+	$slug = 'categorias';
 	$terms = get_the_terms( $post->ID, $slug );
 
 	if ( $terms && ! is_wp_error( $terms ) ) :
 		foreach ( $terms as $term ) {
-			if ( $term->slug == 'cidadania-cultural' || $term->slug == 'democracia-e-participacao' || $term->slug == 'inclusao-e-sustentabilidade' || $term->slug == 'reforma-urbana' ) {
+			if($term->slug == 'cidadania-cultural' || $term->slug == 'democracia-e-participacao' || $term->slug == 'inclusao-e-sustentabilidade' || $term->slug == 'reforma-urbana'){
 				return $term->slug;
 				break;
 			}
 		}
 	endif;
 }
-
-function return_term_biblioteca_name( $slug ) {
+function return_term_biblioteca_name($slug) {
 	global $post;
 	$terms = get_the_terms( $post->ID, $slug );
 
@@ -330,7 +342,9 @@ function theme( $arg = '' ) {
 	if ( ! empty( $arg ) ) {
 		$theme .= $arg;
 	}
-
+	if ( !empty( $arg ) ) {
+		$theme .= $arg;
+	}
 	return $theme;
 }
 
@@ -343,7 +357,6 @@ function terms( $taxonomy ) {
 			$links[] = $term->name;
 		}
 		$the_terms = join( ", ", $links );
-
 		return $the_terms;
 	endif;
 }
@@ -362,7 +375,6 @@ function escape_terms( $taxonomy, $type = '' ) {
 			}
 		}
 		$the_terms = join( ", ", $links );
-
 		return $the_terms;
 	endif;
 }
@@ -372,8 +384,8 @@ function top_term( $taxonomy, $echo = '' ) {
 	$terms = get_the_terms( $post->ID, $taxonomy );
 	if ( $terms && ! is_wp_error( $terms ) ) {
 		foreach ( $terms as $term ) {
-			$parent = $term->parent;
-			if ( $parent == '0' ) {
+		$parent = $term->parent;
+			if ( $parent=='0' ) {
 				if ( empty( $echo ) ) {
 					echo $term->name;
 				} elseif ( $echo == 'a' ) {
@@ -413,6 +425,7 @@ function child_term( $taxonomy, $echo = '' ) {
 	}
 }
 function cpt_name() {
+    global $post;
 	$obj = get_post_type_object( get_post_type( $post ) );
 	echo $obj->labels->name;
 }
@@ -420,7 +433,7 @@ function cpt_name() {
 /**
  * Custom logo login.
  */
-add_action( 'login_head', 'custom_logo_login' );
+add_action('login_head', 'custom_logo_login');
 function custom_logo_login() {
 	echo '
 	<style type="text/css">
@@ -500,78 +513,6 @@ function biblioteca_count( $area ) {
 	$total_posts = $count;
 
 	return $count;
-}
-
-function migration() {
-	include( 'wp-admin/includes/media.php' );
-	include( 'wp-admin/includes/file.php' );
-	include( 'wp-admin/includes/image.php' );
-	$query = new WP_Query( array(
-		'post_type'      => 'noticias',
-		'posts_per_page' => 5,
-		'meta_query'     => array(
-			array(
-				'key' => 'mgr_imagem',
-			),
-		),
-	) );
-
-	if ( $query ) {
-		while ( $query->have_posts() ) :
-			$query->the_post();
-			$title = get_the_title();
-			$img   = get_campoPersonalizado( 'mgr_imagem' );
-			$_id   = get_the_ID();
-			echo $title . " " . $img . "<br>";
-
-			if ( $img ) {
-				$path = explode( '.', $img );
-				$url  = "http://www.polis.org.br/uploads/" . $path[0] . "/" . $img;
-
-				$tmp_name               = download_url( $url );
-				$file_array['name']     = $img;
-				$file_array['tmp_name'] = trim( $tmp_name );
-
-				if ( is_wp_error( $orig_filename ) ) {
-					@unlink( $file_array['tmp_name'] );
-					$file_array['tmp_name'] = '';
-				}
-
-				$attachment_id = media_handle_sideload( $file_array, get_the_ID(), 'Thumbnail para ' . $title );
-
-				if ( is_wp_error( $attachment_id ) ) {
-					@unlink( $file_array['tmp_name'] );
-
-					return;
-				}
-
-				add_post_meta( $_id, '_thumbnail_id', $attachment_id, true );
-
-			}
-			$args = array(
-				'type'         => array( 'acoes', 'noticias', 'publicacoes' ),
-				'orderby'      => 'name',
-				'order'        => 'ASC',
-				'hide_empty'   => 0,
-				'hierarchical' => 1,
-				'taxonomy'     => 'categorias',
-				'pad_counts'   => false
-			);
-
-			$categorias = get_categories( $args );
-			$_title     = strtolower( trim( $title ) );
-			foreach ( $categorias as $_categorias ) {
-				if ( strpos( $title, $_categorias->name ) !== false ) {
-					wp_set_object_terms( $_id, $_categorias->term_id, 'categorias', true );
-				} elseif ( strpos( $_title, "cultural" !== false ) || strpos( $_title, "cultura" ) !== false ) {
-					wp_set_object_terms( $_id, 'Cidadania Cultural', 'categorias', true );
-				}
-
-			}
-
-		endwhile;
-
-	}
 }
 
 remove_action( 'profile_personal_options', 'profile_personal_options' );

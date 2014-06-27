@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="brasadev">
+    <serverData>
+      <paths name="brasadev">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/wp-content/themes/polis-theme" local="$PROJECT_DIR$" web="/polis" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="local">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="matheusgimenez">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/testes.matheusgimenez.com/polis/wp-content/themes/polis-theme" local="$PROJECT_DIR$" web="/polis" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
+
