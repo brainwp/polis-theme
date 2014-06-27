@@ -135,5 +135,27 @@ function optionsframework_options() {
 		'std'  => '',
 		'type' => 'text');
 
-	return $options;
+    $options[] = array(
+        'name' => 'Biblioteca',
+        'type' => 'heading');
+
+    $options[] = array(
+        'name' => 'Introdução',
+        'id'   => 'biblioteca-intro',
+        'std'  => '',
+        'type' => 'textarea');
+
+    $options[] = array(
+        'name' => 'Introdução ao formulário',
+        'id'   => 'biblioteca-form-intro',
+        'std'  => '',
+        'type' => 'textarea');
+
+    $options[] = array(
+        'name' => 'Resultados por página (contando todas as abas)',
+        'id'   => 'biblioteca-busca-per-page',
+        'std'  => '20',
+        'type' => 'text');
+
+    return $options;
 }

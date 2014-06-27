@@ -242,10 +242,10 @@ define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/inc/opti
 require_once dirname( __FILE__ ) . '/inc/options-framework/inc/options-framework.php';
 include( dirname( __FILE__ ) . "/options.php" );
 //ajax
-require get_template_directory() . '/publicacoes-slider-ajax.php';
 require get_template_directory() . '/institucional-ajax.php';
 require get_template_directory() . '/areas-ajax.php';
 require get_template_directory() . '/biblioteca-count-ajax.php';
+require get_template_directory() . '/biblioteca-sub-count-ajax.php';
 
 //widget home
 
@@ -458,17 +458,36 @@ function custom_logo_login() {
 }
 
 function biblioteca_count( $area ) {
-	$page    = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$key     = ( isset( $_GET['key'] ) ) ? $_GET['key'] : '';
-	$formato = ( isset( $_GET['formato'] ) ) ? $_GET['formato'] : '';
-	if ( empty( $formato ) ) {
-		$formato = array( 'publicacoes', 'acoes', 'noticias' );
-	}
-	$formato_str = ( isset( $_GET['formato'] ) ) ? $_GET['formato'] : '';
 	$tipo        = ( isset( $_GET['tipo'] ) ) ? $_GET['tipo'] : '';
 	$categoria   = ( isset( $_GET['categoria'] ) ) ? $_GET['categoria'] : '';
 	$anomin      = ( isset( $_GET['anomin'] ) ) ? $_GET['anomin'] : '';
 	$anomax      = ( isset( $_GET['anomax'] ) ) ? $_GET['anomax'] : '';
+    $categoria_query = array();
+    if ( ! empty( $categoria ) ) {
+        $categoria_query = array(
+            'relation' => 'AND',
+            array(
+                'taxonomy' => 'categorias',
+                'field' => 'slug',
+                'terms' => $area
+            ),
+            array(
+                'taxonomy' => 'categorias',
+                'field' => 'slug',
+                'terms' => $categoria,
+            ),
+        );
+    }
+    else{
+        $categoria_query = array(
+            array(
+                'taxonomy' => 'categorias',
+                'field' => 'slug',
+                'terms' => $area
+            ),
+        );
+    }
 	$date_query  = array();
 	if ( ! empty( $anomin ) && ! empty( $anomax ) ) {
 		$date_query = array(
@@ -500,8 +519,8 @@ function biblioteca_count( $area ) {
 	}
 
 	$count_args  = array(
-		'post_type'     => $formato,
-		'categorias'    => $area,
+		'post_type'     => 'publicacoes',
+        'tax_query'     => $categoria_query,
 		'tipos'         => $tipo,
 		's'             => $key,
 		'date_query'    => $date_query,

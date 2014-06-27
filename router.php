@@ -53,6 +53,10 @@ function _template_redirect( $template ) {
 			die();
 		}
 	}
+    if(get_query_var( 'template' ) == 'biblioteca-search'){
+        header( "HTTP/1.1 200 ok" );
+        $wp_query->is_404 = false;
+    }
 	$file = locate_template( $_query->template . '.php' );
 	if ( !empty( $file ) ) {
 		include( $file );
