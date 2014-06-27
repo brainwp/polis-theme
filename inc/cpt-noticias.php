@@ -35,6 +35,7 @@ function create_post_type_noticias() {
      */
     register_post_type( 'noticias', array(
 	    'labels' => $labels,
+	    'menu_icon' => 'dashicons-format-aside',
 	    'public' => true,
 	    'publicly_queryable' => true,
 	    'show_ui' => true,

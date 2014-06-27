@@ -35,6 +35,7 @@ function create_post_type_acoes() {
      */
     register_post_type( 'acoes', array(
 	    'labels' => $labels,
+	    'menu_icon' => 'dashicons-megaphone',
 	    'public' => true,
 	    'publicly_queryable' => true,
 	    'show_ui' => true,

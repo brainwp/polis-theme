@@ -35,6 +35,7 @@ function create_post_type_publicacoes() {
      */
     register_post_type( 'publicacoes', array(
 	    'labels' => $labels,
+	    'menu_icon' => 'dashicons-book-alt',
 	    'public' => true,
 	    'publicly_queryable' => true,
 	    'show_ui' => true,
