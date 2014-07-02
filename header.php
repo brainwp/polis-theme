@@ -16,9 +16,11 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
-<?php wp_head(); ?>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <?php wp_head(); ?>
 </head>
 <body data-siteurl="<?php bloginfo('url');?>/">
+<div id="map-bg"></div>
 <div class="container shadow">
 	<header class="col-md-12 header">
 		<a href="<?php bloginfo('url');?>" class="col-md-6 left">  <!-- logo -->
