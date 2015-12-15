@@ -817,4 +817,21 @@ jQuery(document).ready(function () {
             }
         }
     });
+    //home animation
+    $( 'body.home .hover' ).on('mouseover', function(e){
+        $elem = $(this);
+        $('body.home .hover.active').removeClass('active');
+        $elem.addClass('active');
+        $('.content.atuacao').css('background-image', 'url('+$elem.attr('data-bg')+')');
+        $('.body.home .hover').each( function(){
+            console.log( 'ao' );
+
+            if ( ! $(this).hasClass('active') ) {
+                $( this ).animate({ opacity: 0.40 }, 2000, function() {});
+            }
+            else {
+                $( this ).animate({ opacity: 1 }, 2000, function() {});
+            }
+        });
+    });
 });

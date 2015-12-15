@@ -1424,7 +1424,9 @@ conteudo - atuação /pagehome/
 }
 
 .atuacao{
-	background:url("img/home-bg.jpg") bottom no-repeat;
+    background-repeat: no-repeat;
+    background-position: top;
+	background-image:url("img/home-bg.jpg");
 	padding-top: 40px;
 }
 
@@ -1534,6 +1536,43 @@ conteudo - atuação /pagehome/
 }
 .consultoria-alert a:hover {
 	background: #004767;
+}
+/*animation*/
+@keyframes reforma{
+    to {
+        background-image:url("img/home-bg-reforma.jpg");
+    }
+}
+@media only screen and (min-width: 900px) {
+    .hover.hover-reforma {
+        min-height: 250px;
+    }
+    .hover{
+        transition:1s ease all;
+        opacity:0.50;
+    }
+    .hover.active{
+        transition:1s ease all;
+        opacity:1;
+    }
+    .content.atuacao{
+        transition:600ms ease all;
+    }
+    .atuacao .left .inclusao .title{
+        margin-top:0;
+    }
+    .content.atuacao .col-md-6.left {
+        padding:0;
+    }
+    .content.atuacao .col-md-6.right .hover{
+        float: right !important;
+    }
+    .atuacao .title {
+        font-size:1.4em;
+    }
+    .atuacao .right .cidadania .title {
+        margin-top:5px;
+    }
 }
 /* fim da atuação
 slider de noticias + acoes

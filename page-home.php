@@ -24,44 +24,52 @@ get_header(); ?>
         </p>
     </section>
     <section class="col-md-12 content atuacao">
-        <div class="col-md-4 left">
-            <div class="col-md-10 reforma">
-                <p class="title">Reforma Urbana</p>
+        <div class="col-md-6 left">
+            <div class="col-md-12 hover hover-reforma active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-reforma.jpg">
+                <img src="<?php echo get_template_directory_uri();?>/img/home-bg-reforma.jpg" style="display:none;">
+                <div class="col-md-7 reforma">
+                    <p class="title">Reforma Urbana</p>
 
-                <div class="col-md-12 description">
-                    <?php echo of_get_option('frase-reformaurbana-home'); ?>
+                    <div class="col-md-12 description">
+                        <?php echo of_get_option('frase-reformaurbana-home'); ?>
+                    </div>
+                    <a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/reforma-urbana">Saiba mais</a>
                 </div>
-                <a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/reforma-urbana">Saiba mais</a>
-            </div>
-            <div class="col-md-10 inclusao">
-                <p class="title">Inclusão e Sustentabilidade</p>
-
-                <div class="col-md-12 description">
-                    <?php echo of_get_option('frase-inclusao-home'); ?>
+            </div><!-- .col-md-12 hover hover-reforma -->
+            <div class="col-md-12 hover hover-inclusao active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-inclusao.jpg">
+                <img src="<?php echo get_template_directory_uri();?>/img/home-bg-inclusao.jpg" style="display:none;">
+                <div class="col-md-7 inclusao">
+                    <p class="title">Inclusão e Sustentabilidade</p>
+                    <div class="col-md-12 description">
+                        <?php echo of_get_option('frase-inclusao-home'); ?>
+                    </div>
+                    <a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/inclusao-e-sustentabilidade">Saiba mais</a>
                 </div>
-                <a class="col-md-5 saiba left text-center"
-                   href="<?php echo home_url(); ?>/area/inclusao-e-sustentabilidade">Saiba mais</a>
-            </div>
+            </div><!-- .col-md-12 hover hover-inclusao -->
         </div>
-        <div class="col-md-4 pull-right right">
-            <div class="col-md-10 democracia pull-right right">
-                <p class="title">Democracia e Participação</p>
+        <div class="col-md-6 pull-right right">
+            <div class="hover hover-democracia active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-democracia.jpg">
+                <img src="<?php echo get_template_directory_uri();?>/img/home-bg-democracia.jpg" style="display:none;">
+                <div class="col-md-7 democracia pull-right right">
+                    <p class="title">Democracia e Participação</p>
 
-                <p class="description">
-                    <?php echo of_get_option('frase-democracia-home'); ?>
-                </p>
-                <a class="col-md-5 saiba left text-center"
-                   href="<?php echo home_url(); ?>/area/democracia-e-participacao">Saiba mais</a>
-            </div>
-            <div class="col-md-10 cidadania pull-right right">
-                <p class="title">Cidadania Cultural</p>
+                    <p class="description">
+                        <?php echo of_get_option('frase-democracia-home'); ?>
+                    </p>
+                    <a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/democracia-e-participacao">Saiba mais</a>
+                </div>
+            </div><!-- .hover hover-democracia -->
+            <div class="hover hover-cidadania active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-cidadania.jpg">
+                <img src="<?php echo get_template_directory_uri();?>/img/home-bg-cidadania.jpg" style="display:none;">
+                <div class="col-md-6 cidadania pull-right right">
+                    <p class="title">Cidadania Cultural</p>
 
-                <p class="description">
-                    <?php echo of_get_option('frase-cidadania-home'); ?>
-                </p>
-                <a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/cidadania-cultural">Saiba
-                    mais</a>
-            </div>
+                    <p class="description">
+                        <?php echo of_get_option('frase-cidadania-home'); ?>
+                    </p>
+                    <a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/cidadania-cultural">Saiba mais</a>
+                </div>
+            </div><!-- .hover hover-cidadania -->
         </div>
         <div class="col-md-12 clear"></div>
         <div class="col-md-10 col-md-offset-1 consultoria-alert">
