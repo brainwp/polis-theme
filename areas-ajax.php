@@ -1,263 +1,170 @@
 <?php
 
-function areaAjax() {
+function areaAjax()
+{
 
-	if ( isset( $_GET['areaAjax'] ) && isset( $_GET['areaCatAjax'] ) && isset( $_GET['areaSlider'] ) ) {
+    if (isset($_GET['areaAjax']) && isset($_GET['areaCatAjax']) && isset($_GET['areaSlider'])) {
 
-		$area   = $_GET['areaAjax'];
+        $area = $_GET['areaAjax'];
 
-		$slider = $_GET['areaSlider'];
+        $slider = $_GET['areaSlider'];
 
-		$cat    = $_GET['areaCatAjax'];
+        $cat = $_GET['areaCatAjax'];
 
-		if ( $slider == 'noticias' ):
+        if ($slider == 'noticias'):
 
-			?>
+            ?>
 
-			<?php
+            <?php
 
-			$args     = array(
+            $args = array(
 
-				'post_type' => 'noticias',
+                'post_type' => 'noticias',
+                'posts_per_page'   => 10,
+                'orderby' => 'date',
+                'order'   => 'DESC',
 
-				'tax_query' => array(
+                'tax_query' => array(
 
-					array(
+                    array(
 
-						'taxonomy'         => 'categorias',
+                        'taxonomy' => 'areas',
 
-						'field'            => 'id',
+                        'field' => 'slug',
 
-						'terms'            => $cat,
+                        'terms' => $cat,
 
-						'include_children' => true,
+                        'include_children' => true,
 
-						'posts_per_page'   => 8,
+                    )
 
-					)
+                ),
+                'meta_query' => array(
+                    array(
+                        'key' => 'in_area_slider',
+                        'value' => 'nao',
+                        'compare' => '!='
+                    ),
+                )
 
-				)
+            );
 
-			);
+            $noticias = new WP_Query($args); // exclude category
 
-			$noticias = new WP_Query( $args ); // exclude category
+            while ($noticias->have_posts()) : $noticias->the_post(); ?>
+                <?php get_template_part('area-slider', 'noticias'); ?>
+            <?php endwhile; ?>
 
-			while ( $noticias->have_posts() ) : $noticias->the_post(); ?>
+        <?php endif; ?>
 
-				<li class="item ajax-item-noticias">
+        <?php
 
-					<a href="<?php the_permalink(); ?>">
+        if ($slider == 'publicacoes'):
 
-						<?php $terms = terms( 'categorias' ); ?>
+            ?>
 
-						<?php $terms = explode( ',', $terms ); ?>
+            <?php
 
-						<?php
+            $args = array(
 
-						if ( has_post_thumbnail() ) {
+                'post_type' => 'publicacoes',
+                'posts_per_page'   => 10,
+                'orderby' => 'date',
+                'order'   => 'DESC',
 
-							$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-image', true );
+                'tax_query' => array(
 
-							echo '<img src="' . $thumb_url[0] . '"/>';
+                    array(
 
-						} else {
+                        'taxonomy' => 'areas',
 
-							echo '<img src="' . theme( '/img/default-publicacoes-thumb.jpg' ) . '"/>';
+                        'field' => 'slug',
 
-						}
+                        'terms' => $cat,
 
-						?>
+                        'include_children' => true,
 
-						<div class="caption-container">
+                    )
 
-							<small class="caption"><?php echo $terms[0]; ?></small>
+                ),
+                'meta_query' => array(
+                    array(
+                        'key' => 'in_area_slider',
+                        'value' => 'nao',
+                        'compare' => '!='
+                    ),
+                )
 
-						</div>
+            );
 
-						<h2 class="title"><?php the_title(); ?></h2>
+            $publicacoes = new WP_Query($args); ?>
 
+            <?php while ($publicacoes->have_posts()) :
 
+            $publicacoes->the_post(); ?>
+            <?php get_template_part('area-slider', 'publicacoes'); ?>
+        <?php endwhile; ?>
 
-						<div class="col-md-12 resumo"><?php echo resumo(); ?></div>
+        <?php endif; ?>
 
-					</a>
+        <?php
 
-				</li>
+        if ($slider == 'acoes'):
 
+            ?>
 
+            <?php
 
-			<?php endwhile; ?>
+            $args = array(
 
-		<?php endif; ?>
+                'post_type' => 'acoes',
+                'posts_per_page' => 10,
+                'orderby' => 'date',
+                'order' => 'DESC',
 
-		<?php
+                'tax_query' => array(
 
-		if ( $slider == 'publicacoes' ):
+                    array(
 
-			?>
+                        'taxonomy' => 'areas',
 
-			<?php
+                        'field' => 'slug',
 
-			$args        = array(
+                        'terms' => $cat,
 
-				'post_type' => 'publicacoes',
+                        'include_children' => true,
 
-				'tax_query' => array(
 
-					array(
+                    )
 
-						'taxonomy'         => 'categorias',
+                ),
+                'meta_query' => array(
+                    array(
+                        'key' => 'in_area_slider',
+                        'value' => 'nao',
+                        'compare' => '!='
+                    ),
+                )
 
-						'field'            => 'id',
+            );
 
-						'terms'            => $cat,
+            $noticias = new WP_Query($args); // exclude category
 
-						'include_children' => true,
+            while ($noticias->have_posts()) : $noticias->the_post(); ?>
+                <?php get_template_part('area-slider', 'acoes'); ?>
+            <?php endwhile; ?>
 
-						'posts_per_page'   => 10,
+        <?php endif; ?>
 
-					)
+        <?php
 
-				)
+        die();
 
-			);
-
-			$publicacoes = new WP_Query( $args ); ?>
-
-			<?php while ( $publicacoes->have_posts() ) :
-
-			$publicacoes->the_post(); ?>
-
-			<li class="item ajax-item-publicacoes">
-
-				<a href="<?php the_permalink(); ?>">
-
-
-
-					<div class="hover"></div>
-
-
-
-					<?php
-
-					if ( has_post_thumbnail() ) {
-
-						$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'slider-publicacoes-image', true );
-
-						echo '<img src="' . $thumb_url[0] . '"/>';
-
-					} else {
-
-						echo '<img src="' . theme( '/img/default-publicacoes-thumb.jpg' ) . '" />';
-
-					}
-
-					?>
-
-				</a>
-
-			</li>
-
-
-
-		<?php endwhile; ?>
-
-		<?php endif; ?>
-
-		<?php
-
-		if ( $slider == 'acoes' ):
-
-			?>
-
-			<?php
-
-			$args     = array(
-
-				'post_type' => 'acoes',
-
-				'tax_query' => array(
-
-					array(
-
-						'taxonomy'         => 'categorias',
-
-						'field'            => 'id',
-
-						'terms'            => $cat,
-
-						'include_children' => true,
-
-						'posts_per_page'   => 10,
-
-					)
-
-				)
-
-			);
-
-			$noticias = new WP_Query( $args ); // exclude category
-
-			while ( $noticias->have_posts() ) : $noticias->the_post(); ?>
-
-				<li class="item ajax-item-acoes">
-
-					<a href="<?php the_permalink(); ?>" class="post">
-
-						<div class="post_container">
-
-							<div class="thumb">
-
-								<?php
-
-								if ( has_post_thumbnail() ) {
-
-									the_post_thumbnail( 'medium' );
-
-								} else {
-
-									echo '<img src="' . theme() . '/img/thumb-equipe.png">';
-
-								} ?>
-
-								<h3><?php the_title(); ?></h3>
-
-							</div>
-
-							<!-- thumb -->
-
-
-
-							<div class="col-md-12 description">
-
-								<?php echo resumo( 150 ); ?>
-
-								<span class="leia" href="<?php the_permalink(); ?>">Leia mais</span>
-
-							</div>
-
-						</div>
-
-						<!-- post_container -->
-
-					</a>
-
-				</li>
-
-			<?php endwhile; ?>
-
-		<?php endif; ?>
-
-		<?php
-
-		die();
-
-	}
+    }
 
 }
 
 
-
-add_action( 'init', 'areaAjax', 1 );
+add_action('init', 'areaAjax', 99999999999);
 
 ?>

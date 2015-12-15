@@ -44,6 +44,19 @@ function optionsframework_options() {
 	}
 
 	// Options Cabecalho
+
+	if( current_user_can( 'manage_options' ) ) {
+		$options[] = array(
+			'name' => 'Dev',
+			'type' => 'heading');
+
+		$options[] = array(
+			'name' => 'ACF_LITE',
+			'desc' => 'Marque para habilitar a versão UI do ACF.',
+			'id' => 'acf_check',
+			'std' => '',
+			'type' => 'checkbox');
+	}
 	
 	$options[] = array(
 		'name' => 'Cabeçalho',
@@ -60,10 +73,17 @@ function optionsframework_options() {
 		'type' => 'heading');
 
 	$options[] = array(
+		'name' => 'Frase de introdução Beta',
+		'id'   => 'frase-intro-beta',
+		'std'  => '',
+		'type' => 'textarea');
+
+	$options[] = array(
 		'name' => 'Frase de introdução no home',
 		'id'   => 'frase-intro-home',
 		'std'  => '',
 		'type' => 'textarea');
+
 	$options[] = array(
 		'name' => 'Frase Reforma Urbana na Pagina Inicial',
 		'id'   => 'frase-reformaurbana-home',
@@ -135,5 +155,89 @@ function optionsframework_options() {
 		'std'  => '',
 		'type' => 'text');
 
-	return $options;
+    $options[] = array(
+        'name' => 'Biblioteca',
+        'type' => 'heading');
+
+    $options[] = array(
+        'name' => 'Introdução',
+        'id'   => 'biblioteca-intro',
+        'std'  => '',
+        'type' => 'textarea');
+
+    $options[] = array(
+        'name' => 'Introdução ao formulário',
+        'id'   => 'biblioteca-form-intro',
+        'std'  => '',
+        'type' => 'textarea');
+
+    $options[] = array(
+        'name' => 'Resultados por página (contando todas as abas)',
+        'id'   => 'biblioteca-busca-per-page',
+        'std'  => '20',
+        'type' => 'text');
+
+    $options[] = array(
+        'name' => 'Equipe',
+        'type' => 'heading');
+
+    $options[] = array(
+        'name' => 'Membros por página (/equipe/)',
+        'id'   => 'equipe-per-page',
+        'std'  => '16',
+        'type' => 'text');
+
+    $options[] = array(
+        'name' => 'Atividades por pagina (no perfil do usuario em /equipe/USERNAME)',
+        'id'   => 'equipe-atividades-per-page',
+        'std'  => '16',
+        'type' => 'text');
+
+    $options[] = array(
+        'name' => 'Excluir membros da página de equipe por ID (separados por virgula)',
+        'id'   => 'equipe-exclude',
+        'std'  => '',
+        'type' => 'text');
+
+    $options[] = array(
+        'name' => 'Projetos',
+        'type' => 'heading');
+
+    $options[] = array(
+        'name' => 'Projetos por pagina (/projetos/)',
+        'id'   => 'projetos-per-page',
+        'std'  => '16',
+        'type' => 'text');
+
+    $options[] = array(
+        'name' => 'Areas',
+        'type' => 'heading');
+
+    $options[] = array(
+        'name' => 'Numero de posts por página no archive das areas',
+        'id'   => 'areas-archive-per-page',
+        'std'  => '16',
+        'type' => 'text');
+
+    $options[] = array(
+        'name' => 'Colecões',
+        'type' => 'heading');
+
+    $options[] = array(
+        'name' => 'Numero de posts por página no /colecoes/',
+        'id'   => 'colecoes-per-page',
+        'std'  => '15',
+        'type' => 'text');
+
+    $options[] = array(
+        'name' => 'Canal',
+        'type' => 'heading');
+
+    $options[] = array(
+        'name' => 'Numero de posts por página no /canal/',
+        'id'   => 'colecoes-per-page',
+        'std'  => get_option( 'posts_per_page' ),
+        'type' => 'text');
+
+    return $options;
 }

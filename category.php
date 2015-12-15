@@ -5,9 +5,7 @@ foreach($custom_posts as $post) : setup_postdata($post);
 echo '<li>' . get_the_title() . '</li>';
 endforeach;*/
 ?>
-
 <?php
-
 /*$args = array(
 	'type'                     => 'post',
 	'child_of'                 => 0,

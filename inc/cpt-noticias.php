@@ -49,7 +49,7 @@ function create_post_type_noticias() {
 	    'has_archive' => true,
 	    'hierarchical' => true,
 	    'menu_position' => 5,
-	    'supports' => array('title','author','editor','excerpt','thumbnail','post-formats', 'taxonomy')
+	    'supports' => array('title','author','editor','excerpt','thumbnail','taxonomy','comments')
 	    )
     );
 

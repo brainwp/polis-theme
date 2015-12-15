@@ -49,7 +49,7 @@ function create_post_type_publicacoes() {
 	    'has_archive' => true,
 	    'hierarchical' => true,
 	    'menu_position' => 5,
-	    'supports' => array('title','editor','thumbnail','post-formats','taxonomy')
+	    'supports' => array( 'title','editor','thumbnail','taxonomy' )
 	    )
     );
 

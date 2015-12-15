@@ -217,17 +217,23 @@ class widget_newsletter extends WP_Widget {
 		$title = apply_filters( 'widget_newsletter', empty( $instance['title'] ) ? '' : $instance['title'], $instance );
 		$form_to = apply_filters( 'widget_newsletter', empty( $instance['form_to'] ) ? '' : $instance['form_to'], $instance );
 		$form_method = apply_filters( 'widget_newsletter', empty( $instance['form_method'] ) ? '' : $instance['form_method'], $instance );
-		$text = apply_filters( 'widget_newsletter', empty( $instance['text'] ) ? '' : $instance['text'], $instance );?>
-		<form class="col-md-12 newsletter" method="<?php echo $form_method; ?>" action="<?php echo $form_to ?>">
+		$text = apply_filters( 'widget_newsletter', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
+        $areas = apply_filters( 'widget_newsletter', empty( $instance['areas'] ) ? '' : $instance['areas'], $instance );
+        $hidden = apply_filters( 'widget_newsletter', empty( $instance['hidden'] ) ? '' : $instance['hidden'], $instance );
+        ?>
+
+        <form class="col-md-12 newsletter" method="<?php echo $form_method; ?>" action="<?php echo $form_to ?>">
 			<p><?php echo $title; ?></p>
 			<?php echo $text; ?>
-			<input type="text" placeholder="NOME" class="col-md-12">
-			<select class="col-md-12">
-				<option>Area de interesse</option>
-				<option>Teste2</option>
+			<input type="text" placeholder="NOME" class="col-md-12" name="SMT_nome">
+            <div class="clear-mob"></div>
+			<select class="col-md-12" name="SMT_area">
+                <option value="" disabled selected>Áreas de Interesse</option>
+                <?php echo $areas; ?>
 			</select>
-			<input type="tel" placeholder="TEL: ( )" class="col-md-12">
-			<input type="email" placeholder="Informe seu email" class="col-md-8">
+			<input type="tel" placeholder="TEL: ( )" class="col-md-12" name="SMT_telefone_residencial">
+			<input type="email" placeholder="Informe seu email" class="col-md-8" name="SMT_email">
+            <?php echo $hidden; ?>
 			<button class="col-md-3 pull-right">Enviar</button>
 		</form>
 	<?php
@@ -238,7 +244,10 @@ class widget_newsletter extends WP_Widget {
 		$instance['form_to'] = strip_tags($new_instance['form_to']);
 		$instance['form_method'] = strip_tags($new_instance['form_method']);
 		$instance['title'] = strip_tags($new_instance['title']);
-		if ( current_user_can('unfiltered_html') )
+        $instance['areas'] =  $new_instance['areas'];
+        $instance['hidden'] =  $new_instance['hidden'];
+
+        if ( current_user_can('unfiltered_html') )
 			$instance['text'] =  $new_instance['text'];
 		else
 			$instance['text'] = stripslashes( wp_filter_post_kses( addslashes($new_instance['text']) ) ); // wp_filter_post_kses() expects slashed
@@ -251,7 +260,10 @@ class widget_newsletter extends WP_Widget {
 		$form_to = strip_tags($instance['form_to']);
 		$form_method = strip_tags($instance['form_method']);
 		$text = esc_textarea($instance['text']);
-		?>
+        $areas = esc_textarea($instance['areas']);
+        $hidden = esc_textarea($instance['hidden']);
+
+        ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php echo 'Titulo:'; ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
@@ -261,9 +273,15 @@ class widget_newsletter extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('link'); ?>"><?php echo 'Metodo de envio do formulario (GET/POST/etc):'; ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('form_method'); ?>" name="<?php echo $this->get_field_name('form_method'); ?>" type="text" value="<?php echo esc_attr($form_method); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('text'); ?>"><?php echo 'Texto:'; ?></label>
-		<textarea class="widefat" rows="16" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea>
-	<?php
+        <p><label for="<?php echo $this->get_field_id('areas'); ?>"><?php echo 'Areas de interesse: (Em HTML)'; ?></label>
+        <textarea class="widefat" rows="8" cols="20" id="<?php echo $this->get_field_id('areas'); ?>" name="<?php echo $this->get_field_name('areas'); ?>"><?php echo $areas; ?></textarea>
+
+        <p><label for="<?php echo $this->get_field_id('hidden'); ?>"><?php echo 'Campos adicionais ou escondidos:'; ?></label>
+		<textarea class="widefat" rows="4" cols="20" id="<?php echo $this->get_field_id('hidden'); ?>" name="<?php echo $this->get_field_name('hidden'); ?>"><?php echo $hidden; ?></textarea>
+
+        <p><label for="<?php echo $this->get_field_id('text'); ?>"><?php echo 'Texto:'; ?></label>
+        <textarea class="widefat" rows="4" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea>
+    <?php
 	}
 }
 
@@ -344,12 +362,106 @@ class widget_home_footer extends WP_Widget {
 	}
 }
 
+
+class widget_noticias extends WP_Widget {
+
+	function __construct() {
+		parent::__construct(
+			// Base ID of your widget
+			'widget_noticias', 
+
+			// Widget name will appear in UI
+			__('Outras Notícias', 'widget_domain'), 
+
+			// Widget description
+			array( 'description' => __( 'Adiciona uma listagem com Outras Notícias', 'widget_domain' ), ) 
+			);
+	}
+
+	// Creating widget front-end
+	// This is where the action happens
+	public function widget( $args, $instance ) {
+		$title = apply_filters( 'widget_title', $instance['title'] );
+	// before and after widget arguments are defined by themes
+		echo $args['before_widget'];
+		if ( ! empty( $title ) )
+		echo $args['before_title'] . $title . $args['after_title'];
+
+	
+		$args_noticias = array(
+					'posts_per_page'   => 3,
+					'orderby'          => 'post_date',
+					'order'            => 'DESC',
+					'post_type'        => 'noticias',
+					'post_status'      => 'publish',
+				);
+		// the query
+		$posts_noticias = new WP_Query( $args_noticias );
+
+		if ( $posts_noticias->have_posts() ) : ?>
+
+			<div class='col-md-12 noticias'>
+		    <ul>
+
+			<!-- the loop -->
+			<?php while ( $posts_noticias->have_posts() ) : $posts_noticias->the_post(); ?>
+				<li>
+					<div class="desc">
+						<div class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
+						<span class="date"><?php the_time( get_option( 'date_format' ) ); ?></span>
+					</div>
+				</li>
+			<?php endwhile; ?>
+			<!-- end of the loop -->
+
+			<?php wp_reset_postdata(); ?>
+
+			<a class="btn-todos" href="<?php echo $link; ?>">Ver todas</a>
+		    </ul>
+			</div>
+
+		<?php else : ?>
+			<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+		<?php endif; ?>
+
+		<?php 
+		echo $args['after_widget'];
+	}
+
+	// Widget Backend 
+	public function form( $instance ) {
+		if ( isset( $instance[ 'title' ] ) ) {
+			$title = $instance[ 'title' ];
+		}
+		else {
+			$title = __( '', 'widget_domain' );
+		}
+		// Widget admin form
+		?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+		</p>
+		<?php 
+	}
+	
+	// Updating widget replacing old instances with new
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		return $instance;
+	}
+}
+
+
+
 function theme_register_widgets() {
 	register_widget( 'widget_acervo' );
 	register_widget( 'widget_midia' );
 	register_widget( 'widget_projetos' );
 	register_widget( 'widget_newsletter' );
 	register_widget( 'widget_home_footer' );
+	register_widget( 'widget_noticias' );
 }
 
 add_action( 'widgets_init', 'theme_register_widgets' );

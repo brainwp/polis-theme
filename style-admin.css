@@ -1,3 +1,14 @@
 #categoriaschecklist li ul.children {
 	display: none;
 }
+
+#acf_acf_publicacoes > .inside {
+	display: block;
+	overflow: hidden;
+}
+
+#acf_acf_publicacoes > .inside > .field {
+	width: 47%;
+	float: left;
+
+}

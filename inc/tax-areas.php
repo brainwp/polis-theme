@@ -1,22 +1,22 @@
 <?php
 // hook into the init action and call create_book_taxonomies when it fires
-add_action( 'init', 'create_taxonomies_categorias', 0 );
+add_action( 'init', 'create_taxonomies_areas', 0 );
 
-function create_taxonomies_categorias() {
+function create_taxonomies_areas() {
 	// Add new taxonomy, make it hierarchical (like categories)
 	$labels = array(
-		'name'              => _x( 'Categorias', 'taxonomy general name' ),
-		'singular_name'     => _x( 'Categoria', 'taxonomy singular name' ),
-		'search_items'      => __( 'Procurar Categoria' ),
-		'all_items'         => __( 'Todas Categorias' ),
-		'view_item'  	    => __( 'Ver Categorias' ),
-		'parent_item'       => __( 'Categoria pai' ),
-		'parent_item_colon' => __( 'Categoria pai:' ),
-		'edit_item'         => __( 'Editar Categoria' ),
-		'update_item'       => __( 'Salvar Categoria' ),
+		'name'              => _x( 'Áreas', 'taxonomy general name' ),
+		'singular_name'     => _x( 'Área', 'taxonomy singular name' ),
+		'search_items'      => __( 'Procurar Área' ),
+		'all_items'         => __( 'Todas Áreas' ),
+		'view_item'  	    => __( 'Ver Área' ),
+		'parent_item'       => __( 'Área pai' ),
+		'parent_item_colon' => __( 'Área pai:' ),
+		'edit_item'         => __( 'Editar Área' ),
+		'update_item'       => __( 'Salvar Área' ),
 		'add_new_item'      => __( 'Adicionar Nova' ),
 		'new_item_name'     => __( 'Nova' ),
-		'menu_name'         => __( 'Categorias' ),
+		'menu_name'         => __( 'Áreas' ),
 	);
 
 	$args = array(
@@ -25,9 +25,9 @@ function create_taxonomies_categorias() {
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'categoria' ),
+		'rewrite'           => array( 'slug' => 'subarea' ),
 	);
 
-	register_taxonomy( 'categorias', array( 'noticias','publicacoes','acoes' ), $args );
+	register_taxonomy( 'areas', array( 'noticias','publicacoes','acoes' ), $args );
 
 }

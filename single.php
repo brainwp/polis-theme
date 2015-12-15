@@ -1,32 +1,33 @@
 <?php
 /**
- * The Template for displaying all single posts.
+ * The template for displaying all pages.
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site will use a
+ * different template.
  *
  * @package Polis Theme
  */
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+    <section class="col-md-12 content">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+        <?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'content', 'single' ); ?>
+            <article class="col-md-8 pull-left content-page">
+                <h1><?php the_title(); ?></h1>
+                <?php the_content(); ?>
+            </article>
+            <aside class="col-md-4 pull-right sidebar-page">
+                <?php if ( is_active_sidebar( 'widgets-institucional' ) ) : ?>
+                    <?php dynamic_sidebar( 'widgets-institucional' ); ?>
+                <?php endif; ?>
+            </aside>
 
-			<?php polis_theme_post_nav(); ?>
+        <?php endwhile; // end of the loop. ?>
 
-			<?php
-				// If comments are open or we have at least one comment, load up the comment template
-				if ( comments_open() || '0' != get_comments_number() ) :
-					comments_template();
-				endif;
-			?>
+    </section>
 
-		<?php endwhile; // end of the loop. ?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
