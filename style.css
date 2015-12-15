@@ -1557,6 +1557,7 @@ conteudo - atuação /pagehome/
         opacity:1;
     }
     .content.atuacao{
+        background-color:#FFF;
         transition:600ms ease background-image;
         -moz-transition:600ms ease background-image;
     }
