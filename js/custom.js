@@ -824,7 +824,6 @@ jQuery(document).ready(function () {
         $elem.addClass('active');
         $('.content.atuacao').css('background-image', 'url('+$elem.attr('data-bg')+')');
         $('.body.home .hover').each( function(){
-            console.log( 'ao' );
 
             if ( ! $(this).hasClass('active') ) {
                 $( this ).animate({ opacity: 0.40 }, 2000, function() {});
@@ -833,5 +832,13 @@ jQuery(document).ready(function () {
                 $( this ).animate({ opacity: 1 }, 2000, function() {});
             }
         });
+    });
+    $( 'body.home .content.atuacao' ).on('mouseout', function(e){
+        $(this).removeAttr( 'style' );
+        $('.hover').addClass('active');
+    });
+
+    $('body.home .hover').on('click', function(e){
+        window.location = $(this).attr('data-href');
     });
 });

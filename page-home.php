@@ -25,7 +25,7 @@ get_header(); ?>
     </section>
     <section class="col-md-12 content atuacao">
         <div class="col-md-6 left">
-            <div class="col-md-12 hover hover-reforma active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-reforma.jpg">
+            <div class="col-md-12 hover hover-reforma active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-reforma.jpg" data-href="<?php echo home_url(); ?>/area/reforma-urbana">
                 <img src="<?php echo get_template_directory_uri();?>/img/home-bg-reforma.jpg" style="display:none;">
                 <div class="col-md-7 reforma">
                     <p class="title">Reforma Urbana</p>
@@ -36,7 +36,7 @@ get_header(); ?>
                     <a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/reforma-urbana">Saiba mais</a>
                 </div>
             </div><!-- .col-md-12 hover hover-reforma -->
-            <div class="col-md-12 hover hover-inclusao active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-inclusao.jpg">
+            <div class="col-md-12 hover hover-inclusao active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-inclusao.jpg" data-href="<?php echo home_url(); ?>/area/inclusao-e-sustentabilidade">
                 <img src="<?php echo get_template_directory_uri();?>/img/home-bg-inclusao.jpg" style="display:none;">
                 <div class="col-md-7 inclusao">
                     <p class="title">Inclusão e Sustentabilidade</p>
@@ -48,7 +48,7 @@ get_header(); ?>
             </div><!-- .col-md-12 hover hover-inclusao -->
         </div>
         <div class="col-md-6 pull-right right">
-            <div class="hover hover-democracia active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-democracia.jpg">
+            <div class="hover hover-democracia active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-democracia.jpg" data-href="<?php echo home_url(); ?>/area/democracia-e-participacao">
                 <img src="<?php echo get_template_directory_uri();?>/img/home-bg-democracia.jpg" style="display:none;">
                 <div class="col-md-7 democracia pull-right right">
                     <p class="title">Democracia e Participação</p>
@@ -59,7 +59,7 @@ get_header(); ?>
                     <a class="col-md-5 saiba left text-center" href="<?php echo home_url(); ?>/area/democracia-e-participacao">Saiba mais</a>
                 </div>
             </div><!-- .hover hover-democracia -->
-            <div class="hover hover-cidadania active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-cidadania.jpg">
+            <div class="hover hover-cidadania active" data-bg="<?php echo get_template_directory_uri();?>/img/home-bg-cidadania.jpg" data-href="<?php echo home_url(); ?>/area/cidadania-cultural">
                 <img src="<?php echo get_template_directory_uri();?>/img/home-bg-cidadania.jpg" style="display:none;">
                 <div class="col-md-6 cidadania pull-right right">
                     <p class="title">Cidadania Cultural</p>

@@ -1550,13 +1550,15 @@ conteudo - atuação /pagehome/
     .hover{
         transition:1s ease all;
         opacity:0.50;
+        cursor: pointer;
     }
     .hover.active{
         transition:1s ease all;
         opacity:1;
     }
     .content.atuacao{
-        transition:600ms ease all;
+        transition:600ms ease background-image;
+        -moz-transition:600ms ease background-image;
     }
     .atuacao .left .inclusao .title{
         margin-top:0;
