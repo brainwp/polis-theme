@@ -819,6 +819,10 @@ jQuery(document).ready(function () {
     });
     //home animation
     $( 'body.home .hover' ).on('mouseover', function(e){
+        if ( $(window).width() < 760 ) {
+            return;
+        }
+
         $elem = $(this);
         $('body.home .hover.active').removeClass('active');
         $elem.addClass('active');
@@ -834,6 +838,9 @@ jQuery(document).ready(function () {
         });
     });
     $( 'body.home .content.atuacao' ).on('mouseout', function(e){
+        if ( $(window).width() < 760 ) {
+            return;
+        }
         $(this).removeAttr( 'style' );
         $('.hover').addClass('active');
     });

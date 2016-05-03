@@ -1568,8 +1568,7 @@ conteudo - atuação /pagehome/
     }
     .content.atuacao{
         background-color:#FFF;
-        transition:600ms ease background-image;
-        -moz-transition:600ms ease background-image;
+        transition:700ms linear background;
     }
     .atuacao .left .inclusao .title{
         margin-top:0;
